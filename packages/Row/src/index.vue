@@ -10,9 +10,9 @@ export default {
 </script>
 <style lang="scss">
 .zr-row {
+  @include clearfix();
   margin-left: -10px;
   margin-right: -10px;
-  width: 100%;
   box-sizing: border-box;
 }
 </style>

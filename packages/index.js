@@ -1,4 +1,3 @@
-import './style.css'
 import vcode from './Vcode'
 import input from './Input'
 import row from './Row'

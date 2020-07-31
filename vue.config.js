@@ -1,6 +1,12 @@
 const path = require('path')
-function resolve(dir) {
+const resolve = (dir) => {
   return path.join(__dirname, dir)
+}
+const loadScss = () => {
+    if (process.env.npm_lifecycle_event === 'build:umd') {
+        return `@import "@@/assets/scss/base.scss";`
+    }
+    return `@import "@@/assets/scss/variables.scss";@import "@@/assets/scss/base.scss";`
 }
 module.exports = {
     productionSourceMap: false,
@@ -16,7 +22,7 @@ module.exports = {
         sourceMap: false,
         loaderOptions: {
             sass: {
-                additionalData: `@import "@@/assets/scss/variables.scss";`
+                additionalData: loadScss()
             }
         }
     },
