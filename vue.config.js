@@ -12,11 +12,18 @@ module.exports = {
         }
     },
     css: {
-        extract: false
+        extract: true,
+        sourceMap: false,
+        loaderOptions: {
+            sass: {
+                additionalData: `@import "@@/assets/scss/variables.scss";`
+            }
+        }
     },
     chainWebpack: config => {
         config.resolve.alias
             .set('@@', resolve('examples'))
+            .set('zero-ui', resolve('packages'))
         config.module
             .rule('js')
             .include

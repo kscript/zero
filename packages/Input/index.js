@@ -1,10 +1,10 @@
 // 导入组件，组件必须声明 name
-import Vcode from './src/index.vue'
+import Input from './src/index.vue'
 
 // 为组件提供 install 安装方法，供按需引入
-Vcode.install = function(Vue) {
-  Vue.component(Vcode.name, Vcode)
+Input.install = function(Vue) {
+  Vue.component(Input.name, Input)
 }
 
 // 默认导出组件
-export default Vcode
+export default Input

@@ -1,13 +1,13 @@
 <template>
-  <div class="v-code" :class="'v-code-' + mode">
+  <div class="zr-code" :class="'zr-code-' + mode">
     <div class="input-group" :class="groupClass" v-for="(vo, index) in len" :key="index">
-      <input
+      <zr-input
         type="text"
-        v-model="code[index]"
-        :readonly="complete"
         maxlength="1"
-        @input="input(index, $event)"
-        @keyup="keyup(index, $event)"
+        :value="code[index]"
+        :readonly="complete"
+        @input="input($event, index)"
+        @keyup="keyup($event, index)"
         ref="inputEl"
       />
     </div>
@@ -15,7 +15,7 @@
 </template>
 <script>
 export default {
-  name: 'v-code',
+  name: 'zr-code',
   data() {
     return {
       code: [],
@@ -73,7 +73,7 @@ export default {
         }[this.mode] === true
       )
     },
-    keyup(index, $event) {
+    keyup($event, index) {
       if (this.complete) return !!0
       const value = this.code[index]
       const num = $event.keyCode
@@ -85,14 +85,12 @@ export default {
         this.toggleInput(index, index + 1)
       } else {
         if (value && this.verifyNum(num)) {
-          this.$set(this.code, index, $event.key)
           this.toggleInput(index, index + 1)
           this.activeIndex = index
-          this.vcodeChange()
         }
       }
     },
-    input(index, $event) {
+    input($event, index) {
       if (this.complete) return !!0
       if (this.rule.test($event.data)) {
         const value = this.code[index]
@@ -100,6 +98,7 @@ export default {
           this.toggleInput(index, index + 1)
         }
         this.activeIndex = index
+        this.$set(this.code, index, $event.target.value)
         this.vcodeChange()
       } else {
         this.$set(this.code, index, '')
@@ -107,8 +106,8 @@ export default {
     },
     toggleInput(curr, index) {
       if (index >= 0 && index < this.len) {
-        this.$refs.inputEl[curr].blur()
-        this.$refs.inputEl[index].focus()
+        this.$refs.inputEl[curr].$refs.input.blur()
+        this.$refs.inputEl[index].$refs.input.focus()
       }
     },
     clear() {
@@ -121,29 +120,22 @@ export default {
   }
 }
 </script>
-<style>
-.v-code {
+<style lang="scss">
+.zr-code {
   display: table;
   width: 100%;
+  .input-group {
+    display: table-cell;
+    padding: 0px 10px;
+  }
 }
-.v-code .input-group {
-  display: table-cell;
-  padding: 0px 10px;
-}
-.v-code .input-group input {
-  box-sizing: border-box;
-  width: 100%;
-  padding: 10px 10px;
-  text-align: center;
-  outline: none;
-}
-.v-code-none .input-group input {
+.zr-code-none .input-group input {
   color: transparent;
   text-shadow: 0 0 0 #555;
   border: 1px solid #aaa;
-}
-.v-code-none .input-group input:focus {
-  text-shadow: 0 0 0 #42abff;
-  border: 1px solid #42abff;
+  &:focus {
+    text-shadow: 0 0 0 #42abff;
+    border: 1px solid #42abff;
+  }
 }
 </style>

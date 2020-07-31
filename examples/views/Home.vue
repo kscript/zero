@@ -1,18 +1,28 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="componets">
+      <zr-row>
+        <zr-col>
+          <div class="title">输入框</div>
+          <div class="content">
+            <zr-input></zr-input>
+          </div>
+        </zr-col>
+      </zr-row>
+      <zr-row>
+        <zr-col>
+          <div class="title">验证码</div>
+          <div class="content">
+            <zr-code></zr-code>
+          </div>
+        </zr-col>
+      </zr-row>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@@/components/HelloWorld.vue'
-
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
+  name: 'Home'
 }
 </script>
