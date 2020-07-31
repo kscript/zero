@@ -1,12 +1,30 @@
 {
   "name": "zero",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.2.0",
+  "private": false,
+  "main": "lib/zero.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build:umd": "vue-cli-service build --target lib --name zero --dest lib packages/index.js",
+    "prepublishOnly": "npm run build:umd",
     "lint": "vue-cli-service lint"
   },
+  "homepage": "https://github.com/kscript",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kscript/zero.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kscript/zero/issues"
+  },
+  "keywords": [
+    "vue",
+    "vue-cli",
+    "ui",
+    "zero",
+    "demo"
+  ],
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
@@ -28,5 +46,6 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.2.2",
     "vue-template-compiler": "^2.6.11"
-  }
+  },
+  "license": "MIT"
 }
