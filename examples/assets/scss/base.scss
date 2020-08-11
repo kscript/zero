@@ -11,6 +11,6 @@
 .clearfix {
     @include clearfix();
 }
-.zr-row-box {
-    padding: 0 10px;
+.zr-row {
+    @include clearfix();
 }

@@ -11,5 +11,6 @@ export default {
 <style lang="scss">
 .zr-col {
   float: left;
+  box-sizing: border-box;
 }
 </style>

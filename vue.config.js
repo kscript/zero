@@ -3,43 +3,43 @@ const resolve = (dir) => {
   return path.join(__dirname, dir)
 }
 const loadScss = () => {
-    if (process.env.npm_lifecycle_event === 'build:umd') {
-        return `@import "@@/assets/scss/base.scss";`
-    }
-    return `@import "@@/assets/scss/variables.scss";@import "@@/assets/scss/base.scss";`
+  if (process.env.npm_lifecycle_event === 'build:umd') {
+    return '@import "@@/assets/scss/base.scss";'
+  }
+  return '@import "@@/assets/scss/variables.scss";@import "@@/assets/scss/base.scss";'
 }
 module.exports = {
-    productionSourceMap: false,
-    pages: {
-        index: {
-            entry: 'examples/main.js',
-            template: 'public/index.html',
-            filename: 'index.html'
-        }
-    },
-    css: {
-        extract: true,
-        sourceMap: false,
-        loaderOptions: {
-            sass: {
-                additionalData: loadScss()
-            }
-        }
-    },
-    chainWebpack: config => {
-        config.resolve.alias
-            .set('@@', resolve('examples'))
-            .set('zero-ui', resolve('packages'))
-        config.module
-            .rule('js')
-            .include
-            .add('/packages/')
-            .end()
-            .use('babel')
-            .loader('babel-loader')
-            .tap(options => {
-                // 修改它的选项...
-                return options
-            })
+  productionSourceMap: false,
+  pages: {
+    index: {
+      entry: 'examples/main.ts',
+      template: 'public/index.html',
+      filename: 'index.html'
     }
+  },
+  css: {
+    extract: true,
+    sourceMap: false,
+    loaderOptions: {
+      sass: {
+        additionalData: loadScss()
+      }
+    }
+  },
+  chainWebpack: config => {
+    config.resolve.alias
+      .set('@@', resolve('examples'))
+      .set('zero-ui', resolve('packages'))
+    config.module
+      .rule('js')
+      .include
+      .add('/packages/')
+      .end()
+      .use('babel')
+      .loader('babel-loader')
+      .tap(options => {
+        // 修改它的选项...
+        return options
+      })
+  }
 }
