@@ -1,17 +1,14 @@
 import { App } from 'vue'
-import row from './row'
-import col from './col'
+import alert from './alert'
 
 interface anyObject<T = any> {
   [prop: string]: T
 }
 
-export const Row = row
-export const Col = col
+export const Alert = alert
 
 const components = [
-  Row,
-  Col
+  Alert
 ]
 
 const install = function(app: App) {
@@ -30,6 +27,5 @@ if (typeof win !== 'undefined' && win.Vue) {
 }
 export default {
   install,
-  Row,
-  Col
+  Alert
 }
