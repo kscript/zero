@@ -8,9 +8,3 @@
         clear: both;
     }
 }
-.clearfix {
-    @include clearfix();
-}
-.zr-row {
-    @include clearfix();
-}

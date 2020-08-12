@@ -1,10 +1,7 @@
-// 导入组件，组件必须声明 name
-import Row from './src/index.vue'
-
-// 为组件提供 install 安装方法，供按需引入
-Row.install = function(Vue) {
-  Vue.component(Row.name, Row)
+import { App } from 'vue'
+import Component from './src/index.vue'
+export const install = function (app: App) {
+  app.component(Component.name as string, Component)
 }
 
-// 默认导出组件
-export default Row
+export default Component

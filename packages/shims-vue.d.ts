@@ -1,5 +1,5 @@
 declare module '*.vue' {
-    import { ComponentOptions } from 'vue'
-    const component: ComponentOptions
-    export default component
+  import { ComponentPublicInstance } from '@vue/runtime-dom'
+  const app: new () => ComponentPublicInstance
+  export default app
 }

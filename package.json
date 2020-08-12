@@ -7,7 +7,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "build:umd": "vue-cli-service build --target lib --name zero --dest lib packages/index.js",
+    "build:umd": "vue-cli-service build --target lib --name zero --dest lib packages/index.ts",
     "prepublishOnly": "npm run build:umd"
   },
   "keywords": [

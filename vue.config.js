@@ -3,10 +3,10 @@ const resolve = (dir) => {
   return path.join(__dirname, dir)
 }
 const loadScss = () => {
-  if (process.env.npm_lifecycle_event === 'build:umd') {
-    return '@import "@@/assets/scss/base.scss";'
-  }
-  return '@import "@@/assets/scss/variables.scss";@import "@@/assets/scss/base.scss";'
+  // if (process.env.npm_lifecycle_event === 'build:umd') {
+  //   return '@import "common/scss/variables.scss";'
+  // }
+  return '@import "common/scss/variables.scss";'
 }
 module.exports = {
   productionSourceMap: false,
@@ -30,6 +30,7 @@ module.exports = {
     config.resolve.alias
       .set('@@', resolve('examples'))
       .set('zero-ui', resolve('packages'))
+      .set('common', resolve('common'))
     config.module
       .rule('js')
       .include
