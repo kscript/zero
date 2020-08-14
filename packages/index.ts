@@ -7,6 +7,9 @@ import aside from './aside'
 import avatar from './avatar'
 import main from './main'
 import container from './container'
+import collapse from './collapse'
+import collapseItem from './collapse-item'
+import collapseTransition from './collapse-transition'
 import { ElementUIOptions } from './component'
 
 interface anyObject<T = any> {
@@ -18,13 +21,19 @@ export const Aside = aside
 export const Avatar = avatar
 export const Main = main
 export const Container = container
+export const Collapse = collapse
+export const CollapseItem = collapseItem
+export const CollapseTransition = collapseTransition
 
 export const components = [
   Alert,
   Aside,
   Avatar,
-  Main,
-  Container
+  Collapse,
+  CollapseItem,
+  CollapseTransition,
+  Container,
+  Main
 ]
 
 const install = function(app: App, opts = {}) {
@@ -50,6 +59,9 @@ export default {
   Alert,
   Aside,
   Avatar,
-  Main,
-  Container
+  Collapse,
+  CollapseItem,
+  CollapseTransition,
+  Container,
+  Main
 }

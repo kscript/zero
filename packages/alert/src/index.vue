@@ -77,10 +77,10 @@
         return TYPE_CLASSES_MAP[state.type] || 'el-icon-info'
       })
       const isBigIcon = computed(() => {
-        return state.description || ctx.slots.default ? 'is-big' : ''
+        return state.description || cxt.slots.default ? 'is-big' : ''
       })
       const isBoldTitle = computed(() => {
-        return state.description || ctx.slots.default ? 'is-bold' : ''
+        return state.description || cxt.slots.default ? 'is-bold' : ''
       })
       return {
         ...toRefs(state),

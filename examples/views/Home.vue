@@ -4,17 +4,52 @@
     <el-aside>
     </el-aside>
     <el-main>
-      <el-avatar icon="el-icon-user-solid"></el-avatar>
-      <el-alert type="success">123</el-alert>
+      <el-collapse @item-click="itemClick" :value="itemName">
+        <el-collapse-item title="Avatar 头像" name="ElAvatar">
+          <el-avatar icon="el-icon-user-solid"></el-avatar>
+        </el-collapse-item>
+        <el-collapse-item title="Alert 警告" name="ElAlert">
+          <el-alert :title="vo.title" :type="vo.type" v-for="vo in alerts" :key="vo.type"></el-alert>
+        </el-collapse-item>
+      </el-collapse>
     </el-main>
     </el-container>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, App, ComponentOptions } from 'vue'
 // @ts-ignore
 import { components } from 'zero-ui'
 export default defineComponent({
-  name: 'Home'
+  name: 'Home',
+  setup() {
+    const itemName = ref('ElAvatar')
+    const itemClick = (vm: ComponentOptions) => {
+      itemName.value = vm.props.name
+    }
+    const alerts = [
+      {
+        title: '成功',
+        type: 'success'
+      },
+      {
+        title: '消息',
+        type: 'info'
+      },
+      {
+        title: '警告',
+        type: 'warning'
+      },
+      {
+        title: '错误',
+        type: 'error'
+      }
+    ]
+    return {
+      itemName,
+      itemClick,
+      alerts
+    }
+  }
 })
 </script>

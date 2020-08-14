@@ -32,6 +32,7 @@ module.exports = {
       .set('zero-ui', resolve('packages'))
       .set('common', resolve('common'))
       .set('theme', resolve('packages/theme-chalk/src'))
+      .set('@src', resolve('src'))
     config.module
       .rule('js')
       .include
