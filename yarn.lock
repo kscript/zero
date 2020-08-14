@@ -4983,7 +4983,7 @@ kind-of@^6.0.0, kind-of@^6.0.2:
 
 klona@^1.1.2:
   version "1.1.2"
-  resolved "http://localhost:4873/klona/-/klona-1.1.2.tgz#a79e292518a5a5412ec8d097964bff1571a64db0"
+  resolved "https://registry.npm.taobao.org/klona/-/klona-1.1.2.tgz#a79e292518a5a5412ec8d097964bff1571a64db0"
   integrity sha1-p54pJRilpUEuyNCXlkv/FXGmTbA=
 
 launch-editor-middleware@^2.2.1:
@@ -5044,7 +5044,7 @@ loader-utils@^1.0.2, loader-utils@^1.1.0, loader-utils@^1.2.3, loader-utils@^1.4
 
 loader-utils@^2.0.0:
   version "2.0.0"
-  resolved "http://localhost:4873/loader-utils/-/loader-utils-2.0.0.tgz#e4cace5b816d425a166b5f097e10cd12b36064b0"
+  resolved "https://registry.npm.taobao.org/loader-utils/-/loader-utils-2.0.0.tgz#e4cace5b816d425a166b5f097e10cd12b36064b0"
   integrity sha1-5MrOW4FtQloWa18JfhDNErNgZLA=
   dependencies:
     big.js "^5.2.2"
@@ -6888,7 +6888,7 @@ safe-regex@^1.1.0:
 
 sass-loader@^9.0.3:
   version "9.0.3"
-  resolved "http://localhost:4873/sass-loader/-/sass-loader-9.0.3.tgz#086adcf0bfdcc9d920413e2cdc3ba3321373d547"
+  resolved "https://registry.npm.taobao.org/sass-loader/-/sass-loader-9.0.3.tgz#086adcf0bfdcc9d920413e2cdc3ba3321373d547"
   integrity sha1-CGrc8L/cydkgQT4s3DujMhNz1Uc=
   dependencies:
     klona "^1.1.2"
@@ -6899,7 +6899,7 @@ sass-loader@^9.0.3:
 
 sass@^1.26.10:
   version "1.26.10"
-  resolved "http://localhost:4873/sass/-/sass-1.26.10.tgz#851d126021cdc93decbf201d1eca2a20ee434760"
+  resolved "https://registry.npm.taobao.org/sass/-/sass-1.26.10.tgz#851d126021cdc93decbf201d1eca2a20ee434760"
   integrity sha1-hR0SYCHNyT3svyAdHsoqIO5DR2A=
   dependencies:
     chokidar ">=2.0.0 <4.0.0"
