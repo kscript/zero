@@ -9,6 +9,7 @@ const loadScss = () => {
   return '@import "common/scss/variables.scss";'
 }
 module.exports = {
+  publicPath: process.env.NODE_ENV === 'development' ? '' : '/zero/',
   productionSourceMap: false,
   pages: {
     index: {
