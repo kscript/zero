@@ -25,7 +25,7 @@ export default defineComponent({
   setup() {
     const itemName = ref('ElAvatar')
     const itemClick = (vm: ComponentOptions) => {
-      itemName.value = vm.props.name
+      itemName.value = itemName.value === vm.props.name ? '' : vm.props.name
     }
     const alerts = [
       {

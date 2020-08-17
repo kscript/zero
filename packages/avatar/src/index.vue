@@ -51,7 +51,7 @@ export default defineComponent({
       if (shape) {
         classList.push(`el-avatar--${shape}`)
       }
-      console.log(classList)
+      
       return classList.join(' ')
     })
 
