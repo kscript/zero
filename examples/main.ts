@@ -5,7 +5,8 @@ import store from './store'
 // @ts-ignore
 import zeroUI from 'zero-ui'
 
-createApp(App)
+// @ts-ignore
+window.app = createApp(App)
   .use(router)
   .use(store)
   .use(zeroUI)

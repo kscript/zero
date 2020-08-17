@@ -4,7 +4,7 @@
     <el-aside>
     </el-aside>
     <el-main>
-      <el-collapse @item-click="itemClick" :value="itemName">
+      <el-collapse accordion v-model:value="itemName">
         <el-collapse-item title="Avatar 头像" name="ElAvatar">
           <el-avatar icon="el-icon-user-solid"></el-avatar>
         </el-collapse-item>
@@ -23,10 +23,7 @@ import { components } from 'zero-ui'
 export default defineComponent({
   name: 'Home',
   setup() {
-    const itemName = ref('ElAvatar')
-    const itemClick = (vm: ComponentOptions) => {
-      itemName.value = itemName.value === vm.props.name ? '' : vm.props.name
-    }
+    const itemName = ref([])
     const alerts = [
       {
         title: '成功',
@@ -47,7 +44,6 @@ export default defineComponent({
     ]
     return {
       itemName,
-      itemClick,
       alerts
     }
   }

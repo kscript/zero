@@ -1,5 +1,7 @@
+import mitt from 'mitt'
 import { ComponentOptions } from 'vue'
 
+export const emitter = mitt()
 export function dispatch (
   componentName: string,
   eventName: string,
@@ -17,9 +19,11 @@ export function dispatch (
   }
   if (parent) {
     parent.emit.apply(parent, [eventName].concat(params))
+    emitter.emit(eventName, params)
   }
 }
 
 export default {
-  dispatch
+  dispatch,
+  emitter
 }

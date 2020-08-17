@@ -10,7 +10,7 @@
     <slot />
   </transition>
 </template>
-<script lang="tsx">
+<script lang="ts">
 // @ts-ignore
 import { addClass, removeClass } from '@src/utils/dom'
 import { defineComponent, h, getCurrentInstance } from 'vue';
@@ -20,9 +20,6 @@ interface anyObject<T = any> {
 interface TransitionElement extends HTMLElement {
     dataset: DOMStringMap;
     style: CSSStyleDeclaration
-}
-class Transition {
-  
 }
 export default defineComponent({
   name: 'ElCollapseTransition',
