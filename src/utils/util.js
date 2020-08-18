@@ -1,6 +1,6 @@
-import Vue from 'vue';
+// import Vue from 'vue';
 import { isString, isObject } from '@src/utils/types'
-
+const Vue = {}
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 
 export function noop() {};

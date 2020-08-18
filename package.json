@@ -29,7 +29,7 @@
     "core-js": "^3.6.5",
     "resize-observer-polyfill": "^1.5.1",
     "sass": "^1.26.10",
-    "throttle-debounce": "^2.2.1",
+    "throttle-debounce": "^2.3.0",
     "vue": "^3.0.0-0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
@@ -41,7 +41,9 @@
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0-0",
+    "github-markdown-css": "^4.0.0",
     "mitt": "^2.1.0",
+    "prismjs": "^1.21.0",
     "sass-loader": "^9.0.3",
     "typescript": "~3.9.3"
   },

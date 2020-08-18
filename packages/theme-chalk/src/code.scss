@@ -1,0 +1,77 @@
+.el-code {
+    &.el-code-block{
+        position: relative;
+        display: block;
+        code {
+            display: block;
+            padding: 6px;
+            font-size: 14px;
+            // & > .token.tag {
+            //     display: block;
+            // }
+            // .token.br {
+            //     display: block;
+            // }
+        }
+        .corner {
+            position: absolute;
+            right: 3px;
+            top: 3px;
+            padding: 0 5px;
+            line-height: 1;
+            color: #ccc;
+            background: #2d2d2d;
+            border-top-right-radius: .3em;
+        }
+    }
+    &.el-code-inline {
+        padding: 0 3px;
+        display: inline;
+    }
+    
+    .el-code-lines[class*="language-"].line-numbers {
+        position: relative;
+        counter-reset: linenumber;
+        padding: 0;
+        margin: 0;
+        font-size: 0;
+    }
+    
+    .el-code-lines[class*="language-"].line-numbers > code {
+        position: relative;
+        padding-left: 3.8em;
+        white-space: inherit;
+        font-size: 14px;
+        border-radius: 5px;
+    }
+    
+    .line-numbers .line-numbers-rows {
+        position: absolute;
+        pointer-events: none;
+        top: 6px;
+        font-size: 100%;
+        left: 0;
+        width: 3em; /* works for line-numbers below 1000 lines */
+        letter-spacing: -1px;
+        border-right: 1px solid #999;
+    
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    
+    }
+    
+    .line-numbers-rows > span {
+        display: block;
+        counter-increment: linenumber;
+    }
+    
+    .line-numbers-rows > span:before {
+        content: counter(linenumber);
+        color: #999;
+        display: block;
+        padding-right: 0.8em;
+        text-align: right;
+    }
+}
