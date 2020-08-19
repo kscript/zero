@@ -3,8 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 // @ts-ignore
-import zeroUI from 'zero-ui'
-// import 'zero-ui/lib/zero.css'
+import zeroUI from 'zero-ui';
 
 // @ts-ignore
 window.app = createApp(App)

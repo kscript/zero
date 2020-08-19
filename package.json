@@ -1,5 +1,5 @@
 {
-  "name": "zero-ui",
+  "name": "@zero-ui/vue",
   "version": "1.0.0",
   "private": false,
   "main": "lib/zero.umd.min.js",
