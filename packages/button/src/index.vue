@@ -19,7 +19,7 @@
   >
     <i class="el-icon-loading" v-if="loading"></i>
     <i :class="icon" v-if="icon && !loading"></i>
-    <span v-if="$slots.default"><slot></slot></span>
+    <span v-if="slot"><slot></slot></span>
   </button>
 </template>
 <script lang="ts">
@@ -61,6 +61,7 @@
     setup(props, cxt) {
       const elForm: elForm | void = inject('elForm', {})
       const elFormItem: elFormItem | void = inject('elFormItem', {})
+      const slot = cxt.slots.default ? cxt.slots.default() : ''
       const _elFormItemSize = computed(() => {
         return (elFormItem instanceof Object ? elFormItem : {}).elFormItemSize
       })
@@ -74,6 +75,7 @@
         cxt.emit('click', evt)
       }
       return {
+        slot,
         elForm,
         elFormItem,
         _elFormItemSize,

@@ -256,7 +256,7 @@
    * @param {Date|number} dateObj
    * @param {string} mask Format of the date, i.e. 'mm-dd-yy' or 'shortDate'
    */
-  fecha.format = function (dateObj, mask, i18nSettings) {
+  fecha.format = function (dateObj, mask, i18nSettings = void 0) {
     var i18n = i18nSettings || fecha.i18n;
 
     if (typeof dateObj === 'number') {

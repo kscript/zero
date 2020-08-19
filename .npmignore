@@ -1,8 +1,11 @@
 packages/
 examples/
 public/
+dist/
+src/
 
 vue.config.js
 babel.config.js
+.travis.yml
 *.map
 *.lock

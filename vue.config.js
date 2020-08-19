@@ -8,8 +8,14 @@ const loadScss = () => {
   // }
   return '@import "common/scss/variables.scss";'
 }
+const publicPath = () => {
+  if (process.env.npm_lifecycle_event === 'build:umd') {
+    return ''
+  }
+  return process.env.NODE_ENV === 'development' ? '' : '/zero/'
+}
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'development' ? '' : '/zero/',
+  publicPath: publicPath(),
   productionSourceMap: false,
   pages: {
     index: {

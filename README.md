@@ -8,6 +8,23 @@
 ## 在线demo
 [zero-ui](https://kscript.github.io/zero/)
 
+## 使用方法
+1. 安装zero-ui
+```
+// yarn
+yarn add -D zero-ui
+// npm
+npm i -D zero-ui
+```
+2. 使用
+``` javascript
+import { createApp } from 'vue';
+import App from './App.vue';
+import zeroUI from 'zero-ui';
+import 'zero-ui/lib/zero.css';
+createApp(App).use(zeroUI).mount('#app');
+```
+
 ## 现有组件
 - [x] alert
 - [x] avatar
