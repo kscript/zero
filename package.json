@@ -1,8 +1,11 @@
 {
   "name": "@zero-ui/vue",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "main": "lib/zero.umd.min.js",
+  "author": {
+    "name": "luren"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -13,8 +16,10 @@
   "keywords": [
     "vue",
     "vue-cli",
+    "vue-next",
     "ui",
-    "zero",
+    "element-ui",
+    "zero-ui",
     "demo"
   ],
   "homepage": "https://github.com/kscript",

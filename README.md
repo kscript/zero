@@ -1,9 +1,5 @@
 # @zero-ui/vue
-一个基于vue-cli 4开发的UI库demo  
-
-组件代码参考以下仓库: 
-- [element](https://github.com/ElemeFE/element)  
-- [ele-next](https://github.com/a631807682/ele-next)
+使用 vue3 重构的 element-ui 组件库
 
 ## 使用方法
 1. 安装zero-ui
@@ -35,6 +31,10 @@ createApp(App).use(zeroUI).mount('#app');
 - [x] code (自己封装的, 用于演示)
 - [x] collapse
 - [x] icon
+
+## 参考 
+- [element](https://github.com/ElemeFE/element)  
+- [ele-next](https://github.com/a631807682/ele-next)
 
 ## lisence
 MIT
