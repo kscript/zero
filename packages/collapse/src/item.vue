@@ -44,10 +44,14 @@
     </el-collapse-transition>
   </div>
 </template>
-<script>
-  import { defineComponent, reactive, provide, watch, inject, computed, getCurrentInstance } from 'vue'
-  import { dispatch } from '@src/mixins/emitter'
-  import { generateId } from '@src/utils/util'
+<script lang="ts">
+  import { 
+    defineComponent, computed, watch, reactive, provide, inject, getCurrentInstance, 
+    PropType, Ref
+  } from 'vue'
+  import { generateId } from '@/utils/util'
+  import { modelValueType, collapseProvide, modelValueArray } from './type'
+  
   export default defineComponent({
     name: 'ElCollapseItem',
 
@@ -56,17 +60,13 @@
     props: {
       title: String,
       name: {
-        type: [String, Number],
-        default() {
-          return this._uid;
-        }
+        type: [String, Number] as PropType<string | number>,
+        default: () => generateId()
       },
       disabled: Boolean
     },
 
-    setup(props, cxt) {
-      const instance = getCurrentInstance()
-      const collapse = inject('collapse')
+    setup(props) {
       const state = reactive({
         contentWrapStyle: {
           height: 'auto',
@@ -78,8 +78,13 @@
         name: props.name,
         id: generateId()
       })
+      const instance = getCurrentInstance()
+      const collapse = inject('collapse') as collapseProvide
+      const activeNames = computed(() => {
+        return ([] as modelValueArray).concat(collapse.activeNames.value)
+      })
       const isActive = computed(() => {
-        return collapse.value.indexOf(state.name) > -1;
+        return activeNames.value.indexOf(state.name) > -1;
       })
       const handleFocus = () => {
         setTimeout(() => {
@@ -91,13 +96,13 @@
         }, 50)
       }
       const handleHeaderClick = () => {
-        if (state.disabled) return;
-        dispatch.call(instance, 'ElCollapse', 'item-click', instance);
+        if (props.disabled) return;
+        collapse.emitter.emit('item-click', instance)
         state.focusing = false;
         state.isClick = true;
       }
       const handleEnterClick = () => {
-        dispatch.call(instance, 'ElCollapse', 'item-click', instance);
+        collapse.emitter.emit('item-click', instance)
       }
       return {
         ...state,

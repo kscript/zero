@@ -35,6 +35,7 @@ createApp(App).use(zeroUI).mount('#app');
 ## 参考 
 - [element](https://github.com/ElemeFE/element)  
 - [ele-next](https://github.com/a631807682/ele-next)
+- [element-plus](https://github.com/element-plus/element-plus)
 
 ## lisence
 MIT

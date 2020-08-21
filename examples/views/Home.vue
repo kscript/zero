@@ -8,7 +8,7 @@
       <el-card>
         <template #header>
           <p class="text-danger">collapse 折叠面板</p>
-          <el-collapse accordion v-model:value="itemName">
+          <el-collapse accordion v-model="itemName">
             <el-collapse-item title="Avatar 头像" name="ElAvatar">
               <el-card>
                 <template #header>
@@ -116,7 +116,7 @@
         </template>
         <el-code :trim="-1">
           {{
-          `<el-collapse accordion v-model:value="itemName">
+          `<el-collapse accordion v-model="itemName">
             <el-collapse-item title="Avatar 头像" name="ElAvatar">
             </el-collapse-item>
           </el-collapse>`
