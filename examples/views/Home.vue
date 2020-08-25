@@ -9,6 +9,66 @@
         <template #header>
           <p class="text-danger">collapse 折叠面板</p>
           <el-collapse accordion v-model="itemName">
+            <el-collapse-item title="Input 输入框" name="ElInput">
+              <el-card>
+                <template #header>
+                  <div class="demo-input-suffix">
+                    属性方式：
+                    <el-input
+                      placeholder="请选择日期"
+                      suffix-icon="el-icon-date"
+                      v-model="input1">
+                    </el-input>
+                    <el-input
+                      placeholder="请输入内容"
+                      prefix-icon="el-icon-search"
+                      v-model="input2">
+                    </el-input>
+                  </div>
+                  <div class="demo-input-suffix">
+                    slot 方式：
+                    <el-input
+                      placeholder="请选择日期"
+                      v-model="input3">
+                      <i slot="suffix" class="el-input__icon el-icon-date"></i>
+                    </el-input>
+                    <el-input
+                      placeholder="请输入内容"
+                      v-model="input4">
+                      <i slot="prefix" class="el-input__icon el-icon-search"></i>
+                    </el-input>
+                  </div>
+                </template>
+                <el-code :trim="-1">
+                  {{`<div class="demo-input-suffix">
+                    属性方式：
+                    <el-input
+                      placeholder="请选择日期"
+                      suffix-icon="el-icon-date"
+                      v-model="input1">
+                    </el-input>
+                    <el-input
+                      placeholder="请输入内容"
+                      prefix-icon="el-icon-search"
+                      v-model="input2">
+                    </el-input>
+                  </div>
+                  <div class="demo-input-suffix">
+                    slot 方式：
+                    <el-input
+                      placeholder="请选择日期"
+                      v-model="input3">
+                      <i slot="suffix" class="el-input__icon el-icon-date"></i>
+                    </el-input>
+                    <el-input
+                      placeholder="请输入内容"
+                      v-model="input4">
+                      <i slot="prefix" class="el-input__icon el-icon-search"></i>
+                    </el-input>
+                  </div>`}}
+                </el-code>
+              </el-card>
+            </el-collapse-item>
             <el-collapse-item title="Avatar 头像" name="ElAvatar">
               <el-card>
                 <template #header>
@@ -143,12 +203,18 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref, App, ComponentOptions } from 'vue'
+import { defineComponent, ref, App, ComponentOptions, reactive, toRefs } from 'vue'
 // @ts-ignore
 import { components } from 'zero-ui'
 export default defineComponent({
   name: 'Home',
   setup() {
+    const state = toRefs(reactive({
+      input1: '',
+      input2: '',
+      input3: '',
+      input4: '',
+    }))
     const itemName = ref([])
     const alerts = [
       {
@@ -169,6 +235,7 @@ export default defineComponent({
       }
     ]
     return {
+      ...state,
       itemName,
       alerts
     }
@@ -182,5 +249,12 @@ export default defineComponent({
 }
 .el-badge {
   margin-right: 30px;
+}
+.demo-input-suffix {
+  margin-bottom: 10px;
+}
+.el-input {
+  width: 180px;
+  margin-right: 20px;
 }
 </style>

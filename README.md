@@ -31,6 +31,7 @@ createApp(App).use(zeroUI).mount('#app');
 - [x] code (自己封装的, 用于演示)
 - [x] collapse
 - [x] icon
+- [x] input
 
 ## 参考 
 - [element](https://github.com/ElemeFE/element)  

@@ -49,6 +49,7 @@
     defineComponent, computed, watch, reactive, provide, inject, getCurrentInstance, 
     PropType, Ref
   } from 'vue'
+  // @ts-ignore
   import { generateId } from '@/utils/util'
   import { modelValueType, collapseProvide, modelValueArray } from './type'
   

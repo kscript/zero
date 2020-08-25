@@ -17,6 +17,7 @@ import collapseItem from './collapse-item'
 import collapseTransition from './collapse-transition'
 import { ElementUIOptions } from './component'
 import icon from './icon'
+import input from './input'
 import main from './main'
 
 interface anyObject<T = any> {
@@ -30,14 +31,15 @@ export const BackTop = backTop
 export const Badge = badge
 export const Button = button
 export const ButtonGroup = buttonGroup
-export const Icon = icon
-export const Main = main
 export const Card = card
 export const Code = code
 export const Container = container
 export const Collapse = collapse
 export const CollapseItem = collapseItem
 export const CollapseTransition = collapseTransition
+export const Icon = icon
+export const Input = input
+export const Main = main
 
 export const components = [
   Alert,
@@ -54,6 +56,7 @@ export const components = [
   CollapseTransition,
   Container,
   Icon,
+  Input,
   Main
 ]
 
@@ -92,5 +95,6 @@ export default {
   CollapseTransition,
   Container,
   Icon,
+  Input,
   Main
 }
