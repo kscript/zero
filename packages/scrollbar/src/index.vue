@@ -1,6 +1,12 @@
 <script lang="ts">
 // reference https://github.com/noeldelgado/gemini-scrollbar/blob/master/index.js
-import { defineComponent, ref, reactive, h, getCurrentInstance, ComponentInternalInstance, PropType, onMounted, nextTick, onBeforeUnmount, toRefs } from 'vue'
+import {
+  defineComponent,
+  h, ref, toRefs, reactive, computed,
+  onMounted, onBeforeUnmount,
+  getCurrentInstance, nextTick,
+  PropType, ComponentInternalInstance
+} from 'vue'
 // @ts-ignore
 import { addResizeListener, removeResizeListener } from '@/utils/resize-event'
 // @ts-ignore
@@ -15,11 +21,11 @@ export default defineComponent({
 
   props: {
     native: {
-      type: Boolean, 
+      type: Boolean,
       default: false
     },
     wrapStyle: {
-      type: [Object, Array, String] as PropType<anyObject | (anyObject|String)[] | String>,
+      type: [Object, Array, String] as PropType<anyObject | (anyObject | String)[] | String>,
       default: ''
     },
     wrapClass: {},
@@ -44,19 +50,19 @@ export default defineComponent({
 
     const handleScroll = () => {
       if (!wrap.value) return
-      state.moveY = ((wrap.value.scrollTop * 100) / wrap.value.clientHeight)
-      state.moveX = ((wrap.value.scrollLeft * 100) / wrap.value.clientWidth)
+      state.moveY = (wrap.value.scrollTop * 100) / wrap.value.clientHeight
+      state.moveX = (wrap.value.scrollLeft * 100) / wrap.value.clientWidth
     }
-    
+
     const update = () => {
       let heightPercentage, widthPercentage
       if (!wrap.value) return
 
-      heightPercentage = (wrap.value.clientHeight * 100 / wrap.value.scrollHeight)
-      widthPercentage = (wrap.value.clientWidth * 100 / wrap.value.scrollWidth)
+      heightPercentage = (wrap.value.clientHeight * 100) / wrap.value.scrollHeight
+      widthPercentage = (wrap.value.clientWidth * 100) / wrap.value.scrollWidth
 
-      state.sizeHeight = (heightPercentage < 100) ? (heightPercentage + '%') : ''
-      state.sizeWidth = (widthPercentage < 100) ? (widthPercentage + '%') : ''
+      state.sizeHeight = heightPercentage < 100 ? heightPercentage + '%' : ''
+      state.sizeWidth = widthPercentage < 100 ? widthPercentage + '%' : ''
     }
     onMounted(() => {
       wrap.value = instance.refs.wrap as HTMLElement
@@ -68,8 +74,6 @@ export default defineComponent({
       if (props.native) return
       !props.noresize && removeResizeListener(instance.refs.resize, update)
     })
-    // tip: slot函数放渲染函数里会造成死循环
-    const slot = cxt.slots.default?.() || []
     return () => {
       const gutter = scrollbarWidth()
       let style = props.wrapStyle
@@ -90,17 +94,17 @@ export default defineComponent({
         ref: 'resize',
         class: ['el-scrollbar__view', props.viewClass],
         style: props.viewStyle,
-      }, slot)
-      const wrap = h('div', {
-        ref: 'wrap',
-        style,
-        class: [props.wrapClass, 'el-scrollbar__wrap', gutter ? '' : 'el-scrollbar__wrap--hidden-default'],
-        onScroll: handleScroll,
-      }, [view])
+      }, cxt.slots.default?.() || [])
 
       let nodes
 
       if (!props.native) {
+        const wrap = h('div', {
+          ref: 'wrap',
+          style,
+          class: [props.wrapClass, 'el-scrollbar__wrap', gutter ? '' : 'el-scrollbar__wrap--hidden-default'],
+          onScroll: handleScroll,
+        }, [view])
         nodes = ([
           wrap,
           h(Bar, {
@@ -124,8 +128,7 @@ export default defineComponent({
     }
   }
 })
-
 </script>
 <style lang="scss">
-@import 'theme/scrollbar.scss';
+@import "theme/scrollbar.scss";
 </style>
