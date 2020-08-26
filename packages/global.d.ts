@@ -1,3 +1,3 @@
-export interface anyObject<T = any> {
+interface anyObject<T = any> {
     [prop: string]: T
 }

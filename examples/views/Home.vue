@@ -230,7 +230,6 @@
 import { defineComponent, ref, App, ComponentOptions, reactive, toRefs } from 'vue'
 // @ts-ignore
 import { components } from 'zero-ui'
-import { anyObject } from 'packages/input/src/type'
 export default defineComponent({
   name: 'Home',
   setup() {

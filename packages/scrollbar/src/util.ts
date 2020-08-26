@@ -1,4 +1,3 @@
-import { anyObject } from 'packages/global'
 export interface BaseMap {
   offset: 'offsetHeight' | 'offsetWidth'
   scroll: 'scrollTop' | 'scrollLeft'

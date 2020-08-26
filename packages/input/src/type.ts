@@ -1,6 +1,3 @@
-export interface anyObject<T = any> {
-    [prop: string]: T
-}
 export interface Icons {
     validating: string;
     success: string;

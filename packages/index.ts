@@ -23,8 +23,6 @@ import main from './main'
 import scrollbar from './scrollbar'
 import tag from './tag'
 
-import { anyObject } from 'packages/global'
-
 export const Alert = alert
 export const Aside = aside
 export const Avatar = avatar

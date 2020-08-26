@@ -13,10 +13,7 @@
 <script lang="ts">
 // @ts-ignore
 import { addClass, removeClass } from '@src/utils/dom'
-import { defineComponent, h, getCurrentInstance } from 'vue';
-interface anyObject<T = any> {
-    [prop: string]: T
-}
+import { defineComponent, h, getCurrentInstance } from 'vue'
 interface TransitionElement extends HTMLElement {
     dataset: DOMStringMap;
     style: CSSStyleDeclaration

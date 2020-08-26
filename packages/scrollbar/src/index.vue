@@ -8,7 +8,6 @@ import scrollbarWidth from '@/utils/scrollbar-width'
 // @ts-ignore
 import { toObject } from '@/utils/util'
 import Bar from './bar.vue'
-import { anyObject } from 'packages/global'
 
 /* istanbul ignore next */
 export default defineComponent({

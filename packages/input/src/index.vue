@@ -134,7 +134,7 @@
   // @ts-ignore
   import calcTextareaHeight from './calcTextareaHeight'
 
-  import { elFormInject, elFormItemInject, ValidateState, Icons, anyObject } from './type'
+  import { elFormInject, elFormItemInject, ValidateState, Icons } from './type'
 
   import mitt, { Emitter } from 'mitt'
 
