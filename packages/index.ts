@@ -20,6 +20,7 @@ import collapseTransition from './collapse-transition'
 import { ElementUIOptions } from './component'
 import icon from './icon'
 import input from './input'
+import link from './link'
 import main from './main'
 import scrollbar from './scrollbar'
 import tag from './tag'
@@ -39,6 +40,7 @@ export const CollapseItem = collapseItem
 export const CollapseTransition = collapseTransition
 export const Icon = icon
 export const Input = input
+export const Link = link
 export const Main = main
 export const Scrollbar = scrollbar
 export const Tag = tag
@@ -59,6 +61,7 @@ export const components = [
   Container,
   Icon,
   Input,
+  Link,
   Main,
   Scrollbar,
   Tag
@@ -100,6 +103,7 @@ export default {
   Container,
   Icon,
   Input,
+  Link,
   Main,
   Scrollbar,
   Tag
