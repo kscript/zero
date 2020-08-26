@@ -32,6 +32,7 @@ createApp(App).use(zeroUI).mount('#app');
 - [x] collapse
 - [x] icon
 - [x] input
+- [x] link
 - [x] tag
 - [x] scrollbar
 
