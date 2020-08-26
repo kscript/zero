@@ -20,11 +20,10 @@ import { ElementUIOptions } from './component'
 import icon from './icon'
 import input from './input'
 import main from './main'
+import scrollbar from './scrollbar'
 import tag from './tag'
 
-interface anyObject<T = any> {
-  [prop: string]: T
-}
+import { anyObject } from 'packages/global'
 
 export const Alert = alert
 export const Aside = aside
@@ -42,6 +41,7 @@ export const CollapseTransition = collapseTransition
 export const Icon = icon
 export const Input = input
 export const Main = main
+export const Scrollbar = scrollbar
 export const Tag = tag
 
 export const components = [
@@ -61,6 +61,7 @@ export const components = [
   Icon,
   Input,
   Main,
+  Scrollbar,
   Tag
 ]
 
@@ -101,5 +102,6 @@ export default {
   Icon,
   Input,
   Main,
+  Scrollbar,
   Tag
 }
