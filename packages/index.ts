@@ -1,3 +1,4 @@
+import 'theme/reset.scss'
 import 'theme/icon.scss'
 import 'theme/common/transition.scss'
 import pkg from '../package.json'

@@ -24,18 +24,22 @@ export default defineComponent({
       return BAR_MAP[props.vertical ? 'vertical' : 'horizontal'] as BaseMap
     })
     const instance = getCurrentInstance() as ComponentInternalInstance 
-    const wrap = instance.parent?.refs.wrap as HTMLElement
-    const thumb = instance.refs.thumb as HTMLElement
+    const wrap = ref(instance.parent?.refs.wrap as HTMLElement)
+    const thumb = ref(instance.refs.thumb as HTMLElement)
+    onMounted(() => {
+      wrap.value = instance.parent?.refs.wrap as HTMLElement
+      thumb.value = instance.refs.thumb as HTMLElement
+    })
     const clickTrackHandler = (e: MouseEvent) => {
       const target = e.target as HTMLElement
 
       const { direction, offset, client, scroll, scrollSize} = bar.value
       const el = instance.vnode?.el as HTMLElement
       const newOffset = Math.abs(target.getBoundingClientRect()[direction] - e[client])
-      const thumbHalf = (thumb[offset] / 2)
+      const thumbHalf = (thumb.value[offset] / 2)
       const thumbPositionPercentage = ((newOffset - thumbHalf) * 100 / el[offset])
 
-      wrap[scroll] = (thumbPositionPercentage * wrap[scrollSize] / 100)
+      wrap.value[scroll] = (thumbPositionPercentage * wrap.value[scrollSize] / 100)
     }
 
     const clickThumbHandler = (e: MouseEvent) => {
@@ -67,10 +71,10 @@ export default defineComponent({
       const el = instance.vnode.el as HTMLElement
 
       const newOffset = ((el.getBoundingClientRect()[direction] - e[client]) * -1)
-      const thumbClickPosition = (thumb[offset] - prevPage)
+      const thumbClickPosition = (thumb.value[offset] - prevPage)
       const thumbPositionPercentage = ((newOffset - thumbClickPosition) * 100 / el[offset])
 
-      wrap[scroll] = (thumbPositionPercentage * wrap[scrollSize] / 100)
+      wrap.value[scroll] = (thumbPositionPercentage * wrap.value[scrollSize] / 100)
     }
 
     const mouseUpDocumentHandler = (e: Event) => {
@@ -79,6 +83,10 @@ export default defineComponent({
       off(document, 'mousemove', mouseMoveDocumentHandler)
       document.onselectstart = null
     }
+
+    onBeforeUnmount(() => {
+      off(document, 'mouseup', mouseUpDocumentHandler)
+    })
 
     return () => {
       const { size, move } = props
@@ -94,10 +102,6 @@ export default defineComponent({
         })
       ])
     }
-  },
-
-  // destroyed() {
-  //   off(document, 'mouseup', this.mouseUpDocumentHandler)
-  // }
+  }
 })
 </script>

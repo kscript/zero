@@ -1,6 +1,6 @@
 <script lang="ts">
 // reference https://github.com/noeldelgado/gemini-scrollbar/blob/master/index.js
-import { defineComponent, ref, reactive, h, getCurrentInstance, ComponentInternalInstance, PropType, onMounted, nextTick, onBeforeUnmount } from 'vue'
+import { defineComponent, ref, reactive, h, getCurrentInstance, ComponentInternalInstance, PropType, onMounted, nextTick, onBeforeUnmount, toRefs } from 'vue'
 // @ts-ignore
 import { addResizeListener, removeResizeListener } from '@/utils/resize-event'
 // @ts-ignore
@@ -13,10 +13,11 @@ import Bar from './bar.vue'
 export default defineComponent({
   name: 'ElScrollbar',
 
-  components: { Bar },
-
   props: {
-    native: Boolean,
+    native: {
+      type: Boolean, 
+      default: false
+    },
     wrapStyle: {
       type: [Object, Array, String] as PropType<anyObject | (anyObject|String)[] | String>,
       default: ''
@@ -40,10 +41,13 @@ export default defineComponent({
     })
     const instance = getCurrentInstance() as ComponentInternalInstance
     const wrap = ref(instance.refs.wrap as HTMLElement)
+
     const handleScroll = () => {
+      if (!wrap.value) return
       state.moveY = ((wrap.value.scrollTop * 100) / wrap.value.clientHeight)
       state.moveX = ((wrap.value.scrollLeft * 100) / wrap.value.clientWidth)
     }
+    
     const update = () => {
       let heightPercentage, widthPercentage
       if (!wrap.value) return
@@ -55,6 +59,7 @@ export default defineComponent({
       state.sizeWidth = (widthPercentage < 100) ? (widthPercentage + '%') : ''
     }
     onMounted(() => {
+      wrap.value = instance.refs.wrap as HTMLElement
       if (props.native) return
       nextTick(update)
       !props.noresize && addResizeListener(instance.refs.resize, update)
@@ -63,12 +68,14 @@ export default defineComponent({
       if (props.native) return
       !props.noresize && removeResizeListener(instance.refs.resize, update)
     })
+    // tip: slot函数放渲染函数里会造成死循环
+    const slot = cxt.slots.default?.() || []
     return () => {
       const gutter = scrollbarWidth()
       let style = props.wrapStyle
       if (gutter) {
         const gutterWith = `-${gutter}px`
-        const gutterStyle = `margin-bottom: ${gutterWith}; margin-right: ${gutterWith};`
+        const gutterStyle = `padding-bottom: ${gutter}px; margin-bottom: ${gutterWith}; margin-right: ${gutterWith};`
 
         if (Array.isArray(props.wrapStyle)) {
           style = toObject(props.wrapStyle) as anyObject
@@ -79,12 +86,11 @@ export default defineComponent({
           style = gutterStyle
         }
       }
-
       const view = h(props.tag, {
         ref: 'resize',
         class: ['el-scrollbar__view', props.viewClass],
         style: props.viewStyle,
-      }, cxt.slots.default?.() || [])
+      }, slot)
       const wrap = h('div', {
         ref: 'wrap',
         style,
@@ -97,11 +103,11 @@ export default defineComponent({
       if (!props.native) {
         nodes = ([
           wrap,
-          h('Bar', {
+          h(Bar, {
             move: state.moveX,
             size: state.sizeWidth
           }),
-          h('Bar', {
+          h(Bar, {
             vertical: '',
             move: state.moveY,
             size: state.sizeHeight
@@ -119,4 +125,7 @@ export default defineComponent({
   }
 })
 
-</script>>
+</script>
+<style lang="scss">
+@import 'theme/scrollbar.scss';
+</style>
