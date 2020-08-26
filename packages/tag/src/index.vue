@@ -62,7 +62,6 @@ export default defineComponent({
       hit && 'is-hit'
     ])
 
-    console.log(props.disableTransitions)
     return {
       show,
       tagSize,
