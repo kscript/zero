@@ -33,7 +33,7 @@
         names = Array.isArray(names) ? names : [names]
         let value = props.accordion ? names[0] : names
         activeNames.value = names
-        emit('update:modelValue', activeNames)
+        emit('update:modelValue', activeNames.value)
         emit('input', value)
         emit('change', value)
       }
