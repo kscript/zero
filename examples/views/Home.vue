@@ -9,6 +9,30 @@
         <template #header>
           <p class="text-danger">collapse 折叠面板</p>
           <el-collapse accordion v-model="itemName">
+            <el-collapse-item title="Tag 标签" name="ElTag">
+              <el-card>
+                <template #header>
+                  <el-tag
+                    v-for="tag in tags"
+                    :key="tag.name"
+                    closable
+                    :type="tag.type"
+                    :disable-transitions="false">
+                    {{tag.name}}
+                  </el-tag>
+                </template>
+                <el-code :trim="-1">
+                  {{`<el-tag
+                      v-for="tag in tags"
+                      :key="tag.name"
+                      closable
+                      :type="tag.type"
+                      :disable-transitions="false">
+                      \{\{tag.name\}\}
+                    </el-tag>`}}
+                </el-code>
+              </el-card>
+            </el-collapse-item>
             <el-collapse-item title="Input 输入框" name="ElInput">
               <el-card>
                 <template #header>
@@ -200,12 +224,20 @@
         UP
       </div>
     </el-backtop>
+    <button @click="show = !show">
+    Toggle
+  </button>
+  
+  <transition name="fade">
+    <p v-if="show">hello</p>
+  </transition>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent, ref, App, ComponentOptions, reactive, toRefs } from 'vue'
 // @ts-ignore
 import { components } from 'zero-ui'
+import { anyObject } from 'packages/input/src/type'
 export default defineComponent({
   name: 'Home',
   setup() {
@@ -234,10 +266,20 @@ export default defineComponent({
         type: 'error'
       }
     ]
+    const tags =  ref([
+      { name: '标签一', type: '' },
+      { name: '标签二', type: 'success' },
+      { name: '标签三', type: 'info' },
+      { name: '标签四', type: 'warning' },
+      { name: '标签五', type: 'danger' }
+    ])
+    const show = ref(true)
     return {
       ...state,
+      show,
       itemName,
-      alerts
+      alerts,
+      tags
     }
   }
 })
@@ -256,5 +298,17 @@ export default defineComponent({
 .el-input {
   width: 180px;
   margin-right: 20px;
+}
+.el-tag{
+  margin-right: 10px;
+}
+
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
 }
 </style>

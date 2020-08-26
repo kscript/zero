@@ -1,4 +1,5 @@
 import 'theme/icon.scss'
+import 'theme/common/transition.scss'
 import pkg from '../package.json'
 
 import { App } from 'vue'
@@ -19,6 +20,7 @@ import { ElementUIOptions } from './component'
 import icon from './icon'
 import input from './input'
 import main from './main'
+import tag from './tag'
 
 interface anyObject<T = any> {
   [prop: string]: T
@@ -40,6 +42,7 @@ export const CollapseTransition = collapseTransition
 export const Icon = icon
 export const Input = input
 export const Main = main
+export const Tag = tag
 
 export const components = [
   Alert,
@@ -57,7 +60,8 @@ export const components = [
   Container,
   Icon,
   Input,
-  Main
+  Main,
+  Tag
 ]
 
 const install = function(app: App, opts = {}) {
@@ -96,5 +100,6 @@ export default {
   Container,
   Icon,
   Input,
-  Main
+  Main,
+  Tag
 }

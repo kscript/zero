@@ -32,6 +32,7 @@ createApp(App).use(zeroUI).mount('#app');
 - [x] collapse
 - [x] icon
 - [x] input
+- [x] tag
 
 ## 参考 
 - [element](https://github.com/ElemeFE/element)  
