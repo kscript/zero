@@ -1,7 +1,6 @@
 import 'theme/reset.scss'
 import 'theme/icon.scss'
 import 'theme/common/transition.scss'
-import pkg from '../package.json'
 
 import { App } from 'vue'
 import alert from './alert'
@@ -9,6 +8,8 @@ import aside from './aside'
 import avatar from './avatar'
 import backTop from './backtop'
 import badge from './badge'
+import breadcrumb from './breadcrumb'
+import breadcrumbItem from './breadcrumb-item'
 import button from './button'
 import buttonGroup from './button-group'
 import card from './card'
@@ -22,6 +23,7 @@ import icon from './icon'
 import input from './input'
 import link from './link'
 import main from './main'
+import markdown from './markdown'
 import scrollbar from './scrollbar'
 import tag from './tag'
 
@@ -30,6 +32,8 @@ export const Aside = aside
 export const Avatar = avatar
 export const BackTop = backTop
 export const Badge = badge
+export const Breadcrumb = breadcrumb
+export const BreadcrumbItem = breadcrumbItem
 export const Button = button
 export const ButtonGroup = buttonGroup
 export const Card = card
@@ -42,6 +46,7 @@ export const Icon = icon
 export const Input = input
 export const Link = link
 export const Main = main
+export const Markdown = markdown
 export const Scrollbar = scrollbar
 export const Tag = tag
 
@@ -51,6 +56,8 @@ export const components = [
   Avatar,
   BackTop,
   Badge,
+  Breadcrumb,
+  BreadcrumbItem,
   Button,
   ButtonGroup,
   Card,
@@ -63,6 +70,7 @@ export const components = [
   Input,
   Link,
   Main,
+  Markdown,
   Scrollbar,
   Tag
 ]
@@ -85,7 +93,7 @@ const win: anyObject = window
 if (typeof win !== 'undefined' && win.Vue) {
   install(win.Vue)
 }
-export const version = pkg.version
+export const version = '1.0.3'
 export default {
   install,
   Alert,
@@ -93,6 +101,8 @@ export default {
   Avatar,
   BackTop,
   Badge,
+  Breadcrumb,
+  BreadcrumbItem,
   Button,
   ButtonGroup,
   Card,
@@ -105,6 +115,7 @@ export default {
   Input,
   Link,
   Main,
+  Markdown,
   Scrollbar,
   Tag
 }

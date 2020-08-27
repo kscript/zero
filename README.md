@@ -22,19 +22,21 @@ createApp(App).use(zeroUI).mount('#app');
 [@zero-ui/vue](https://kscript.github.io/zero/)
 
 ## 现有组件
-- [x] alert
-- [x] avatar
-- [x] backtop
-- [x] badge
-- [x] button
-- [x] card
-- [x] code (自己封装的, 用于演示)
-- [x] collapse
-- [x] icon
-- [x] input
-- [x] link
-- [x] tag
-- [x] scrollbar
+[x] Alert 警告  
+[x] Avatar 头像  
+[x] Backtop 返回顶部  
+[x] Badge 标记  
+[x] Breadcrumb 面包屑  
+[x] Button 按钮  
+[x] Card 卡片  
+[x] Code* 代码块  
+[x] Collapse 折叠面板  
+[x] Icon 图标  
+[x] Input 输入框  
+[x] Link 链接  
+[x] Markdown*  
+[x] Tag 标签  
+[x] Scrollbar 滚动条  
 
 ## 参考 
 - [element](https://github.com/ElemeFE/element)  
