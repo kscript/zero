@@ -2,17 +2,15 @@ const path = require('path')
 const resolve = (dir) => {
   return path.join(__dirname, dir)
 }
+const mode = process.env.npm_lifecycle_event === 'build:umd' ? 'build:umd' : process.env.NODE_ENV
 const loadScss = () => {
-  // if (process.env.npm_lifecycle_event === 'build:umd') {
-  //   return '@import "common/scss/variables.scss";'
-  // }
   return '@import "common/scss/variables.scss";'
 }
 const publicPath = () => {
-  if (process.env.npm_lifecycle_event === 'build:umd') {
+  if (mode === 'build:umd') {
     return ''
   }
-  return process.env.NODE_ENV === 'development' ? '' : '/zero/'
+  return mode === 'development' ? '/' : '/zero/'
 }
 module.exports = {
   publicPath: publicPath(),
@@ -40,6 +38,19 @@ module.exports = {
       .set('common', resolve('common'))
       .set('theme', resolve('packages/theme-chalk/src'))
       .set('@src', resolve('src'))
+
+    if (mode !== 'build:umd') {
+      config.module
+        .rule('md')
+        .test(/\.md$/)
+        .use('vue-loader')
+        .loader('vue-loader-v16')
+        .end()
+        .use(path.join(process.cwd() + '/examples/markdownLoader.js'))
+        .loader(path.join(process.cwd() + '/examples/markdownLoader.js'))
+        .end()
+    }
+
     config.module
       .rule('js')
       .include
@@ -48,8 +59,8 @@ module.exports = {
       .use('babel')
       .loader('babel-loader')
       .tap(options => {
-        // 修改它的选项...
         return options
       })
+    
   }
 }
