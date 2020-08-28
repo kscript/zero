@@ -114,6 +114,10 @@ export default defineComponent({
       type: Function,
       default: (htmlData) => { return htmlData }
     },
+    trim: {
+      type: [Number, false],
+      default: -1
+    },
     use: {
       type: Array,
       default() {
@@ -135,7 +139,19 @@ export default defineComponent({
     onMounted(() => {
       const el = instance.vnode.el
       if (el) {
-        sourceData.value = el.innerText || ''
+        let text = el.innerText || ''
+        if (props.trim !== false) {
+          const lines = text.split('\n')
+          const start = (lines.length + props.trim) % lines.length
+          const str = ((lines.slice(start, start + 1)[0] || '').match(/\s+/) || [''])[0]
+          text = lines.map(item => {
+            if (item.slice(0, str.length) === str) {
+              return item.slice(str.length)
+            }
+            return item
+          }).join('\n')
+        }
+        sourceData.value = text
         instance.update()
       }
     })
