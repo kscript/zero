@@ -31,8 +31,7 @@
     elFormItemSize?: number
   }
   import { defineComponent, inject, computed } from 'vue'
-  // @ts-ignore
-  import elementOptions from '@src/elementOptions'
+  import elementOptions from '@/elementOptions'
   export default defineComponent({
     name: 'ElButton',
 
@@ -66,7 +65,7 @@
         return (elFormItem instanceof Object ? elFormItem : {}).elFormItemSize
       })
       const buttonSize = computed(() => {
-        return props.size || _elFormItemSize || elementOptions.size
+        return props.size || _elFormItemSize.value || elementOptions.size
       })
       const buttonDisabled = computed(() => {
         return props.disabled || (elForm instanceof Object ? elForm : {}).disabled
