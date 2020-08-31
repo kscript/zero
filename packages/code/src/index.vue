@@ -1,16 +1,15 @@
 <template>
-  <div class="el-code line-numbers" :class="'el-code-' + mode">
-    <el-collapse @change="show = !show" v-if="collapse">
+  <div class="el-code line-numbers" :class="['el-code-' + mode, 'is-' + (show ? 'open' : 'close')]">
+    <el-collapse @change="show = !show" v-if="collapse" v-model="collapseNameActive">
       <el-collapse-item>
+        <div class="code-desc" v-if="desc">{{desc}}</div>
         <pre
           ref="codeRef"
           data-manual
           class="el-code-lines line-numbers"
           :class="'language-' + type"
           :data-start="start"
-        >
-          <code v-html="code"></code>
-        </pre>
+        ><code v-html="code"></code></pre>
         <template #title>
           <el-link type="primary" :underline="false">
             <el-icon class="animate" :name="show ? 'caret-top' : 'caret-bottom'"></el-icon>
@@ -19,29 +18,29 @@
         </template>
       </el-collapse-item>
     </el-collapse>
-    <pre
-      ref="codeRef"
-      data-manual
-      class="el-code-lines line-numbers"
-      :class="'language-' + type"
-      :data-start="start"
-      v-else
-    >
-      <code v-html="code"></code>
-    </pre>
+    <template v-else>
+      <div class="code-desc" v-if="desc">{{desc}}</div>
+      <pre
+        ref="codeRef"
+        data-manual
+        class="el-code-lines line-numbers"
+        :class="'language-' + type"
+        :data-start="start"
+      ><code v-html="code"></code></pre>
+    </template>
   </div>
 </template>
 <script lang="ts">
 import {
   defineComponent,
-  ref,
+  ref, watch, inject,
   onMounted, onUpdated,
-  getCurrentInstance,
-  ComponentInternalInstance, VNode, watch
+  VNode, PropType
 } from 'vue'
 import 'prismjs'
 import 'prismjs/themes/prism-tomorrow.css'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.min'
+import { modelValueType, modelValueArray } from '../../collapse/src/type'
 // @ts-ignore
 // Prism.languages.html.br = /\n/
 
@@ -68,10 +67,20 @@ export default defineComponent({
       type: Number,
       default: 0
     },
+    desc: {
+      type: String,
+      default: ''
+    },
+    collapseName: {
+      type: [Array, String, Number] as PropType<modelValueType>,
+      default: () => [] as modelValueArray
+    }
   },
   setup(props, cxt) {
     const code = ref('')
     const show = ref(false)
+    const collapseNameActive = ref(props.collapseName)
+    const docsView = inject('docsView') as anyObject
     const content = (slot: string | anyObject | anyObject[]): string => {
       if (typeof slot === 'string') {
         return slot
@@ -86,7 +95,13 @@ export default defineComponent({
       }
       return ''
     }
-
+    const close = () => {
+      collapseNameActive.value = ''
+      show.value = false
+    }
+    watch(() => collapseNameActive.value, (value) => {
+      docsView?.collapseNameChange?.(value, close)
+    })
     watch(() => show.value, (value) => {
       // @ts-ignore
       value && Prism.highlightAll()
@@ -118,7 +133,8 @@ export default defineComponent({
     })
     return {
       code,
-      show
+      show,
+      collapseNameActive
     }
   }
 })
@@ -172,6 +188,9 @@ export default defineComponent({
         transform: translateX(-30px);
       }
     }
+  }
+  .code-desc {
+    padding: 10px;
   }
 }
 </style>
