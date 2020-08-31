@@ -1,7 +1,7 @@
 declare module '*.md' {
     import { VNode } from 'vue'
     function render(): VNode[]
-    interface Markdown {
+    export interface Markdown {
         render
     }
 }

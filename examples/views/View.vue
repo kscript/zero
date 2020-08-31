@@ -1,9 +1,30 @@
 <script lang="ts">
-import { defineComponent, computed, h, PropType, watch, provide } from 'vue'
-const componets: anyObject = {
-  ElTag: () => require('./Markdown/ElTag.md').default
+import { defineComponent, computed, h, PropType, watch, provide, ComponentOptions, VNode } from 'vue'
+import ElTag from './ElTag'
+import { DemoEntry, Markdown } from './type'
+
+const demos = [ElTag]
+const markdowns: anyObject<Markdown> = {}
+const components: anyObject<ComponentOptions> = {}
+
+const load = ({demoComponents, demoMarkdowns, name}: DemoEntry) => {
+  demoComponents.forEach((item) => {
+    Object.assign(components, {
+      [item.name as string]: item
+    })
+  })
+  demoMarkdowns.forEach((item) => {
+    Object.assign(markdowns, {
+      [name]: item
+    })
+  })
 }
+demos.forEach(demo => {
+  load(demo)
+})
+
 export default defineComponent({
+  components,
   props: {
     id: {
       type: String,
@@ -16,7 +37,7 @@ export default defineComponent({
       }
     }
     const md = computed(() => {
-      return componets[props.id]?.() || empty
+      return markdowns[props.id] || empty
     })
     const collapses = {} as anyObject<Function>
     let prevClose = null as Function | null
