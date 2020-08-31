@@ -14,7 +14,7 @@ const transform = function(src) {
       if (next) {
         src = src.slice(0, curr.index)
         + '{{`'
-        + src.slice(startIndex + 2, startIndex + next.index).replace(/(\{\{|\}\}|`)/g, function (s) {
+        + src.slice(startIndex, startIndex + next.index).replace(/(\{\{|\}\}|`)/g, function (s) {
           return {
             '{{' : '\\{\\{',
             '}}' : '\\}\\}',
@@ -22,7 +22,7 @@ const transform = function(src) {
           }[s]
         })
         + '`}}'
-        + src.slice(startIndex + next.index + end.length + 1)
+        + src.slice(startIndex + next.index + end.length)
         regS.lastIndex = regE.lastIndex = 0
       } else {
         break
