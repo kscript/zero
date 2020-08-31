@@ -1,9 +1,13 @@
 <script lang="ts">
-import { defineComponent, computed, h, PropType, watch, provide, ComponentOptions, VNode } from 'vue'
+import { defineComponent, computed, ref, h, PropType, watch, provide, ComponentOptions, VNode } from 'vue'
 import ElTag from './ElTag'
+import ElInput from './ElInput'
 import { DemoEntry, Markdown } from './type'
 
-const demos = [ElTag]
+const demos = [
+  ElTag,
+  ElInput
+]
 const markdowns: anyObject<Markdown> = {}
 const components: anyObject<ComponentOptions> = {}
 
@@ -53,13 +57,12 @@ export default defineComponent({
         }
       }
     })
-    return () => {
-      return h('div',{
-          class: props.id.replace(/[A-Z]/g, (s, i) => {
-            return (i === 0 ? '' : '-') + s.toLowerCase()
-          }) + '-md demo-container'
-      }, md.value.render?.() || [])
-    }
+    return () => h('div', {
+      key: props.id,
+      class: props.id.replace(/[A-Z]/g, (s, i) => {
+        return (i === 0 ? '' : '-') + s.toLowerCase()
+      }) + '-md demo-container'
+    }, md.value.render?.() || [])
   }
 })
 </script>

@@ -41,7 +41,7 @@ module.exports = function(src) {
   }).render(transform(src))
   return (
     `<template>\n` +
-      `<div class="markdown">${html}</div>\n` +
+      `<div class="markdown-body">${html}</div>\n` +
     `</template>\n`
   )
 }
