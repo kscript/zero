@@ -22,14 +22,13 @@
   <el-button v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
   </template>
   <el-code collapse :trim="-1" :first="1">
-    <!--
-    <el-tag
+    {{`<el-tag
       :key="tag"
       v-for="tag in dynamicTags"
       closable
       :disable-transitions="false"
       @close="handleClose(tag)">
-      {{tag}}
+      \{\{tag\}\}
     </el-tag>
     <el-input
       class="input-new-tag"
@@ -100,7 +99,7 @@
         vertical-align: bottom;
       }
     </style>
-    -->
+    `}}
   </el-code>
 </el-card>
 </template>

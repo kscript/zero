@@ -23,15 +23,14 @@
     </div>
     </template>
     <el-code collapse :trim="-1" :first="1" desc="通过设置effect属性来改变主题，默认为 light">
-    <!--
-    <div class="tag-group">
+    {{`<div class="tag-group">
       <span class="tag-group__title">Dark</span>
       <el-tag
         v-for="item in items"
         :key="item.label"
         :type="item.type"
         effect="dark">
-        {{ item.label }}
+        \{\{ item.label \}\}
       </el-tag>
     </div>
     <div class="tag-group">
@@ -41,7 +40,7 @@
         :key="item.label"
         :type="item.type"
         effect="plain">
-        {{ item.label }}
+        \{\{ item.label \}\}
       </el-tag>
     </div>
 
@@ -61,8 +60,7 @@
         }
       }
     })
-    </script>
-    -->
+    </script>`}}
     </el-code>
   </el-card>
 </template>

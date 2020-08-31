@@ -7,13 +7,13 @@
       closable>{{tag.name}}</el-tag>
     </template>
     <el-code collapse :trim="-1" :first="1" desc="设置`closable`属性可以定义一个标签是否可移除。默认的标签移除时会附带渐变动画，如果不想使用，可以设置`disable-transitions`属性，它接受一个`Boolean`，*true* 为关闭。">
-    <!--
-    <el-tag
+    {{
+    `<el-tag
       v-for="tag in tags"
       closable
       :key="tag.name"
       :type="tag.type">
-      {{tag.name}}
+      \{\{tag.name\}\}
     </el-tag>
 
     <script>
@@ -32,8 +32,9 @@
         }
       }
     })
-    </script>
-    --></el-code>
+    </script>`
+    }}
+    </el-code>
     </el-card>
 </template>
 <script>
