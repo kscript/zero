@@ -1,5 +1,5 @@
 <template>
-  <div :class="[
+  <div v-bind="attrs" :class="[
     type === 'textarea' ? 'el-textarea' : 'el-input',
     inputSize ? 'el-input--' + inputSize : '',
     {
@@ -444,7 +444,6 @@
       onUnmounted(() => {
         emitter.all.clear()
       })
-      
       return {
         ...toRefs(state),
         attrs: cxt.attrs,

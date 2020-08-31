@@ -67,6 +67,10 @@ export default defineComponent({
       type: Number,
       default: 0
     },
+    first: {
+      type: Number,
+      default: 0
+    },
     desc: {
       type: String,
       default: ''
@@ -109,7 +113,10 @@ export default defineComponent({
     onMounted(() => {
       const slot = cxt.slots.default ? cxt.slots.default() : []
       let html = content(slot).replace(/^\n/, '')
-      const lines = html.split('\n')
+      let lines = html.split('\n')
+      if (props.first && lines.slice(0, props.first).join('').replace(/(\s|\n)/g, '') === '') {
+        lines = lines.slice(props.first)
+      }
       if (props.trim) {
         const start = (lines.length + props.trim) % lines.length
         const str = ((lines.slice(start, start + 1)[0] || '').match(/\s+/) || [''])[0]
