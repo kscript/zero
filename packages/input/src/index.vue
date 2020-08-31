@@ -133,6 +133,8 @@
   import {isKorean} from '@/utils/shared'
   // @ts-ignore
   import calcTextareaHeight from './calcTextareaHeight'
+  
+  import elementOptions from '@/elementOptions'
 
   import { elFormInject, elFormItemInject, ValidateState, Icons } from './type'
 
@@ -230,8 +232,7 @@
         return merge({}, state.textareaCalcStyle, { resize: props.resize })
       })
       const inputSize = computed(() => {
-        // (this.$ELEMENT || {}).size
-        return props.size || _elFormItemSize.value || 'small'
+        return props.size || _elFormItemSize.value || elementOptions.size
       })
       const inputDisabled = computed(() => {
         return props.disabled || (elForm || {}).disabled
