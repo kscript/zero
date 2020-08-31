@@ -37,7 +37,7 @@ import {
   ref,
   onMounted, onUpdated,
   getCurrentInstance,
-  ComponentInternalInstance, VNode
+  ComponentInternalInstance, VNode, watch
 } from 'vue'
 import 'prismjs'
 import 'prismjs/themes/prism-tomorrow.css'
@@ -72,13 +72,25 @@ export default defineComponent({
   setup(props, cxt) {
     const code = ref('')
     const show = ref(false)
-    const content = (slot: string | anyObject[]): string => {
+    const content = (slot: string | anyObject | anyObject[]): string => {
       if (typeof slot === 'string') {
         return slot
-      } else {
+      } else if (Array.isArray(slot)){
         return slot.reduce((text, curr) => text + content(curr.children), '')
+      } else {
+        if (slot.children) {
+          return content(slot.children.map((item: anyObject) => {
+            return content(item.default())
+          }))
+        }
       }
+      return ''
     }
+
+    watch(() => show.value, (value) => {
+      // @ts-ignore
+      value && Prism.highlightAll()
+    })
     onMounted(() => {
       const slot = cxt.slots.default ? cxt.slots.default() : []
       let html = content(slot).replace(/^\n/, '')
