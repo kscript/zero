@@ -199,14 +199,15 @@
       tabindex: String
     },
 
-    setup(props, cxt) {
+    setup(props, {attrs, emit, slots }) {
       const state = reactive({
         textareaCalcStyle: {},
         hovering: false,
         focused: false,
         isComposing: false,
         passwordVisible: false,
-        slots: cxt.slots
+        attrs,
+        slots
       })
       const emitter: Emitter = mitt()
       const elForm = inject('elForm', null) as elFormInject | null
@@ -242,28 +243,28 @@
       })
       const showClear = computed(() => {
         return props.clearable &&
-          !inputDisabled &&
+          !inputDisabled.value &&
           !props.readonly &&
-          nativeInputValue &&
+          nativeInputValue.value &&
           (state.focused || state.hovering)
       })
       const showPwdVisible = computed(() => {
         return props.showPassword &&
-          !inputDisabled &&
+          !inputDisabled.value &&
           !props.readonly &&
-          (!!nativeInputValue || state.focused)
+          (!!nativeInputValue.value || state.focused)
       })
       const isWordLimitVisible = computed(() => {
         return props.showWordLimit &&
-          cxt.attrs.maxlength &&
+          attrs.maxlength &&
           (props.type === 'text' || props.type === 'textarea') &&
-          !inputDisabled &&
+          !inputDisabled.value &&
           !props.readonly &&
           !props.showPassword
       })
 
       const upperLimit = computed(() => {
-        return cxt.attrs.maxlength
+        return attrs.maxlength
       })
       
       const textLength = computed(() => {
@@ -284,7 +285,7 @@
           emitter.emit('el.form.change', [val])
         }
       })
-      watch(() => nativeInputValue, () => {
+      watch(() => nativeInputValue.value, () => {
         setNativeInputValue()
       })
       watch(() => props.type, () => {
@@ -314,7 +315,7 @@
       }
       const handleBlur = (event: Event) => {
         state.focused = false
-        cxt.emit('blur', event)
+        emit('blur', event)
         if (props.validateEvent) {
           emitter.emit('el.form.blur', [props.modelValue])
         }
@@ -346,7 +347,7 @@
       }
       const handleFocus = (event: Event) => {
         state.focused = true
-        cxt.emit('focus', event)
+        emit('focus', event)
       }
       const handleCompositionStart = () => {
         state.isComposing = true
@@ -372,14 +373,14 @@
         // should remove the following line when we don't support IE
         if (value === nativeInputValue.value) return
 
-        cxt.emit('update:modelValue', value)
-        cxt.emit('input', value)
+        emit('update:modelValue', value)
+        emit('input', value)
         // ensure native input value is controlled
         // see: https://github.com/ElemeFE/element/issues/12850
         nextTick(setNativeInputValue)
       }
       const handleChange = (event: Event) => {
-        cxt.emit('change', (event.target as HTMLInputElement)?.value)
+        emit('change', (event.target as HTMLInputElement)?.value)
       }
       const calcIconOffset = (place: 'suffix' | 'prefix') => {
         const $el = instance.vnode.el
@@ -399,7 +400,7 @@
         }
 
         const pendant = pendantMap[place]
-        if (cxt.slots[pendant]) {
+        if (slots[pendant]) {
           el.style.transform = `translateX(${place === 'suffix' ? '-' : ''}${$el?.querySelector(`.el-input-group__${pendant}`).offsetWidth}px)`
         } else {
           el.removeAttribute('style')
@@ -410,9 +411,13 @@
         calcIconOffset('suffix')
       }
       const clear = () => {
-        cxt.emit('input', '')
-        cxt.emit('change', '')
-        cxt.emit('clear')
+        nextTick(() => {
+          setNativeInputValue()
+          emit('input', '')
+          emit('change', '')
+          emit('update:modelValue', '')
+          emit('clear')
+        })
       }
       const handlePasswordVisible = () => {
         state.passwordVisible = !state.passwordVisible
@@ -422,7 +427,7 @@
         return (instance.refs.input || instance.refs.textarea) as HTMLInputElement | HTMLTextAreaElement
       }
       const getSuffixVisible = () => {
-        return cxt.slots.suffix ||
+        return slots.suffix ||
           props.suffixIcon ||
           showClear.value ||
           props.showPassword ||
@@ -447,7 +452,6 @@
       })
       return {
         ...toRefs(state),
-        attrs: cxt.attrs,
 
         _elFormItemSize,
         validateState,

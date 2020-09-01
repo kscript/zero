@@ -27,7 +27,10 @@ import link from './link'
 import main from './main'
 import markdown from './markdown'
 import row from './row'
+import option from './option'
+import optionGroup from './option-group'
 import scrollbar from './scrollbar'
+import select from './select'
 import tag from './tag'
 
 export const Alert = alert
@@ -53,7 +56,10 @@ export const Link = link
 export const Main = main
 export const Markdown = markdown
 export const Row = row
+export const Option = option
+export const OptionGroup = optionGroup
 export const Scrollbar = scrollbar
+export const Select = select
 export const Tag = tag
 
 export const components = [
@@ -79,8 +85,11 @@ export const components = [
   Link,
   Main,
   Markdown,
+  Option,
+  OptionGroup,
   Row,
   Scrollbar,
+  Select,
   Tag
 ]
 
@@ -127,7 +136,10 @@ export default {
   Link,
   Main,
   Markdown,
+  Option,
+  OptionGroup,
   Row,
   Scrollbar,
+  Select,
   Tag
 }

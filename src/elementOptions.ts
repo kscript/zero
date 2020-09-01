@@ -1,4 +1,4 @@
 const options = {
-    size: 'small'
+    size: 'large'
 }
 export default options
