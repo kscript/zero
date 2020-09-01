@@ -1,5 +1,5 @@
 <template>
-  <el-card shadow="never">
+  <el-card shadow="hover">
     <template #header>
     <el-tag v-for="tag in tags"
       :key="tag.name"

@@ -4,21 +4,24 @@ import ElTag from './ElTag'
 import ElInput from './ElInput'
 import ElAvatar from './ElAvatar'
 import Layout from './Layout'
+import ElAlert from './ElAlert'
 import { DemoEntry, Markdown } from './type'
 
 const demos = [
   ElTag,
   ElInput,
   ElAvatar,
+  ElAlert,
   Layout
 ]
 const markdowns: anyObject<Markdown> = {}
 const components: anyObject<ComponentOptions> = {}
 
 const load = ({demoComponents, demoMarkdowns, name}: DemoEntry) => {
-  demoComponents.forEach((item) => {
+  demoComponents.forEach((item: anyObject) => {
+    const cname = (item.name.slice(0, name.length) !== name ? name : '') + item.name
     Object.assign(components, {
-      [item.name as string]: item
+      [cname]: item
     })
   })
   demoMarkdowns.forEach((item) => {
@@ -38,7 +41,7 @@ export default defineComponent({
       default: ''
     }
   },
-  setup(props) {
+  setup(props, { slots }) {
     const empty = {
       render() {
       }
@@ -78,20 +81,41 @@ export default defineComponent({
       padding-bottom: 0px;
     }
   }
+  .code-desc {
+    padding: 15px;
+    font-size: 14px;
+    line-height: 26px;
+    code {
+      color: #5e6d82;
+      background-color: #e6effb;
+      margin: 0 4px;
+      display: inline-block;
+      padding: 1px 5px;
+      font-size: 12px;
+      border-radius: 3px;
+      height: 18px;
+      line-height: 18px;
+    }
+  }
 }
+
 .el-card {
   margin: 10px 0 20px;
+  line-height: 18px;
 }
+
 .el-tag-md{
   .el-tag {
     margin-right: 10px;
   }
 }
+
 .el-input-md{
   .el-input {
     width: 180px;
   }
 }
+
 .el-avatar-md {
   .demo-basic {
     text-align: center;
@@ -149,4 +173,14 @@ export default defineComponent({
     }
   }
 }
+
+.el-alert-md {
+  .el-alert {
+    margin: 20px 0 0
+  }
+  .el-alert:first-child {
+    margin: 0
+  }
+}
+
 </style>

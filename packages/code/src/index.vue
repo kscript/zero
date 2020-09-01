@@ -2,7 +2,10 @@
   <div class="el-code line-numbers" :class="['el-code-' + mode, 'is-' + (show ? 'open' : 'close')]">
     <el-collapse @change="show = !show" v-if="collapse" v-model="collapseNameActive">
       <el-collapse-item>
-        <div class="code-desc" v-if="desc">{{desc}}</div>
+        <div class="code-desc" v-if="slots.desc || desc">
+          <slot name="desc" v-if="slots.desc"></slot>
+          <template v-else-if="desc">{{desc}}</template>
+        </div>
         <pre
           ref="codeRef"
           data-manual
@@ -80,7 +83,7 @@ export default defineComponent({
       default: () => [] as modelValueArray
     }
   },
-  setup(props, cxt) {
+  setup(props, { slots }) {
     const code = ref('')
     const show = ref(false)
     const collapseNameActive = ref(props.collapseName)
@@ -111,7 +114,7 @@ export default defineComponent({
       value && Prism.highlightAll()
     })
     onMounted(() => {
-      const slot = cxt.slots.default ? cxt.slots.default() : []
+      const slot = slots.default ? slots.default() : []
       let html = content(slot).replace(/^\n/, '')
       let lines = html.split('\n')
       if (props.first && lines.slice(0, props.first).join('').replace(/(\s|\n)/g, '') === '') {
@@ -141,6 +144,7 @@ export default defineComponent({
     return {
       code,
       show,
+      slots,
       collapseNameActive
     }
   }
@@ -195,9 +199,6 @@ export default defineComponent({
         transform: translateX(-30px);
       }
     }
-  }
-  .code-desc {
-    padding: 10px;
   }
 }
 </style>
