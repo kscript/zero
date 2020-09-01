@@ -4,9 +4,9 @@
       <el-aside width="240px">
         <el-scrollbar class="full-screen-height">
           <ul class="componet-list">
-            <li v-for="vo in componets" :key="vo.name">
+            <li v-for="vo in componets" :key="vo.name" @click="clickHandler(vo.name)">
               <router-link :to="{ path: '/docs/' + vo.name }">
-                <el-link>
+                <el-link :type="vo.name === activeName ? 'primary' : 'default'">
                   {{vo.title}}
                 </el-link>
               </router-link>
@@ -24,11 +24,19 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { list } from './Components'
+import { useRoute } from 'vue-router'
 export default defineComponent({
   name: 'Home',
   setup() {
+    const route = useRoute()
     const componets = ref(list)
+    const activeName = ref(route.params.id)
+    const clickHandler = (name: string) => {
+      activeName.value = name
+    }
     return {
+      activeName,
+      clickHandler,
       componets
     }
   }
@@ -40,8 +48,11 @@ export default defineComponent({
   width: 1140px;
   margin: 0 auto;
 }
+
 .el-scrollbar.full-screen-height {
   height: 100vh;
+  position: fixed;
+  width: 240px;
 }
 .componet-list {
   padding-left: 0;
