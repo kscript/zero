@@ -68,11 +68,17 @@ export default defineComponent({
       wrap.value = instance.refs.wrap as HTMLElement
       if (props.native) return
       nextTick(update)
-      !props.noresize && addResizeListener(instance.refs.resize, update)
+      if (!props.noresize) {
+        addResizeListener(instance.refs.resize, update)
+        window.addEventListener('resize', update)
+      }
     })
     onBeforeUnmount(() => {
       if (props.native) return
-      !props.noresize && removeResizeListener(instance.refs.resize, update)
+      if (!props.noresize) {
+        removeResizeListener(instance.refs.resize, update)
+        window.removeEventListener('resize', update)
+      }
     })
     return () => {
       const gutter = scrollbarWidth()
