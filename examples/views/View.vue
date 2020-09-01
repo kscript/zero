@@ -2,11 +2,15 @@
 import { defineComponent, computed, ref, h, PropType, watch, provide, ComponentOptions, VNode } from 'vue'
 import ElTag from './ElTag'
 import ElInput from './ElInput'
+import ElAvatar from './ElAvatar'
+import Layout from './Layout'
 import { DemoEntry, Markdown } from './type'
 
 const demos = [
   ElTag,
-  ElInput
+  ElInput,
+  ElAvatar,
+  Layout
 ]
 const markdowns: anyObject<Markdown> = {}
 const components: anyObject<ComponentOptions> = {}
@@ -26,7 +30,7 @@ const load = ({demoComponents, demoMarkdowns, name}: DemoEntry) => {
 demos.forEach(demo => {
   load(demo)
 })
-
+console.log(components, markdowns)
 export default defineComponent({
   components,
   props: {

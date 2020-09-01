@@ -1,7 +1,7 @@
 <template>
   <div class="docs">
     <el-container>
-      <el-aside>
+      <el-aside width="240px">
         <el-scrollbar class="full-screen-height">
           <ul class="componet-list">
             <li v-for="vo in componets" :key="vo.name">
@@ -17,6 +17,7 @@
       <el-main>
         <router-view />
       </el-main>
+      <!-- <el-aside></el-aside> -->
     </el-container>
   </div>
 </template>
@@ -35,10 +36,15 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.el-container {
+  width: 1140px;
+  margin: 0 auto;
+}
 .el-scrollbar.full-screen-height {
   height: 100vh;
 }
 .componet-list {
+  padding-left: 0;
   li {
     list-style: none;
     padding: 10px;

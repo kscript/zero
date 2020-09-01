@@ -34,5 +34,9 @@ export const list = [
     {
         name: 'ElCollapse',
         title: 'Collapse 折叠面板'
-    }
+    },
+    {
+        name: 'Layout',
+        title: 'Layout 布局'
+    },
 ]

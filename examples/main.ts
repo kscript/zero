@@ -5,6 +5,7 @@ import store from './store'
 // @ts-ignore
 import zeroUI from 'zero-ui'
 import 'github-markdown-css'
+import '@@/assets/scss/index.scss'
 
 // @ts-ignore
 window.app = createApp(App)
