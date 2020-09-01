@@ -30,7 +30,6 @@ const load = ({demoComponents, demoMarkdowns, name}: DemoEntry) => {
 demos.forEach(demo => {
   load(demo)
 })
-console.log(components, markdowns)
 export default defineComponent({
   components,
   props: {
