@@ -13,11 +13,11 @@
 
     <i :class="icon" v-if="icon"></i>
 
-    <span v-if="slot" class="el-link--inner">
+    <span v-if="slots.default" class="el-link--inner">
       <slot></slot>
     </span>
 
-    <template v-if="icon"><slot v-if="icon" name="icon"></slot></template>
+    <template v-if="slots.icon"><slot v-if="slots.icon" name="icon"></slot></template>
   </a>
 </template>
 
@@ -48,12 +48,9 @@ export default defineComponent({
         }
       }
     }
-    const icon = slots.icon?.() || ''
-    const slot = slots.default?.() || ''
     return {
       attrs,
-      icon,
-      slot,
+      slots,
       handleClick
     }
   }
