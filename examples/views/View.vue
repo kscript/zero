@@ -89,4 +89,61 @@ export default defineComponent({
     width: 180px;
   }
 }
+.el-avatar-md {
+  .demo-basic {
+    text-align: center;
+    .demo-basic--circle,
+    .demo-basic--square {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .block {
+        flex: 1;
+        &:not(:last-child) {
+          border-right: 1px solid rgba(224,230,237,.5)
+        }
+      }
+    }
+  }
+
+  .sub-title {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #8492a6
+  }
+
+  .el-col:not(:last-child) {
+    border-right: 1px solid rgba(224,230,237,.5)
+  }
+
+  .demo-type {
+    display: flex
+  }
+
+  .demo-type>div {
+    flex: 1;
+    text-align: center
+  }
+
+  .demo-type>div:not(:last-child) {
+    border-right: 1px solid rgba(224,230,237,.5)
+  }
+
+  .demo-fit {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    .block {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 0;
+    }
+    .title {
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #8492a6
+    }
+  }
+}
 </style>
