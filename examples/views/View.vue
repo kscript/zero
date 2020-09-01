@@ -84,4 +84,9 @@ export default defineComponent({
     margin-right: 10px;
   }
 }
+.el-input-md{
+  .el-input {
+    width: 180px;
+  }
+}
 </style>
