@@ -79,6 +79,9 @@ export default defineComponent({
     }
   }
 }
+.el-card {
+  margin: 10px 0 20px;
+}
 .el-tag-md{
   .el-tag {
     margin-right: 10px;

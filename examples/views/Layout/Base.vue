@@ -1,5 +1,5 @@
 <template>
-  <el-card shadow="never">
+  <el-card shadow="hover">
     <template #header>
       <div  class="demo-layout">
         <el-row>

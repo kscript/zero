@@ -1,5 +1,5 @@
 <template>
-  <el-card shadow="never">
+  <el-card shadow="hover">
     <template #header>
       <el-tag closable>默认标签</el-tag>
       <el-tag size="medium" closable>中等标签</el-tag>

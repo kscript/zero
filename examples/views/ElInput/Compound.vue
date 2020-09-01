@@ -1,5 +1,5 @@
 <template>
-  <el-card shadow="never">
+  <el-card shadow="hover">
     <template #header>
       <div>
         <el-input placeholder="请输入内容" v-model="input1">

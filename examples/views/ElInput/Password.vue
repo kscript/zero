@@ -1,5 +1,5 @@
 <template>
-  <el-card shadow="never">
+  <el-card shadow="hover">
     <template #header>
       <el-input placeholder="请输入密码" v-model="input" show-password></el-input>
     </template>

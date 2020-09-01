@@ -1,5 +1,5 @@
 <template>
-  <el-card shadow="never">
+  <el-card shadow="hover">
     <template #header>
       <el-tag>标签一</el-tag>
       <el-tag type="success">标签二</el-tag>
