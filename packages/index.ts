@@ -14,16 +14,19 @@ import button from './button'
 import buttonGroup from './button-group'
 import card from './card'
 import code from './code'
+import col from './col'
 import container from './container'
 import collapse from './collapse'
 import collapseItem from './collapse-item'
 import collapseTransition from './collapse-transition'
 import { ElementUIOptions } from './component'
+import header from './header'
 import icon from './icon'
 import input from './input'
 import link from './link'
 import main from './main'
 import markdown from './markdown'
+import row from './row'
 import scrollbar from './scrollbar'
 import tag from './tag'
 
@@ -38,15 +41,18 @@ export const Button = button
 export const ButtonGroup = buttonGroup
 export const Card = card
 export const Code = code
+export const Col = col
 export const Container = container
 export const Collapse = collapse
 export const CollapseItem = collapseItem
 export const CollapseTransition = collapseTransition
+export const Header = header
 export const Icon = icon
 export const Input = input
 export const Link = link
 export const Main = main
 export const Markdown = markdown
+export const Row = row
 export const Scrollbar = scrollbar
 export const Tag = tag
 
@@ -62,15 +68,18 @@ export const components = [
   ButtonGroup,
   Card,
   Code,
+  Col,
   Collapse,
   CollapseItem,
   CollapseTransition,
   Container,
+  Header,
   Icon,
   Input,
   Link,
   Main,
   Markdown,
+  Row,
   Scrollbar,
   Tag
 ]
@@ -107,15 +116,18 @@ export default {
   ButtonGroup,
   Card,
   Code,
+  Col,
   Collapse,
   CollapseItem,
   CollapseTransition,
   Container,
+  Header,
   Icon,
   Input,
   Link,
   Main,
   Markdown,
+  Row,
   Scrollbar,
   Tag
 }
