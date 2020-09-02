@@ -30,7 +30,18 @@
             </div>
           </el-card>
         </el-col>
-      </el-row>`}}
+      </el-row>
+      
+      <script lang="ts">
+      import { defineComponent } from 'vue'
+      export default defineComponent({
+        setup() {
+          return {
+            currentDate: new Date()
+          }
+        }
+      })
+      </script>`}}
       <template #desc><slot></slot></template>
     </el-code>
   </el-card>
