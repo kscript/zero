@@ -8,10 +8,6 @@ export const list = [
         title: 'Container 布局容器'
     },
     {
-        name: 'ElInput',
-        title: 'Input 输入框'
-    },
-    {
         name: 'ElAvatar',
         title: 'Avatar 头像'
     },
@@ -22,6 +18,14 @@ export const list = [
     {
         name: 'ElBadge',
         title: 'Badge 标记'
+    },
+    {
+        name: 'ElBacktop',
+        title: 'Backtop 回到顶部'
+    },
+    {
+        name: 'ElBreadcrumb',
+        title: 'Breadcrumb 面包屑'
     },
     {
         name: 'ElButton',
@@ -38,6 +42,14 @@ export const list = [
     {
         name: 'ElIcon',
         title: 'Icon 图标'
+    },
+    {
+        name: 'ElInput',
+        title: 'Input 输入框'
+    },
+    {
+        name: 'ElLink',
+        title: 'Link 文字链接'
     },
     {
         name: 'ElTag',

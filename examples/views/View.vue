@@ -11,6 +11,8 @@ import ElButton from './ElButton'
 import ElCard from './ElCard'
 import ElCollapse from './ElCollapse'
 import Container from './Container'
+import ElBacktop from './ElBacktop'
+import ElBreadcrumb from './ElBreadcrumb'
 import { DemoEntry, Markdown } from './type'
 
 const demos = [
@@ -24,7 +26,9 @@ const demos = [
   ElButton,
   ElCard,
   ElCollapse,
-  Container
+  Container,
+  ElBacktop,
+  ElBreadcrumb
 ]
 const markdowns: anyObject<Markdown> = {}
 const components: anyObject<ComponentOptions> = {}

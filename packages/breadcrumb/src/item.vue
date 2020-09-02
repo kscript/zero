@@ -12,11 +12,15 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, provide, onMounted, getCurrentInstance, ComponentInternalInstance, reactive, inject, toRefs } from 'vue'
+  import { defineComponent, provide, onMounted, getCurrentInstance, ComponentInternalInstance, reactive, inject, toRefs, PropType } from 'vue'
+  import { useRouter, RouteLocationRaw } from 'vue-router'
   export default defineComponent({
     name: 'ElBreadcrumbItem',
     props: {
-      to: {},
+      to: {
+        type: [String, Object] as PropType<RouteLocationRaw>,
+        default: ''
+      },
       replace: Boolean
     },
 
@@ -27,17 +31,15 @@
       })
       const instance = getCurrentInstance() as ComponentInternalInstance
       const elBreadcrumb = inject('elBreadcrumb') as ComponentInternalInstance
+      const router = useRouter()
       onMounted(() => {
         state.separator = elBreadcrumb.props.separator as string;
         state.separatorClass = elBreadcrumb.props.separatorClass as string;
         const link = instance.refs.link as HTMLElement;
         link.setAttribute('role', 'link');
         link.addEventListener('click', _ => {
-          // @ts-ignore
-          const { $router } = instance.proxy
-          console.log(props, $router)
-          if (!props.to || !$router) return
-          props.replace ? $router.replace(props.to) : $router.push(props.to)
+          if (!props.to || !router) return
+          props.replace ? router.replace(props.to) : router.push(props.to)
         })
       })
       return {
@@ -46,3 +48,7 @@
     }
   })
 </script>
+
+<style lang="scss">
+@import 'theme/breadcrumb-item.scss';
+</style>

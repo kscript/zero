@@ -31,3 +31,7 @@
     }
   })
 </script>
+
+<style lang="scss">
+@import 'theme/breadcrumb.scss';
+</style>
