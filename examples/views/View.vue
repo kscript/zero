@@ -9,6 +9,7 @@ import ElIcon from './ElIcon'
 import ElBadge from './ElBadge'
 import ElButton from './ElButton'
 import ElCard from './ElCard'
+import ElCollapse from './ElCollapse'
 import { DemoEntry, Markdown } from './type'
 
 const demos = [
@@ -20,7 +21,8 @@ const demos = [
   ElIcon,
   ElBadge,
   ElButton,
-  ElCard
+  ElCard,
+  ElCollapse
 ]
 const markdowns: anyObject<Markdown> = {}
 const components: anyObject<ComponentOptions> = {}
