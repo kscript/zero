@@ -13,6 +13,7 @@ import ElCollapse from './ElCollapse'
 import Container from './Container'
 import ElBacktop from './ElBacktop'
 import ElBreadcrumb from './ElBreadcrumb'
+import ElLink from './ElLink'
 import { DemoEntry, Markdown } from './type'
 
 const demos = [
@@ -28,7 +29,8 @@ const demos = [
   ElCollapse,
   Container,
   ElBacktop,
-  ElBreadcrumb
+  ElBreadcrumb,
+  ElLink
 ]
 const markdowns: anyObject<Markdown> = {}
 const components: anyObject<ComponentOptions> = {}
@@ -365,6 +367,14 @@ export default defineComponent({
   .row-bg {
     padding: 10px 0;
     background-color: #f9fafc
+  }
+}
+.el-link-md {
+  .el-link {
+    margin-right: 5px;
+  }
+  .el-link [class*=el-icon-]+span {
+    margin-left: 5px;
   }
 }
 </style>
