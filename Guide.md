@@ -16,4 +16,4 @@
 - index.md 文件是文档主体, 支持Markdown写法(由于markdown-it解析时存在一些问题, 因此和预期的写法有一些出入, 模板中有说明)
 - .vue 文件是单个demo组件所在的文件, 一般由card和code组件组合而成. card的header插槽用于展示效果, 默认插槽用于展示源码. code的desc插槽, 填充的是demo组件默认插槽里的内容, 内容一般是在index.md中填写
 
-最后在 [examples/views/index.ts](examples/views/index.ts) 文件中导入, 并加入到常量demos里
+最后在 [examples/views/View.vue](examples/views/View.vue) 文件中导入, 并加入到常量demos里
