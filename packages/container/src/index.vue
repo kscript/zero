@@ -4,8 +4,8 @@
   </section>
 </template>
 
-<script>
-import { defineComponent, computed, Slot } from 'vue'
+<script lang="ts">
+import { defineComponent, computed, Slot, VNode } from 'vue'
 export default defineComponent({
   name: 'ElContainer',
 
@@ -25,11 +25,17 @@ export default defineComponent({
       }
       const slot = cxt.slots.default
       return slot
-        ? slot().some(vnode => {
-          const tag = vnode.componentOptions && vnode.componentOptions.tag;
-          return tag === 'el-header' || tag === 'el-footer';
+        ? slot().some((vnode: VNode) => {
+          const type = vnode.type
+          let name = ''
+          if (typeof type === 'string') {
+            name = type
+          } else if (type instanceof Object) {
+            name = (type as anyObject).name
+          }
+          return name === 'ElHeader' || name === 'ElFooter'
         })
-        : false;
+        : false
     })
     return {
       isVertical

@@ -1,7 +1,11 @@
 export const list = [
     {
-        name: 'ElTag',
-        title: 'Tag 标签'
+        name: 'Layout',
+        title: 'Layout 布局'
+    },
+    {
+        name: 'Container',
+        title: 'Container 布局容器'
     },
     {
         name: 'ElInput',
@@ -14,10 +18,6 @@ export const list = [
     {
         name: 'ElAlert',
         title: 'Alert 警告'
-    },
-    {
-        name: 'ElIcon',
-        title: 'Icon 图标'
     },
     {
         name: 'ElBadge',
@@ -36,7 +36,11 @@ export const list = [
         title: 'Collapse 折叠面板'
     },
     {
-        name: 'Layout',
-        title: 'Layout 布局'
+        name: 'ElIcon',
+        title: 'Icon 图标'
+    },
+    {
+        name: 'ElTag',
+        title: 'Tag 标签'
     },
 ]
