@@ -7,6 +7,7 @@ import Layout from './Layout'
 import ElAlert from './ElAlert'
 import ElIcon from './ElIcon'
 import ElBadge from './ElBadge'
+import ElButton from './ElButton'
 import { DemoEntry, Markdown } from './type'
 
 const demos = [
@@ -16,7 +17,8 @@ const demos = [
   ElAlert,
   Layout,
   ElIcon,
-  ElBadge
+  ElBadge,
+  ElButton
 ]
 const markdowns: anyObject<Markdown> = {}
 const components: anyObject<ComponentOptions> = {}
@@ -318,6 +320,12 @@ export default defineComponent({
         height: 1em
       }
     }
+  }
+}
+
+.el-button-md {
+  .el-row {
+    margin-bottom: 15px;
   }
 }
 </style>
