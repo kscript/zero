@@ -3,7 +3,7 @@
     <template #header>
       <el-input v-model="input" placeholder="请输入内容"></el-input>
     </template>
-    <el-code collapse :trim="-1" :first="1" desc="">
+    <el-code collapse :trim="-1" :first="1">
     {{`<el-input v-model="input" placeholder="请输入内容"></el-input>
 
     <script>

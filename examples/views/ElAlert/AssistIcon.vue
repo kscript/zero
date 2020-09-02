@@ -51,7 +51,7 @@
         description="文字说明文字说明文字说明文字说明文字说明文字说明"
         show-icon>
       </el-alert>`}}
-      <template #desc><slot name="desc"></slot></template>
+      <template #desc><slot></slot></template>
     </el-code>
   </el-card>
 </template>

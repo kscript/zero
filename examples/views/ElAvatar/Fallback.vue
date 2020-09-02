@@ -7,7 +7,7 @@
         </el-avatar>
       </div>
     </template>
-    <el-code collapse :trim="-1" :first="1" desc="">
+    <el-code collapse :trim="-1" :first="1">
     {{`<div class="demo-type">
         <el-avatar :size="60" src="https://empty" @error="errorHandler">
           <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"/>

@@ -27,8 +27,8 @@
         </el-input>
       </div>
     </template>
-    <el-code collapse :trim="-1" :first="1" desc="可通过 `size` 属性指定输入框的尺寸，除了默认的大小外，还提供了 `large`、`small` 和 `mini` 三种尺寸。??">
-    {{`<div class="demo-input-size">
+    <el-code collapse :trim="-1" :first="1">
+      {{`<div class="demo-input-size">
         <el-input
           placeholder="请输入内容"
           suffix-icon="el-icon-date"
@@ -70,6 +70,7 @@
         }
       })
       </script>`}}
+      <template #desc><slot></slot></template>
     </el-code>
   </el-card>
 </template>

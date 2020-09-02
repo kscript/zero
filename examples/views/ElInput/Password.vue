@@ -3,8 +3,8 @@
     <template #header>
       <el-input placeholder="请输入密码" v-model="input" show-password></el-input>
     </template>
-    <el-code collapse :trim="-1" :first="1" desc="使用`show-password`属性即可得到一个可切换显示隐藏的密码框">
-    {{`<el-input placeholder="请输入密码" v-model="input" show-password></el-input>
+    <el-code collapse :trim="-1" :first="1">
+      {{`<el-input placeholder="请输入密码" v-model="input" show-password></el-input>
 
       <script>
       import { defineComponent, ref } from 'vue'
@@ -17,6 +17,7 @@
         }
       })
       </script>`}}
+      <template #desc><slot></slot></template>
     </el-code>
   </el-card>
 </template>

@@ -8,7 +8,7 @@
         v-model="textarea">
       </el-input>
     </template>
-    <el-code collapse :trim="-1" :first="1" desc="文本域高度可通过 `rows` 属性控制">
+    <el-code collapse :trim="-1" :first="1">
     {{`<el-input
         type="textarea"
         :rows="2"
@@ -27,6 +27,7 @@
         }
       })
       </script>`}}
+      <template #desc><slot></slot></template>
     </el-code>
   </el-card>
 </template>

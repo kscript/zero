@@ -13,7 +13,7 @@
         </div>
       </div>
     </template>
-    <el-code collapse :trim="-1" :first="1" desc="">
+    <el-code collapse :trim="-1" :first="1">
     {{`<div class="demo-type">
         <div>
           <el-avatar icon="el-icon-user-solid"></el-avatar>

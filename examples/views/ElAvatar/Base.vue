@@ -22,7 +22,7 @@
         </el-col> 
       </el-row>
     </template>
-    <el-code collapse :trim="-1" :first="1" desc="">
+    <el-code collapse :trim="-1" :first="1">
     {{`<el-row class="demo-avatar demo-basic">
         <el-col :span="12">
           <div class="sub-title">circle</div>

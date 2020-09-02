@@ -26,8 +26,8 @@
         </el-input>
       </div>
     </template>
-    <el-code collapse :trim="-1" :first="1" desc="可通过 slot 来指定在 input 中前置或者后置内容。">
-    {{`<div>
+    <el-code collapse :trim="-1" :first="1">
+      {{`<div>
         <el-input placeholder="请输入内容" v-model="input1">
           <template #prepend>Http://</template>
         </el-input>
@@ -69,6 +69,7 @@
         }
       })
       </script>`}}
+      <template #desc><slot></slot></template>
     </el-code>
   </el-card>
 </template>

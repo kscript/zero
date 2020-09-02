@@ -8,7 +8,7 @@
         </div>
       </div>
     </template>
-    <el-code collapse :trim="-1" :first="1" desc="">
+    <el-code collapse :trim="-1" :first="1">
     {{`<div class="demo-fit">
           <div class="block" v-for="fit in fits" :key="fit">
               <span class="title">\{\{ fit \}\}</span>

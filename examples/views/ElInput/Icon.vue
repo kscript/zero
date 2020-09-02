@@ -32,8 +32,8 @@
         </el-input>
       </div>
     </template>
-    <el-code collapse :trim="-1" :first="1" desc="可以通过 `prefix-icon` 和 `suffix-icon` 属性在 input 组件首部和尾部增加显示图标，也可以通过 `slot` 来放置图标。">
-    {{`<div class="demo-input-suffix">
+    <el-code collapse :trim="-1" :first="1">
+      {{`<div class="demo-input-suffix">
         属性方式：
         <el-input
           placeholder="请选择日期"
@@ -80,6 +80,7 @@
         }
       })
       </script>`}}
+      <template #desc><slot></slot></template>
     </el-code>
   </el-card>
 </template>

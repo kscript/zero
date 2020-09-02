@@ -35,7 +35,7 @@
         title="错误提示的文案"
         type="error">
       </el-alert>`}}
-      <template #desc><slot name="desc"></slot></template>
+      <template #desc><slot></slot></template>
     </el-code>
   </el-card>
 </template>

@@ -15,8 +15,8 @@
         v-model="textarea2">
       </el-input>
     </template>
-    <el-code collapse :trim="-1" :first="1" desc="">
-    {{`<el-input
+    <el-code collapse :trim="-1" :first="1">
+      {{`<el-input
         type="textarea"
         autosize
         placeholder="请输入内容"

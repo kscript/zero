@@ -43,7 +43,7 @@
         type="error"
         effect="dark">
       </el-alert>`}}
-      <template #desc><slot name="desc"></slot></template>
+      <template #desc><slot></slot></template>
     </el-code>
   </el-card>
 </template>
