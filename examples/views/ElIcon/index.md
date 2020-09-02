@@ -5,5 +5,5 @@
 直接通过设置类名为 `el-icon-iconName` 来使用即可。例如：
 <el-icon-base></el-icon-base>
 
-### 标题
+### 图标集合
 <el-icon-all></el-icon-all>
