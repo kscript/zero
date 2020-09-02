@@ -6,6 +6,7 @@ import ElAvatar from './ElAvatar'
 import Layout from './Layout'
 import ElAlert from './ElAlert'
 import ElIcon from './ElIcon'
+import ElBadge from './ElBadge'
 import { DemoEntry, Markdown } from './type'
 
 const demos = [
@@ -14,7 +15,8 @@ const demos = [
   ElAvatar,
   ElAlert,
   Layout,
-  ElIcon
+  ElIcon,
+  ElBadge
 ]
 const markdowns: anyObject<Markdown> = {}
 const components: anyObject<ComponentOptions> = {}
@@ -87,6 +89,9 @@ export default defineComponent({
 </script>
 <style lang="scss">
 .demo-container {
+  .markdown-body {
+    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+  }
   .el-card__body {
     padding: 0px;
     .el-code.is-open{
@@ -126,6 +131,40 @@ export default defineComponent({
       border-radius: 4px;
     }
   }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #fff;
+    font-size: 14px;
+    margin-bottom: 45px;
+    line-height: 1.5em;
+    display: table;
+    td,
+    th {
+      border: 0;
+      border-bottom: 1px solid #dcdfe6;
+      padding: 15px;
+      max-width: 250px
+    }
+
+    th {
+      text-align: left;
+      white-space: nowrap;
+      color: #909399;
+      font-weight: 400
+    }
+
+    td {
+      color: #606266
+    }
+
+    td:first-child,
+    th:first-child {
+      padding-left: 10px
+    }
+  }
+
 }
 
 .el-card {
@@ -236,7 +275,7 @@ export default defineComponent({
     border-radius: 4px;
     li {
       float: left;
-      width: 16.66%;
+      width: 16.777%;
       text-align: center;
       height: 120px;
       line-height: 120px;
