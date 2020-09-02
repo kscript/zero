@@ -41,7 +41,7 @@ createApp(App).use(zeroUI).mount('#app')
 > 带*号的组件是新添加的, 不在element-ui组件库之内
 
 ## 贡献指南
-如果你也想要为重构vue3版本的element-ui出一份力, 可以先浏览参考这份[贡献指南 Guide](./Guide.md)(待撰写), 方便快速上手
+如果你也想要为重构vue3版本的element-ui出一份力, 可以先浏览参考这份[贡献指南 Guide](./Guide.md), 方便快速上手
 
 ## 参考 
 - [element](https://github.com/ElemeFE/element)  
