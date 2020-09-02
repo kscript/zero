@@ -1,9 +1,11 @@
+templates/
 packages/
 examples/
 public/
 dist/
 src/
 
+Guide.md
 vue.config.js
 babel.config.js
 .travis.yml

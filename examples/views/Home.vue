@@ -63,10 +63,10 @@ export default defineComponent({
 <style lang="scss" scoped>
 $height: 80px;
 .el-header{
+  border-bottom: 1px solid #f8f8f8;
   .container {
     width: 1140px;
     margin: 0 auto;
-    border-bottom: 1px solid #f8f8f8;
   }
   .title {
     font-size: 32px;

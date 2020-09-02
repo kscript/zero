@@ -4,9 +4,9 @@
       <el-aside width="240px">
         <el-scrollbar class="full-screen-height">
           <ul class="componet-list">
-            <li v-for="vo in componets" :key="vo.name" @click="clickHandler(vo.name)">
+            <li v-for="vo in componets" :key="vo.name">
               <router-link :to="{ path: '/docs/' + vo.name }">
-                <el-link :type="vo.name === activeName ? 'primary' : 'default'">
+                <el-link :type="vo.name === activeName ? 'primary' : 'default'" @click="clickHandler(vo.name)">
                   {{vo.title}}
                 </el-link>
               </router-link>
