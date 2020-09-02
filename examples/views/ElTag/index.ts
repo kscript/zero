@@ -4,7 +4,7 @@ import Dynamic from './Dynamic.vue'
 import Remove from './Remove.vue'
 import Size from './Size.vue'
 import Theme from './Theme.vue'
-import md from './index.md'
+import index from './index.md'
 import { DemoEntry, Markdown } from '../type'
 export const demoComponents: ComponentOptions[] = [
   Base,
@@ -14,7 +14,7 @@ export const demoComponents: ComponentOptions[] = [
   Theme
 ]
 export const demoMarkdowns: Markdown[] = [
-  md
+  index
 ]
 const entry: DemoEntry = {
   name: 'ElTag',

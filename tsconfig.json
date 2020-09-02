@@ -37,6 +37,9 @@
     "packages/**/*.ts",
     "packages/**/*.tsx",
     "packages/**/*.vue",
+    "templates/**/*.ts",
+    "templates/**/*.tsx",
+    "templates/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
   ],

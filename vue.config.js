@@ -34,7 +34,7 @@ module.exports = {
   chainWebpack: config => {
     config.resolve.alias
       .set('@@', resolve('examples'))
-      .set('zero-ui', resolve('packages'))
+      .set('@zero-ui/vue', resolve('packages'))
       .set('common', resolve('common'))
       .set('theme', resolve('packages/theme-chalk/src'))
       .set('@src', resolve('src'))

@@ -9,7 +9,7 @@ import Autosize from './Autosize.vue'
 import Compound from './Compound.vue'
 import Size from './Size.vue'
 import Length from './Length.vue'
-import md from './index.md'
+import index from './index.md'
 import { DemoEntry, Markdown } from '../type'
 export const demoComponents: ComponentOptions[] = [
   Base,
@@ -24,7 +24,7 @@ export const demoComponents: ComponentOptions[] = [
   Length
 ]
 export const demoMarkdowns: Markdown[] = [
-  md
+  index
 ]
 const entry: DemoEntry = {
   name: 'ElInput',
