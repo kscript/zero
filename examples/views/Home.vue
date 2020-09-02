@@ -2,14 +2,16 @@
   <el-container class="home" direction="vertical">
     <el-header height="80px">
       <div class="container">
-        <span class="title">
-          zero-ui
-        </span>
+        <el-link href="./" :underline="false">
+          <span class="title">
+            zero-ui
+          </span>
+        </el-link>
         <el-link class="link-repository" icon="iconfont icon-github" href="https://github.com/kscript/zero" :underline="false" target="_blank"></el-link>
       </div>
     </el-header>
     <el-main>
-      <el-scrollbar>
+      <el-scrollbar ref="scroll" wrapClass="main-scroll-wrap" viewClass="main-scroll-view">
         <template v-if="name === 'Home'">
           <v-welcome></v-welcome>
         </template>
@@ -18,7 +20,7 @@
         </template>
       </el-scrollbar>
     </el-main>
-    <el-backtop :bottom="100">
+    <el-backtop target=".main-scroll-wrap" :bottom="60">
       <div
         style="{
           height: 100%;
@@ -36,7 +38,7 @@
   </el-container>
 </template>
 <script lang="ts">
-import { defineComponent, ref,  watch, getCurrentInstance, ComponentInternalInstance} from 'vue'
+import { defineComponent, ref,  watch, getCurrentInstance, ComponentInternalInstance, provide} from 'vue'
 import { useRoute } from 'vue-router'
 import VWelcome from './Welcome.vue'
 import { list } from './Components'
@@ -49,6 +51,9 @@ export default defineComponent({
     const instance = getCurrentInstance() as ComponentInternalInstance 
     const route = useRoute()
     const name = ref(route.name)
+    provide('home', {
+      instance
+    })
     return {
       name
     }
@@ -83,5 +88,8 @@ $height: 80px;
 }
 .el-scrollbar{
   height: 100%;
+  ::v-deep(.main-scroll-view) {
+    padding-top: 30px;
+  }
 }
 </style>

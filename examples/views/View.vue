@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, computed, ref, h, PropType, watch, provide, ComponentOptions, VNode } from 'vue'
+import { defineComponent, computed, ref, h, PropType, watch, provide, ComponentOptions, VNode, inject } from 'vue'
 import ElTag from './ElTag'
 import ElInput from './ElInput'
 import ElAvatar from './ElAvatar'
@@ -46,18 +46,29 @@ export default defineComponent({
       render() {
       }
     }
+    const accordion = ref(true)
     const md = computed(() => {
       return markdowns[props.id] || empty
     })
     const collapses = {} as anyObject<Function>
-    let prevClose = null as Function | null
+    const home = inject('home') as anyObject
+    watch(() => props.id, () => {
+      try {
+        const scroll = home.instance.refs.scroll
+        scroll && (scroll.$refs.wrap.scrollTop = 0)
+      } catch (err) {
+        console.log(err)
+      }
+    })
     provide('docsView', {
       collapseNameChange(value: any, close: Function) {
         if (value) {
           collapses[value] = close
-          for(let name in collapses) {
-            if (collapses[name] !== close) {
-              collapses[name]()
+          if (accordion.value) {
+            for(let name in collapses) {
+              if (collapses[name] !== close) {
+                collapses[name]()
+              }
             }
           }
         }
@@ -85,6 +96,11 @@ export default defineComponent({
     padding: 15px;
     font-size: 14px;
     line-height: 26px;
+    color: #5e6d82;
+    p {
+      margin: 0;
+      line-height: 26px;
+    }
     code {
       color: #5e6d82;
       background-color: #e6effb;
@@ -95,6 +111,17 @@ export default defineComponent({
       border-radius: 3px;
       height: 18px;
       line-height: 18px;
+    }
+  }
+  p {
+    font-size: 14px;
+    color: #5e6d82;
+    line-height: 1.5em;
+    & > code {
+      background-color: #f9fafc;
+      padding: 0 4px;
+      border: 1px solid #eaeefb;
+      border-radius: 4px;
     }
   }
 }
