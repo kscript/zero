@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, getCurrentInstance, ComponentInternalInstance, computed, h, PropType } from 'vue'
+import { defineComponent, getCurrentInstance, ComponentInternalInstance, computed, ref, h, PropType, onMounted } from 'vue'
 export default defineComponent({
   name: 'ElCol',
 
@@ -24,13 +24,20 @@ export default defineComponent({
   },
 
   setup(props, cxt) {
-    const instance = getCurrentInstance() as ComponentInternalInstance 
+    const instance = getCurrentInstance() as ComponentInternalInstance
+    const parentProps = ref({} as anyObject)
+    
     const gutter = computed(() => {
-      let parent = instance.parent;
-      while (parent && parent.type.name !== 'ElRow') {
-        parent = parent.parent;
+      return parentProps.value.gutter
+    })
+    onMounted(() => {
+      let curr = instance
+      while(curr && curr.type.name !== 'ElRow') {
+        curr = curr.parent as ComponentInternalInstance
       }
-      return parent ? parent.type.props.gutter : 0;
+      if (curr) {
+        parentProps.value = curr.props
+      }
     })
     return () => {
       let classList: string[] = [];
