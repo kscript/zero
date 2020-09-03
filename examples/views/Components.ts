@@ -1,5 +1,9 @@
 export const list = [
     {
+        name: 'Installation',
+        title: 'Installation 安装'
+    },
+    {
         name: 'Layout',
         title: 'Layout 布局'
     },

@@ -1,5 +1,6 @@
 <script lang="ts">
-import { defineComponent, computed, ref, h, PropType, watch, provide, ComponentOptions, VNode, inject } from 'vue'
+import { defineComponent, computed, ref, h, PropType, watch, provide, ComponentOptions, VNode, inject, onUpdated, onMounted } from 'vue'
+import Installation from './Installation'
 import ElTag from './ElTag'
 import ElInput from './ElInput'
 import ElAvatar from './ElAvatar'
@@ -17,6 +18,7 @@ import ElLink from './ElLink'
 import { DemoEntry, Markdown } from './type'
 
 const demos = [
+  Installation,
   ElTag,
   ElInput,
   ElAvatar,
@@ -92,6 +94,10 @@ export default defineComponent({
         }
       }
     })
+    // @ts-ignore
+    const highlight = () => Prism.highlightAll()
+    onMounted(highlight)
+    onUpdated(highlight)
     return () => h('div', {
       key: props.id,
       class: props.id.replace(/[A-Z]/g, (s, i) => {
