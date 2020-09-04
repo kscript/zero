@@ -9,6 +9,9 @@ import Autosize from './Autosize.vue'
 import Compound from './Compound.vue'
 import Size from './Size.vue'
 import Length from './Length.vue'
+import Propose from './Propose.vue'
+import Custom from './Custom.vue'
+import Remote from './Remote.vue'
 import index from './index.md'
 import { DemoEntry, Markdown } from '../type'
 export const demoComponents: ComponentOptions[] = [
@@ -21,7 +24,10 @@ export const demoComponents: ComponentOptions[] = [
   Autosize,
   Compound,
   Size,
-  Length
+  Length,
+  Propose,
+  Custom,
+  Remote
 ]
 export const demoMarkdowns: Markdown[] = [
   index

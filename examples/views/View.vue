@@ -202,6 +202,43 @@ export default defineComponent({
   .el-input {
     width: 180px;
   }
+  .demo-autocomplete {
+    text-align: center
+  }
+
+  .demo-autocomplete .sub-title {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #8492a6
+  }
+
+  .demo-autocomplete .el-col:not(:last-child) {
+    border-right: 1px solid rgba(224,230,237,.5)
+  }
+
+  .demo-autocomplete .el-autocomplete {
+    text-align: left
+  }
+}
+.el-autocomplete-suggestion {
+  &.my-autocomplete {
+    li {
+      line-height: normal;
+      padding-top: 7px;
+      padding-bottom: 7px;
+      .name {
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      .addr {
+        font-size: 12px;
+        color: #b4b4b4;
+      }
+      .highlighted .addr {
+        color: #ddd;
+      }
+    }
+  }
 }
 
 .el-avatar-md {

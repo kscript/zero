@@ -56,15 +56,19 @@
 
 ### 带输入建议
 根据输入内容提供对应的输入建议
-> Autocomplete 组件暂未加入组件库
+<el-input-propose>
+**autocomplete** 是一个可带输入建议的输入框组件，`fetch-suggestions` 是一个返回输入建议的方法属性，如 **querySearch(queryString, cb)**，在该方法中你可以在你的输入建议数据准备好时通过 **cb(data)** 返回到 **autocomplete** 组件中。
+</el-input-propose>
 
 ### 自定义模板
 可自定义输入建议的显示
-> Autocomplete 组件暂未加入组件库
+<el-input-custom>
+使用`scoped slot`自定义输入建议的模板。该 **scope** 的参数为`item`，表示当前输入建议对象。
+</el-input-custom>
 
 ### 远程搜索
 从服务端搜索数据
-> Autocomplete 组件暂未加入组件库
+<el-input-remote></el-input-remote>
 
 ### 输入长度限制
 <i></i>

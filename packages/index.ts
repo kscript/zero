@@ -5,6 +5,8 @@ import 'theme/common/transition.scss'
 import { App } from 'vue'
 import alert from './alert'
 import aside from './aside'
+import autocomplete from './autocomplete'
+import autocompleteSuggestions from './autocomplete-suggestions'
 import avatar from './avatar'
 import backTop from './backtop'
 import badge from './badge'
@@ -36,6 +38,8 @@ import tag from './tag'
 
 export const Alert = alert
 export const Aside = aside
+export const Autocomplete = autocomplete
+export const AutocompleteSuggestions = autocompleteSuggestions
 export const Avatar = avatar
 export const BackTop = backTop
 export const Badge = badge
@@ -67,6 +71,8 @@ export const Tag = tag
 export const components = [
   Alert,
   Aside,
+  Autocomplete,
+  AutocompleteSuggestions,
   Avatar,
   BackTop,
   Badge,
@@ -119,6 +125,8 @@ export default {
   install,
   Alert,
   Aside,
+  Autocomplete,
+  AutocompleteSuggestions,
   Avatar,
   BackTop,
   Badge,
