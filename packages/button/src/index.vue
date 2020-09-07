@@ -1,7 +1,6 @@
 <template>
   <button
     class="el-button"
-    @click="handleClick"
     :disabled="buttonDisabled || loading"
     :autofocus="autofocus"
     :type="nativeType"
@@ -70,17 +69,13 @@
       const buttonDisabled = computed(() => {
         return props.disabled || (elForm instanceof Object ? elForm : {}).disabled
       })
-      const handleClick = (evt: Event) => {
-        cxt.emit('click', evt)
-      }
       return {
         slot,
         elForm,
         elFormItem,
         _elFormItemSize,
         buttonSize,
-        buttonDisabled,
-        handleClick
+        buttonDisabled
       }
     }
   })

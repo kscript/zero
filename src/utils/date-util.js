@@ -1,5 +1,5 @@
-import fecha from 'element-ui/src/utils/date';
-import { t } from 'element-ui/src/locale';
+import fecha from '@/utils/date';
+import { t } from '@/locale';
 
 const weeks = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
@@ -137,7 +137,8 @@ export const getPrevMonthLastDays = (date, amount) => {
   const temp = new Date(date.getTime());
   temp.setDate(0);
   const lastDay = temp.getDate();
-  return range(amount).map((_, index) => lastDay - (amount - index - 1));
+  const res = range(amount).map((_, index) => lastDay - (amount - index - 1));
+  return res
 };
 
 export const getMonthDays = (date) => {

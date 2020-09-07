@@ -14,6 +14,7 @@ import breadcrumb from './breadcrumb'
 import breadcrumbItem from './breadcrumb-item'
 import button from './button'
 import buttonGroup from './button-group'
+import calendar from './calendar'
 import card from './card'
 import code from './code'
 import col from './col'
@@ -47,6 +48,7 @@ export const Breadcrumb = breadcrumb
 export const BreadcrumbItem = breadcrumbItem
 export const Button = button
 export const ButtonGroup = buttonGroup
+export const Calendar = calendar
 export const Card = card
 export const Code = code
 export const Col = col
@@ -80,6 +82,7 @@ export const components = [
   BreadcrumbItem,
   Button,
   ButtonGroup,
+  Calendar,
   Card,
   Code,
   Col,
@@ -134,6 +137,7 @@ export default {
   BreadcrumbItem,
   Button,
   ButtonGroup,
+  Calendar,
   Card,
   Code,
   Col,
