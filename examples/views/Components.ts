@@ -36,6 +36,10 @@ export const list = [
         title: 'Button 按钮'
     },
     {
+        name: 'ElCalendar',
+        title: 'ElCalendar 日历'
+    },
+    {
         name: 'ElCard',
         title: 'Card 卡片'
     },

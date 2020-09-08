@@ -48,7 +48,6 @@
         dropdownWidth: '',
         showPopper: false
       })
-      console.log(state)
       const popperElm = ref(null as HTMLElement | null)
       const referenceElm = ref(null as HTMLElement | null)
       const parent = ref(instance.parent)
