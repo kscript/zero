@@ -16,6 +16,7 @@ import ElBacktop from './ElBacktop'
 import ElBreadcrumb from './ElBreadcrumb'
 import ElLink from './ElLink'
 import ElCalendar from './ElCalendar'
+import ElCarousel from './ElCarousel'
 import { DemoEntry, Markdown } from './type'
 
 const demos = [
@@ -34,7 +35,8 @@ const demos = [
   ElBacktop,
   ElBreadcrumb,
   ElLink,
-  ElCalendar
+  ElCalendar,
+  ElCarousel
 ]
 const markdowns: anyObject<Markdown> = {}
 const components: anyObject<ComponentOptions> = {}
@@ -111,9 +113,6 @@ export default defineComponent({
 </script>
 <style lang="scss">
 .demo-container {
-  .markdown-body {
-    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
-  }
   .el-card__body {
     padding: 0px;
     .el-code.is-open{
@@ -161,7 +160,7 @@ export default defineComponent({
     display: table;
   }
   .markdown-body {
-    
+    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
     & > table {
       border-collapse: collapse;
       width: 100%;
@@ -194,8 +193,12 @@ export default defineComponent({
         padding-left: 10px
       }
     }
+    .el-card {
+      ul, ol {
+        padding-left: 0;
+      }
+    }
   }
-
 }
 
 .el-card {
@@ -423,6 +426,7 @@ export default defineComponent({
     background-color: #f9fafc
   }
 }
+
 .el-link-md {
   .el-link {
     margin-right: 5px;
@@ -441,6 +445,57 @@ export default defineComponent({
     th {
       padding: 0;
     }
+  }
+}
+
+.el-carousel-md{ 
+  .block {
+    padding: 30px;
+    text-align: center;
+    border-right: 1px solid #eff2f6;
+    display: inline-block;
+    width: 49%;
+    box-sizing: border-box
+  }
+
+  .block:last-child {
+      border-right: none
+  }
+
+  .demonstration {
+      display: block;
+      color: #8492a6;
+      font-size: 14px;
+      margin-bottom: 20px
+  }
+
+  .el-carousel__container {
+      text-align: center
+  }
+
+  .el-carousel__item h3 {
+      color: #fff;
+      font-size: 18px;
+      line-height: 300px;
+      margin: 0
+  }
+
+  .el-carousel__item h3.small {
+      font-size: 14px;
+      line-height: 150px
+  }
+
+  .el-carousel__item h3.medium {
+      font-size: 14px;
+      line-height: 200px
+  }
+
+  .el-carousel__item:nth-child(2n) {
+      background-color: #99a9bf
+  }
+
+  .el-carousel__item:nth-child(odd) {
+      background-color: #d3dce6
   }
 }
 </style>

@@ -40,6 +40,10 @@ export const list = [
         title: 'ElCalendar 日历'
     },
     {
+        name: 'ElCarousel',
+        title: 'ElCarousel 走马灯'
+    },
+    {
         name: 'ElCard',
         title: 'Card 卡片'
     },
