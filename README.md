@@ -29,6 +29,8 @@ createApp(App).use(zeroUI).mount('#app')
 - [x] Breadcrumb 面包屑  
 - [x] Button 按钮  
 - [x] Card 卡片  
+- [x] Calendar 日历  
+- [x] Carousel 走马灯  
 - [x] Code* 代码块  
 - [x] Collapse 折叠面板  
 - [x] Icon 图标  
@@ -37,6 +39,8 @@ createApp(App).use(zeroUI).mount('#app')
 - [x] Markdown*  
 - [x] Tag 标签  
 - [x] Scrollbar 滚动条  
+- [x] Container 布局容器 (Container/Header/Aside/Main/Footer)
+- [x] Layout 布局 (Row/Col)
 
 > 带*号的组件是新添加的, 不在element-ui组件库之内
 
