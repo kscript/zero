@@ -16,6 +16,8 @@ import button from './button'
 import buttonGroup from './button-group'
 import calendar from './calendar'
 import card from './card'
+import carousel from './carousel'
+import carouselItem from './carousel-item'
 import code from './code'
 import col from './col'
 import container from './container'
@@ -56,6 +58,8 @@ export const Container = container
 export const Collapse = collapse
 export const CollapseItem = collapseItem
 export const CollapseTransition = collapseTransition
+export const Carousel = carousel
+export const CarouselItem = carouselItem
 export const Footer = footer
 export const Header = header
 export const Icon = icon
@@ -84,6 +88,8 @@ export const components = [
   ButtonGroup,
   Calendar,
   Card,
+  Carousel,
+  CarouselItem,
   Code,
   Col,
   Collapse,
@@ -139,6 +145,8 @@ export default {
   ButtonGroup,
   Calendar,
   Card,
+  Carousel,
+  CarouselItem,
   Code,
   Col,
   Collapse,
