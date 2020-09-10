@@ -7,7 +7,7 @@
 
       <el-drawer
         title="我是标题"
-        :visible.sync="drawer"
+        v-model:visible="drawer"
         :with-header="false">
         <span>我来啦!</span>
       </el-drawer>
@@ -19,7 +19,7 @@
 
       <el-drawer
         title="我是标题"
-        :visible.sync="drawer"
+        v-model:visible="drawer"
         :with-header="false">
         <span>我来啦!</span>
       </el-drawer>
