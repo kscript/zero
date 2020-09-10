@@ -27,6 +27,7 @@ import container from './container'
 import collapse from './collapse'
 import collapseItem from './collapse-item'
 import collapseTransition from './collapse-transition'
+import dialog from './dialog'
 import { ElementUIOptions } from './component'
 import footer from './footer'
 import header from './header'
@@ -66,6 +67,7 @@ export const CollapseItem = collapseItem
 export const CollapseTransition = collapseTransition
 export const Carousel = carousel
 export const CarouselItem = carouselItem
+export const Dialog = dialog
 export const Footer = footer
 export const Header = header
 export const Icon = icon
@@ -105,6 +107,7 @@ export const components = [
   CollapseItem,
   CollapseTransition,
   Container,
+  Dialog,
   Footer,
   Header,
   Icon,
@@ -165,6 +168,7 @@ export default {
   CollapseItem,
   CollapseTransition,
   Container,
+  Dialog,
   Footer,
   Header,
   Icon,
