@@ -48,6 +48,10 @@ export const list = [
         title: 'Card 卡片'
     },
     {
+        name: 'ElCheckbox',
+        title: 'Checkbox 多选框'
+    },
+    {
         name: 'ElCollapse',
         title: 'Collapse 折叠面板'
     },

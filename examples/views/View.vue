@@ -17,6 +17,7 @@ import ElBreadcrumb from './ElBreadcrumb'
 import ElLink from './ElLink'
 import ElCalendar from './ElCalendar'
 import ElCarousel from './ElCarousel'
+import ElCheckbox from './ElCheckbox'
 import { DemoEntry, Markdown } from './type'
 
 const demos = [
@@ -36,7 +37,8 @@ const demos = [
   ElBreadcrumb,
   ElLink,
   ElCalendar,
-  ElCarousel
+  ElCarousel,
+  ElCheckbox
 ]
 const markdowns: anyObject<Markdown> = {}
 const components: anyObject<ComponentOptions> = {}
