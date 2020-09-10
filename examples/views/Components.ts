@@ -37,11 +37,11 @@ export const list = [
     },
     {
         name: 'ElCalendar',
-        title: 'ElCalendar 日历'
+        title: 'Calendar 日历'
     },
     {
         name: 'ElCarousel',
-        title: 'ElCarousel 走马灯'
+        title: 'Carousel 走马灯'
     },
     {
         name: 'ElCard',
@@ -58,6 +58,10 @@ export const list = [
     {
         name: 'ElDialog',
         title: 'Dialog 对话框'
+    },
+    {
+        name: 'ElDivider',
+        title: 'Divider 分割线'
     },
     {
         name: 'ElIcon',
