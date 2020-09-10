@@ -1,20 +1,34 @@
-import { ComponentInternalInstance, computed, ComputedRef, defineComponent, getCurrentInstance, inject, nextTick, onMounted, reactive, ref, toRefs, watch, Prop } from 'vue';
+import { ComponentInternalInstance, computed, ComputedRef, defineComponent, getCurrentInstance, inject, nextTick, onMounted, reactive, ref, toRefs, watch, Prop, WritableComputedRef } from 'vue';
 import { ElForm, ElFormItem, CheckboxGroup, ICheckboxProps } from './type'
 import elementOptions from '@/elementOptions'
 
-
-export const useCheckbox = (props: ICheckboxProps) => {
+export const useInject = () => {
   const elForm = inject('ElForm', {}) as ElForm
   const elFormItem = inject('elFormItem', {}) as ElFormItem
   const checkboxGroup = inject('checkboxGroup', {}) as CheckboxGroup
-  const instance = getCurrentInstance() as ComponentInternalInstance 
-  const { emit } = instance
+  const elFormItemSize = (elFormItem || {}).elFormItemSize
+  return {
+    elForm,
+    elFormItem,
+    checkboxGroup,
+    elFormItemSize
+  }
+}
+
+export const useInstance = () => {
+  const instance = getCurrentInstance() as ComponentInternalInstance
+  const { emit, refs, attrs, type, props, vnode } = instance || {}
+  return { instance, emit, refs, attrs, type, props, vnode }
+}
+
+export const useState = (props: ICheckboxProps) => {
+  const { elForm, checkboxGroup, elFormItemSize } = useInject()
+  const { instance, emit } = useInstance()
   const state = reactive({
     selfModel: false,
     focus: false,
     isLimitExceeded: false
   })
-  
   const isChecked = computed(() => {
     let result
     if ({}.toString.call(realModelValue.value) === '[object Boolean]') {
@@ -26,7 +40,6 @@ export const useCheckbox = (props: ICheckboxProps) => {
     }
     return result
   })
-  
   const isGroup = computed(() => {
     let parent = instance.parent
     while (parent) {
@@ -38,11 +51,9 @@ export const useCheckbox = (props: ICheckboxProps) => {
     }
     return false;
   })
-
   const store = computed(() => {
     return checkboxGroup.hasOwnProperty('modelValue') ? checkboxGroup.realModelValue.value : props.modelValue;
   })
-
   /* used to make the isDisabled judgment under max/min props */
   const isLimitDisabled = computed(() => {
     const { max, min } = checkboxGroup;
@@ -50,19 +61,14 @@ export const useCheckbox = (props: ICheckboxProps) => {
       (realModelValue.value.length >= max && !isChecked.value) ||
       (realModelValue.value.length <= min && isChecked.value));
   })
-
   const isDisabled = computed(() => {
     return isGroup.value
       ? checkboxGroup.disabled || props.disabled || (elForm || {}).disabled || isLimitDisabled.value
       : props.disabled || (elForm || {}).disabled;
   })
-
-  const elFormItemSize = computed(() => {
-    return (elFormItem || {}).elFormItemSize;
-  })
-  const size = computed(() => checkboxGroup?.size || elFormItemSize.value || elementOptions.size)
+  const size = computed(() => checkboxGroup?.size || elFormItemSize || elementOptions.size)
   const checkboxSize = computed(() => {
-    const temCheckboxSize = props.size || elFormItemSize.value || elementOptions.size;
+    const temCheckboxSize = props.size || elFormItemSize || elementOptions.size;
     return isGroup.value
       ? checkboxGroup.size || temCheckboxSize
       : temCheckboxSize;
@@ -117,21 +123,43 @@ export const useCheckbox = (props: ICheckboxProps) => {
     });
     ev.stopPropagation();
   }
-  
-  watch(() => props.modelValue, (value) => {
-    elFormItem.emitter?.emit('el.form.change', value)
-  })
-  
-  props.checked && addToStore()
   return {
     state,
+    isGroup,
     isDisabled,
     isChecked,
     checkboxSize,
     realModelValue,
     size,
-    handleChange,
-    checkboxGroup,
-    instance,
+    addToStore,
+    handleChange
   }
 }
+
+const whenCreated = (props: ICheckboxProps, realModelValue: WritableComputedRef<unknown>) => {
+  const { elFormItem } = useInject()
+  watch(() => props.modelValue, (value) => {
+    elFormItem.emitter?.emit('el.form.change', value)
+  })
+  const addToStore = () => {
+    if (
+      Array.isArray(realModelValue.value) &&
+      realModelValue.value.indexOf(props.label) === -1
+    ) {
+      realModelValue.value.push(props.label);
+    } else {
+      realModelValue.value = props.checked || true
+    }
+  }
+  props.checked && addToStore()
+}
+
+export const useCheckbox = (props: ICheckboxProps) => {
+  const { realModelValue, ...states } = useState(props)
+  whenCreated(props, realModelValue)
+  return {
+    ...states,
+    realModelValue
+  }
+}
+export default useCheckbox

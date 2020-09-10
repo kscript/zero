@@ -56,7 +56,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, toRefs } from 'vue'
 import { ICheckboxProps } from './type'
-import { useCheckbox } from './checkbox'
+import { useCheckbox, useInstance } from './useCheckbox'
   export default defineComponent({
     name: 'ElCheckbox',
 
@@ -76,19 +76,19 @@ import { useCheckbox } from './checkbox'
     },
 
     setup(props, { emit, slots }) {
+      const { vnode } = useInstance()
       const {
         state,
         isDisabled,
         isChecked,
         checkboxSize,
-        instance,
         realModelValue,
         handleChange
       } = useCheckbox(props as ICheckboxProps)
 
       onMounted(() => {
         if (props.indeterminate) {
-          instance.vnode.el?.setAttribute('aria-controls', props.controls)
+          vnode.el?.setAttribute('aria-controls', props.controls)
         }
       })
 

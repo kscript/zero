@@ -46,7 +46,7 @@
 <script lang="ts">
 import { computed, defineComponent, inject, toRefs } from 'vue'
 import { ICheckboxProps } from './type'
-import { useCheckbox } from './checkbox'
+import { useCheckbox, useInject } from './useCheckbox'
 
   export default defineComponent ({
     name: 'ElCheckboxButton',
@@ -62,6 +62,7 @@ import { useCheckbox } from './checkbox'
     },
 
     setup(props, { slots }) {
+      const { checkboxGroup } = useInject()
       const {
         state,
         size,
@@ -69,7 +70,6 @@ import { useCheckbox } from './checkbox'
         isDisabled,
         realModelValue,
         handleChange,
-        checkboxGroup,
       } = useCheckbox(props as ICheckboxProps)
       const activeStyle = computed(() => {
         return {
