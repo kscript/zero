@@ -38,6 +38,9 @@ import link from './link'
 import main from './main'
 import markdown from './markdown'
 import row from './row'
+import radio from './radio'
+import radioButton from './radio-button'
+import radioGroup from './radio-group'
 import option from './option'
 import optionGroup from './option-group'
 import scrollbar from './scrollbar'
@@ -78,6 +81,9 @@ export const Link = link
 export const Main = main
 export const Markdown = markdown
 export const Row = row
+export const Radio = radio
+export const RadioButton = radioButton
+export const RadioGroup = radioGroup
 export const Option = option
 export const OptionGroup = optionGroup
 export const Scrollbar = scrollbar
@@ -121,6 +127,9 @@ export const components = [
   Option,
   OptionGroup,
   Row,
+  Radio,
+  RadioButton,
+  RadioGroup,
   Scrollbar,
   Select,
   Tag
@@ -183,6 +192,9 @@ export default {
   Option,
   OptionGroup,
   Row,
+  Radio,
+  RadioButton,
+  RadioGroup,
   Scrollbar,
   Select,
   Tag
