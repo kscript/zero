@@ -56,6 +56,10 @@ export const list = [
         title: 'Collapse 折叠面板'
     },
     {
+        name: 'ElDialog',
+        title: 'Dialog 对话框'
+    },
+    {
         name: 'ElIcon',
         title: 'Icon 图标'
     },

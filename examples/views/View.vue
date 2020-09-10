@@ -18,6 +18,7 @@ import ElLink from './ElLink'
 import ElCalendar from './ElCalendar'
 import ElCarousel from './ElCarousel'
 import ElCheckbox from './ElCheckbox'
+import ElDialog from './ElDialog'
 import { DemoEntry, Markdown } from './type'
 
 const demos = [
@@ -38,7 +39,8 @@ const demos = [
   ElLink,
   ElCalendar,
   ElCarousel,
-  ElCheckbox
+  ElCheckbox,
+  ElDialog
 ]
 const markdowns: anyObject<Markdown> = {}
 const components: anyObject<ComponentOptions> = {}
