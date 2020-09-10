@@ -76,6 +76,10 @@ export const list = [
         title: 'Link 文字链接'
     },
     {
+        name: 'ElRadio',
+        title: 'Radio 单选框'
+    },
+    {
         name: 'ElTag',
         title: 'Tag 标签'
     },
