@@ -33,6 +33,8 @@ createApp(App).use(zeroUI).mount('#app')
 - [x] Carousel 走马灯  
 - [x] Code* 代码块  
 - [x] Collapse 折叠面板  
+- [x] Checkbox 多选框  
+- [x] Dialog 对话框  
 - [x] Icon 图标  
 - [x] Input 输入框  
 - [x] Link 链接  
