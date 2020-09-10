@@ -20,6 +20,7 @@ import ElCarousel from './ElCarousel'
 import ElCheckbox from './ElCheckbox'
 import ElDialog from './ElDialog'
 import ElDivider from './ElDivider'
+import ElDrawer from './ElDrawer'
 import ElRadio from './ElRadio'
 import { DemoEntry, Markdown } from './type'
 
@@ -44,6 +45,7 @@ const demos = [
   ElCheckbox,
   ElDialog,
   ElDivider,
+  ElDrawer,
   ElRadio
 ]
 const markdowns: anyObject<Markdown> = {}

@@ -64,6 +64,10 @@ export const list = [
         title: 'Divider 分割线'
     },
     {
+        name: 'ElDrawer',
+        title: 'Drawer 抽屉'
+    },
+    {
         name: 'ElIcon',
         title: 'Icon 图标'
     },
