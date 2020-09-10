@@ -29,8 +29,11 @@ import collapseItem from './collapse-item'
 import collapseTransition from './collapse-transition'
 import dialog from './dialog'
 import divider from './divider'
+import drawer from './drawer'
 import { ElementUIOptions } from './component'
 import footer from './footer'
+import form from './form'
+import formItem from './form-item'
 import header from './header'
 import icon from './icon'
 import input from './input'
@@ -46,6 +49,8 @@ import optionGroup from './option-group'
 import scrollbar from './scrollbar'
 import select from './select'
 import tag from './tag'
+import table from './table'
+import tableColumn from './table-column'
 
 export const Alert = alert
 export const Aside = aside
@@ -73,7 +78,10 @@ export const Carousel = carousel
 export const CarouselItem = carouselItem
 export const Dialog = dialog
 export const Divider = divider
+export const Drawer = drawer
 export const Footer = footer
+export const Form = form
+export const FormItem = formItem
 export const Header = header
 export const Icon = icon
 export const Input = input
@@ -89,6 +97,8 @@ export const OptionGroup = optionGroup
 export const Scrollbar = scrollbar
 export const Select = select
 export const Tag = tag
+export const Table = table
+export const TableColumn = tableColumn
 
 export const components = [
   Alert,
@@ -117,7 +127,10 @@ export const components = [
   Container,
   Dialog,
   Divider,
+  Drawer,
   Footer,
+  Form,
+  FormItem,
   Header,
   Icon,
   Input,
@@ -132,7 +145,9 @@ export const components = [
   RadioGroup,
   Scrollbar,
   Select,
-  Tag
+  Tag,
+  Table,
+  TableColumn
 ]
 
 const install = function(app: App, opts = {}) {
@@ -182,7 +197,10 @@ export default {
   Container,
   Dialog,
   Divider,
+  Drawer,
   Footer,
+  Form,
+  FormItem,
   Header,
   Icon,
   Input,
@@ -197,5 +215,7 @@ export default {
   RadioGroup,
   Scrollbar,
   Select,
-  Tag
+  Tag,
+  Table,
+  TableColumn
 }
