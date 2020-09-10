@@ -18,6 +18,9 @@ import calendar from './calendar'
 import card from './card'
 import carousel from './carousel'
 import carouselItem from './carousel-item'
+import checkbox from './checkbox'
+import checkboxButton from './checkbox-button'
+import checkboxGroup from './checkbox-group'
 import code from './code'
 import col from './col'
 import container from './container'
@@ -52,6 +55,9 @@ export const Button = button
 export const ButtonGroup = buttonGroup
 export const Calendar = calendar
 export const Card = card
+export const Checkbox = checkbox
+export const CheckboxButton = checkboxButton
+export const CheckboxGroup = checkboxGroup
 export const Code = code
 export const Col = col
 export const Container = container
@@ -90,6 +96,9 @@ export const components = [
   Card,
   Carousel,
   CarouselItem,
+  Checkbox,
+  CheckboxButton,
+  CheckboxGroup,
   Code,
   Col,
   Collapse,
@@ -129,7 +138,7 @@ const win: anyObject = window
 if (typeof win !== 'undefined' && win.Vue) {
   install(win.Vue)
 }
-export const version = '1.0.4'
+export const version = '1.0.5'
 export default {
   install,
   Alert,
@@ -147,6 +156,9 @@ export default {
   Card,
   Carousel,
   CarouselItem,
+  Checkbox,
+  CheckboxButton,
+  CheckboxGroup,
   Code,
   Col,
   Collapse,
