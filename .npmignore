@@ -8,6 +8,7 @@ src/
 Guide.md
 vue.config.js
 babel.config.js
+prettier.config.js
 .travis.yml
 *.map
 *.lock
