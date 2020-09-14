@@ -44,6 +44,7 @@ createApp(App).use(zeroUI).mount('#app')
 - [x] Radio 单选框  
 - [x] Tag 标签  
 - [x] Scrollbar 滚动条  
+- [x] Switch 开关  
 - [x] Container 布局容器 (Container/Header/Aside/Main/Footer)
 - [x] Layout 布局 (Row/Col)
 
