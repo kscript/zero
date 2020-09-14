@@ -1,5 +1,18 @@
 <script lang="ts">
-import { defineComponent, computed, ref, h, PropType, watch, provide, ComponentOptions, VNode, inject, onUpdated, onMounted } from 'vue'
+import {
+  defineComponent,
+  computed,
+  ref,
+  h,
+  PropType,
+  watch,
+  provide,
+  ComponentOptions,
+  VNode,
+  inject,
+  onUpdated,
+  onMounted
+} from 'vue'
 import Installation from './Installation'
 import ElTag from './ElTag'
 import ElInput from './ElInput'
@@ -22,6 +35,7 @@ import ElDialog from './ElDialog'
 import ElDivider from './ElDivider'
 import ElDrawer from './ElDrawer'
 import ElRadio from './ElRadio'
+import ElSwitch from './ElSwitch'
 import { DemoEntry, Markdown } from './type'
 
 const demos = [
@@ -46,19 +60,21 @@ const demos = [
   ElDialog,
   ElDivider,
   ElDrawer,
-  ElRadio
+  ElRadio,
+  ElSwitch
 ]
 const markdowns: anyObject<Markdown> = {}
 const components: anyObject<ComponentOptions> = {}
 
-const load = ({demoComponents, demoMarkdowns, name}: DemoEntry) => {
+const load = ({ demoComponents, demoMarkdowns, name }: DemoEntry) => {
   demoComponents.forEach((item: anyObject) => {
-    const cname = (item.name.slice(0, name.length) !== name ? name : '') + item.name
+    const cname =
+      (item.name.slice(0, name.length) !== name ? name : '') + item.name
     Object.assign(components, {
       [cname]: item
     })
   })
-  demoMarkdowns.forEach((item) => {
+  demoMarkdowns.forEach(item => {
     Object.assign(markdowns, {
       [name]: item
     })
@@ -77,29 +93,32 @@ export default defineComponent({
   },
   setup(props, { slots }) {
     const empty = {
-      render() {
-      }
+      render() {}
     }
+
     const accordion = ref(true)
     const md = computed(() => {
       return markdowns[props.id] || empty
     })
     const collapses = {} as anyObject<Function>
     const home = inject('home') as anyObject
-    watch(() => props.id, () => {
-      try {
-        const scroll = home.instance.refs.scroll
-        scroll && (scroll.$refs.wrap.scrollTop = 0)
-      } catch (err) {
-        console.log(err)
+    watch(
+      () => props.id,
+      () => {
+        try {
+          const scroll = home.instance.refs.scroll
+          scroll && (scroll.$refs.wrap.scrollTop = 0)
+        } catch (err) {
+          console.log(err)
+        }
       }
-    })
+    )
     provide('docsView', {
       collapseNameChange(value: any, close: Function) {
         if (value) {
           collapses[value] = close
           if (accordion.value) {
-            for(let name in collapses) {
+            for (let name in collapses) {
               if (collapses[name] !== close) {
                 collapses[name]()
               }
@@ -112,12 +131,18 @@ export default defineComponent({
     const highlight = () => Prism.highlightAll()
     onMounted(highlight)
     onUpdated(highlight)
-    return () => h('div', {
-      key: props.id,
-      class: props.id.replace(/[A-Z]/g, (s, i) => {
-        return (i === 0 ? '' : '-') + s.toLowerCase()
-      }) + '-md demo-container'
-    }, md.value.render?.() || [])
+    return () =>
+      h(
+        'div',
+        {
+          key: props.id,
+          class:
+            props.id.replace(/[A-Z]/g, (s, i) => {
+              return (i === 0 ? '' : '-') + s.toLowerCase()
+            }) + '-md demo-container'
+        },
+        md.value.render?.() || []
+      )
   }
 })
 </script>
@@ -125,7 +150,7 @@ export default defineComponent({
 .demo-container {
   .el-card__body {
     padding: 0px;
-    .el-code.is-open{
+    .el-code.is-open {
       padding-top: 0px;
       padding-bottom: 0px;
     }
@@ -170,7 +195,8 @@ export default defineComponent({
     display: table;
   }
   .markdown-body {
-    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
+      Microsoft YaHei, SimSun, sans-serif;
     & > table {
       border-collapse: collapse;
       width: 100%;
@@ -184,27 +210,28 @@ export default defineComponent({
         border: 0;
         border-bottom: 1px solid #dcdfe6;
         padding: 15px;
-        max-width: 250px
+        max-width: 250px;
       }
-  
+
       th {
         text-align: left;
         white-space: nowrap;
         color: #909399;
-        font-weight: 400
+        font-weight: 400;
       }
-  
+
       td {
-        color: #606266
+        color: #606266;
       }
-  
+
       td:first-child,
       th:first-child {
-        padding-left: 10px
+        padding-left: 10px;
       }
     }
     .el-card {
-      ul, ol {
+      ul,
+      ol {
         padding-left: 0;
       }
     }
@@ -216,32 +243,32 @@ export default defineComponent({
   line-height: 18px;
 }
 
-.el-tag-md{
+.el-tag-md {
   .el-tag {
     margin-right: 10px;
   }
 }
 
-.el-input-md{
+.el-input-md {
   .el-input {
     width: 180px;
   }
   .demo-autocomplete {
-    text-align: center
+    text-align: center;
   }
 
   .demo-autocomplete .sub-title {
     margin-bottom: 10px;
     font-size: 14px;
-    color: #8492a6
+    color: #8492a6;
   }
 
   .demo-autocomplete .el-col:not(:last-child) {
-    border-right: 1px solid rgba(224,230,237,.5)
+    border-right: 1px solid rgba(224, 230, 237, 0.5);
   }
 
   .demo-autocomplete .el-autocomplete {
-    text-align: left
+    text-align: left;
   }
 }
 .el-autocomplete-suggestion {
@@ -276,7 +303,7 @@ export default defineComponent({
       .block {
         flex: 1;
         &:not(:last-child) {
-          border-right: 1px solid rgba(224,230,237,.5)
+          border-right: 1px solid rgba(224, 230, 237, 0.5);
         }
       }
     }
@@ -285,24 +312,24 @@ export default defineComponent({
   .sub-title {
     margin-bottom: 10px;
     font-size: 14px;
-    color: #8492a6
+    color: #8492a6;
   }
 
   .el-col:not(:last-child) {
-    border-right: 1px solid rgba(224,230,237,.5)
+    border-right: 1px solid rgba(224, 230, 237, 0.5);
   }
 
   .demo-type {
-    display: flex
+    display: flex;
   }
 
-  .demo-type>div {
+  .demo-type > div {
     flex: 1;
-    text-align: center
+    text-align: center;
   }
 
-  .demo-type>div:not(:last-child) {
-    border-right: 1px solid rgba(224,230,237,.5)
+  .demo-type > div:not(:last-child) {
+    border-right: 1px solid rgba(224, 230, 237, 0.5);
   }
 
   .demo-fit {
@@ -318,40 +345,39 @@ export default defineComponent({
     .title {
       margin-bottom: 10px;
       font-size: 14px;
-      color: #8492a6
+      color: #8492a6;
     }
   }
 }
 
 .el-alert-md {
   .el-alert {
-    margin: 20px 0 0
+    margin: 20px 0 0;
   }
   .el-alert:first-child {
-    margin: 0
+    margin: 0;
   }
 }
 
 .el-icon-md {
   .source {
-    span{
+    span {
       i {
         color: #606266;
         margin: 0 20px;
         font-size: 1.5em;
-        vertical-align: middle
+        vertical-align: middle;
       }
     }
     button {
-      margin: 0 20px
+      margin: 0 20px;
     }
   }
-
 
   .icon-list {
     overflow: hidden;
     list-style: none;
-    padding: 0!important;
+    padding: 0 !important;
     border: 1px solid #eaeefb;
     border-radius: 4px;
     li {
@@ -367,36 +393,38 @@ export default defineComponent({
       margin-right: -1px;
       margin-bottom: -1px;
       &:hover {
-        i, span {
-          color: #5cb6ff
+        i,
+        span {
+          color: #5cb6ff;
         }
       }
       &:after {
-        content: "";
+        content: '';
         height: 100%;
       }
       &:after,
       span {
         display: inline-block;
-        vertical-align: middle
+        vertical-align: middle;
       }
       span {
         line-height: normal;
-        font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+        font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
+          Microsoft YaHei, SimSun, sans-serif;
         color: #99a9bf;
-        transition: color .15s linear
+        transition: color 0.15s linear;
       }
       i {
         display: block;
         font-size: 32px;
         margin-bottom: 15px;
         color: #606266;
-        transition: color .15s linear
+        transition: color 0.15s linear;
       }
       .icon-name {
         display: inline-block;
         padding: 0 3px;
-        height: 1em
+        height: 1em;
       }
     }
   }
@@ -416,24 +444,24 @@ export default defineComponent({
     }
   }
   .el-col {
-    border-radius: 4px
+    border-radius: 4px;
   }
   .bg-purple-dark {
-    background: #99a9bf
+    background: #99a9bf;
   }
   .bg-purple {
-    background: #d3dce6
+    background: #d3dce6;
   }
   .bg-purple-light {
-    background: #e5e9f2
+    background: #e5e9f2;
   }
   .grid-content {
     border-radius: 4px;
-    min-height: 36px
+    min-height: 36px;
   }
   .row-bg {
     padding: 10px 0;
-    background-color: #f9fafc
+    background-color: #f9fafc;
   }
 }
 
@@ -441,14 +469,14 @@ export default defineComponent({
   .el-link {
     margin-right: 5px;
   }
-  .el-link [class*=el-icon-]+span {
+  .el-link [class*='el-icon-'] + span {
     margin-left: 5px;
   }
 }
 
 .el-calendar-md {
-   .is-selected {
-    color: #1989fa
+  .is-selected {
+    color: #1989fa;
   }
   table {
     td,
@@ -458,54 +486,148 @@ export default defineComponent({
   }
 }
 
-.el-carousel-md{ 
+.el-carousel-md {
   .block {
     padding: 30px;
     text-align: center;
     border-right: 1px solid #eff2f6;
     display: inline-block;
     width: 49%;
-    box-sizing: border-box
+    box-sizing: border-box;
   }
 
   .block:last-child {
-      border-right: none
+    border-right: none;
   }
 
   .demonstration {
-      display: block;
-      color: #8492a6;
-      font-size: 14px;
-      margin-bottom: 20px
+    display: block;
+    color: #8492a6;
+    font-size: 14px;
+    margin-bottom: 20px;
   }
 
   .el-carousel__container {
-      text-align: center
+    text-align: center;
   }
 
   .el-carousel__item h3 {
-      color: #fff;
-      font-size: 18px;
-      line-height: 300px;
-      margin: 0
+    color: #fff;
+    font-size: 18px;
+    line-height: 300px;
+    margin: 0;
   }
 
   .el-carousel__item h3.small {
-      font-size: 14px;
-      line-height: 150px
+    font-size: 14px;
+    line-height: 150px;
   }
 
   .el-carousel__item h3.medium {
-      font-size: 14px;
-      line-height: 200px
+    font-size: 14px;
+    line-height: 200px;
   }
 
   .el-carousel__item:nth-child(2n) {
-      background-color: #99a9bf
+    background-color: #99a9bf;
   }
 
   .el-carousel__item:nth-child(odd) {
-      background-color: #d3dce6
+    background-color: #d3dce6;
+  }
+}
+
+.el-dropdown-md {
+  .el-dropdown {
+    vertical-align: top;
+  }
+
+  .el-dropdown + .el-dropdown {
+    margin-left: 15px;
+  }
+
+  .el-dropdown-link {
+    cursor: pointer;
+    color: #409eff;
+  }
+
+  .el-icon-arrow-down {
+    font-size: 12px;
+  }
+}
+
+.el-form-md {
+  .el-form {
+    width: 460px;
+  }
+
+  .line {
+    text-align: center;
+  }
+
+  .el-checkbox-group {
+    width: 320px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .el-checkbox-group:after,
+  .el-checkbox-group:before {
+    content: ' ';
+    display: table;
+  }
+
+  .el-checkbox-group:after {
+    clear: both;
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
+  }
+
+  .el-checkbox-group .el-checkbox {
+    float: left;
+    width: 160px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .el-checkbox-group .el-checkbox + .el-checkbox {
+    margin-left: 0;
+  }
+
+  .demo-form-normal {
+    width: 460px;
+  }
+
+  .demo-form-inline {
+    width: auto;
+  }
+
+  .demo-form-inline .el-input {
+    width: 150px;
+  }
+
+  .demo-form-inline > * {
+    margin-right: 10px;
+  }
+
+  .demo-ruleForm {
+    width: 460px;
+  }
+
+  .demo-ruleForm .el-select .el-input {
+    width: 360px;
+  }
+
+  .demo-dynamic .el-input {
+    margin-right: 10px;
+    width: 270px;
+    vertical-align: top;
+  }
+
+  .fr {
+    float: right;
   }
 }
 </style>

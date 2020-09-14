@@ -84,6 +84,10 @@ export const list = [
         title: 'Radio 单选框'
     },
     {
+        name: 'ElSwitch',
+        title: 'Switch 开关'
+    },
+    {
         name: 'ElTag',
         title: 'Tag 标签'
     },
