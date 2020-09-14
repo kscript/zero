@@ -46,8 +46,10 @@ import radioButton from './radio-button'
 import radioGroup from './radio-group'
 import option from './option'
 import optionGroup from './option-group'
+import popper from './popper'
 import scrollbar from './scrollbar'
 import select from './select'
+import $switch from './switch'
 import tag from './tag'
 import table from './table'
 import tableColumn from './table-column'
@@ -88,14 +90,16 @@ export const Input = input
 export const Link = link
 export const Main = main
 export const Markdown = markdown
-export const Row = row
+export const Option = option
+export const OptionGroup = optionGroup
+export const Popper = popper
 export const Radio = radio
 export const RadioButton = radioButton
 export const RadioGroup = radioGroup
-export const Option = option
-export const OptionGroup = optionGroup
+export const Row = row
 export const Scrollbar = scrollbar
 export const Select = select
+export const Switch = $switch
 export const Tag = tag
 export const Table = table
 export const TableColumn = tableColumn
@@ -139,12 +143,14 @@ export const components = [
   Markdown,
   Option,
   OptionGroup,
-  Row,
+  Popper,
   Radio,
   RadioButton,
   RadioGroup,
+  Row,
   Scrollbar,
   Select,
+  Switch,
   Tag,
   Table,
   TableColumn
@@ -209,12 +215,14 @@ export default {
   Markdown,
   Option,
   OptionGroup,
-  Row,
+  Popper,
   Radio,
   RadioButton,
   RadioGroup,
+  Row,
   Scrollbar,
   Select,
+  Switch,
   Tag,
   Table,
   TableColumn
