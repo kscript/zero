@@ -311,6 +311,7 @@ export default defineComponent({
     })
     const initialValue = ref(fieldValue.value)
     provide('elFormItem', {
+      elFormItemSize: elFormItemSize.value,
       emitter,
       updateComputedLabelWidth
     })
