@@ -199,7 +199,7 @@
       tabindex: String
     },
 
-    setup(props, {attrs, emit, slots }) {
+    setup(props, { attrs, emit, slots }) {
       const state = reactive({
         textareaCalcStyle: {},
         hovering: false,
@@ -239,7 +239,7 @@
         return props.disabled || (elForm || {}).disabled
       })
       const nativeInputValue = computed(() => {
-        return props.modelValue === null || props.modelValue === void 0 ? '' : String(props.modelValue)
+        return props.modelValue === null || props.modelValue === void 0 ? '' : props.modelValue
       })
       const showClear = computed(() => {
         return props.clearable &&
@@ -343,7 +343,7 @@
         const input = getInput()
         if (!input) return
         if (input.value === nativeInputValue.value) return
-        input.value = nativeInputValue.value
+        input.value = String(nativeInputValue.value)
       }
       const handleFocus = (event: Event) => {
         state.focused = true
@@ -372,9 +372,10 @@
         // hack for https://github.com/ElemeFE/element/issues/8548
         // should remove the following line when we don't support IE
         if (value === nativeInputValue.value) return
-
-        emit('update:modelValue', value)
-        emit('input', value)
+        const isNumber = (attrs.modelModifiers as anyObject)?.number
+        const finalValue = value ? isNumber ? isNaN(parseFloat(value)) ? '' : parseFloat(value) : '' : ''
+        emit('update:modelValue', finalValue)
+        emit('input', finalValue)
         // ensure native input value is controlled
         // see: https://github.com/ElemeFE/element/issues/12850
         nextTick(setNativeInputValue)
