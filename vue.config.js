@@ -35,6 +35,7 @@ module.exports = {
     config.resolve.alias
       .set('@@', resolve('examples'))
       .set('@zero-ui/vue', resolve('packages'))
+      .set('packages', resolve('packages'))
       .set('common', resolve('common'))
       .set('theme', resolve('packages/theme-chalk/src'))
       .set('@src', resolve('src'))
