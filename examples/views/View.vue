@@ -35,6 +35,7 @@ import ElDialog from './ElDialog'
 import ElDivider from './ElDivider'
 import ElDrawer from './ElDrawer'
 import ElRadio from './ElRadio'
+import ElForm from './ElForm'
 import ElSwitch from './ElSwitch'
 import { DemoEntry, Markdown } from './type'
 
@@ -61,6 +62,7 @@ const demos = [
   ElDivider,
   ElDrawer,
   ElRadio,
+  ElForm,
   ElSwitch
 ]
 const markdowns: anyObject<Markdown> = {}
