@@ -37,6 +37,7 @@ createApp(App).use(zeroUI).mount('#app')
 - [x] Dialog 对话框  
 - [x] Divider 分割线  
 - [x] Drawer 抽屉  
+- [x] Form 表单  
 - [x] Icon 图标  
 - [x] Input 输入框  
 - [x] Link 链接  
