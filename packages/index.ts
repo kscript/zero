@@ -101,7 +101,6 @@ export const Switch = $switch
 export const Tag = tag
 export const Table = table
 export const TableColumn = tableColumn
-
 export const components = [
   Alert,
   Aside,
@@ -152,13 +151,12 @@ export const components = [
   Table,
   TableColumn
 ]
-
-const install = function(app: App, opts = {}) {
+export const install = function (app: App, opts = {}) {
   // 判断是否安装
   if (install.installed) return
   // 遍历注册全局组件
   components.map(component => app.component(component.name as string, component))
-  
+
   ElementUIOptions.value = {
     ...ElementUIOptions.value,
     ...opts,
@@ -166,13 +164,10 @@ const install = function(app: App, opts = {}) {
 }
 install.installed = false
 
-const win: anyObject = window
+const win: anyObject = window || {}
 
-if (typeof win !== 'undefined' && win.Vue) {
-  install(win.Vue)
-}
 export const version = '1.0.5'
-export default {
+export const ZeroUI = {
   install,
   Alert,
   Aside,
@@ -223,3 +218,6 @@ export default {
   Table,
   TableColumn
 }
+export default ZeroUI
+
+win.ZeroUI = ZeroUI
