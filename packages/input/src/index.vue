@@ -134,7 +134,7 @@
   // @ts-ignore
   import calcTextareaHeight from './calcTextareaHeight'
   
-  import elementOptions from '@/elementOptions'
+  import ElementUIOptions from 'packages/ElementUIOptions'
 
   import { elFormInject, elFormItemInject, ValidateState, Icons } from './type'
 
@@ -233,7 +233,7 @@
         return merge({}, state.textareaCalcStyle, { resize: props.resize })
       })
       const inputSize = computed(() => {
-        return props.size || _elFormItemSize.value || elementOptions.size
+        return props.size || _elFormItemSize.value || ElementUIOptions.value.size
       })
       const inputDisabled = computed(() => {
         return props.disabled || (elForm || {}).disabled

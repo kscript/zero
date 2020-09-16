@@ -1,6 +1,6 @@
 import { ComponentInternalInstance, computed, ComputedRef, defineComponent, getCurrentInstance, inject, nextTick, onMounted, reactive, ref, toRefs, watch, Prop, WritableComputedRef } from 'vue';
 import { ElForm, ElFormItem, CheckboxGroup, ICheckboxProps } from './type'
-import elementOptions from '@/elementOptions'
+import ElementUIOptions from 'packages/ElementUIOptions'
 
 export const useInject = () => {
   const elForm = inject('ElForm', {}) as ElForm
@@ -66,9 +66,9 @@ export const useState = (props: ICheckboxProps) => {
       ? checkboxGroup.disabled || props.disabled || (elForm || {}).disabled || isLimitDisabled.value
       : props.disabled || (elForm || {}).disabled;
   })
-  const size = computed(() => checkboxGroup?.size || elFormItemSize || elementOptions.size)
+  const size = computed(() => checkboxGroup?.size || elFormItemSize || ElementUIOptions.value.size)
   const checkboxSize = computed(() => {
-    const temCheckboxSize = props.size || elFormItemSize || elementOptions.size;
+    const temCheckboxSize = props.size || elFormItemSize || ElementUIOptions.value.size;
     return isGroup.value
       ? checkboxGroup.size || temCheckboxSize
       : temCheckboxSize;

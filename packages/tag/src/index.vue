@@ -20,7 +20,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, computed, ref, PropType } from 'vue'
-import elementOptions from '@/elementOptions'
+import ElementUIOptions from 'packages/ElementUIOptions'
 export default defineComponent({
   name: 'ElTag',
   props: {
@@ -43,7 +43,7 @@ export default defineComponent({
   setup(props, { emit, slots }) {
     const show = ref(true)
     const tagSize = computed(() => {
-      return props.size || elementOptions.size
+      return props.size || ElementUIOptions.value.size
     })
     const handleClose = (even: Event) => {
       event?.stopPropagation()

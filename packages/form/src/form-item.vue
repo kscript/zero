@@ -53,7 +53,7 @@ import objectAssign from '@/utils/merge'
 // @ts-ignore
 import { noop, getPropByPath } from '@/utils/util'
 import LabelWrap from './label-wrap.vue'
-import elementOptions from '@/elementOptions'
+import ElementUIOptions from 'packages/ElementUIOptions'
 import { ComponentInternalInstance, computed, defineComponent, getCurrentInstance, inject, nextTick, onBeforeUnmount, onMounted, provide, reactive, ref, toRefs, watch } from 'vue'
 import { broadcast } from '@/utils/broadcast'
 export default defineComponent({
@@ -172,7 +172,7 @@ export default defineComponent({
       return props.size || _formSize.value
     })
     const sizeClass = computed(() => {
-      return elFormItemSize.value || elementOptions.size
+      return elFormItemSize.value || ElementUIOptions.value.size
     })
     
     const validate = (trigger: string, callback: Function = noop) => {

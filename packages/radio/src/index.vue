@@ -60,9 +60,9 @@
     },
 
     setup(props, { emit, slots }) {
-      const { focus, isGroup, _elFormItemSize, isDisabled, tabIndex, realModelValue, _radioGroup, elementOptions } = useRadio(props)
+      const { focus, isGroup, _elFormItemSize, isDisabled, tabIndex, realModelValue, _radioGroup, ElementUIOptions } = useRadio(props)
       const radioSize = computed(() => {
-        const temRadioSize = props.size || _elFormItemSize.value || elementOptions.size
+        const temRadioSize = props.size || _elFormItemSize.value || ElementUIOptions.value.size
         return isGroup.value
           ? _radioGroup.radioGroupSize.value || temRadioSize
           : temRadioSize

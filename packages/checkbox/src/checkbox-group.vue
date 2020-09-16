@@ -1,5 +1,5 @@
 <script lang="ts">
-  import elementOptions from '@/elementOptions'
+  import ElementUIOptions from 'packages/ElementUIOptions'
   import { defineComponent, computed, inject, provide, watch } from 'vue'
   import { ElFormItem, CheckboxGroup } from './type'
   
@@ -27,7 +27,7 @@
         return (elFormItem || {}).elFormItemSize
       })
       const checkboxGroupSize = computed(() => {
-        return props.size || _elFormItemSize.value || elementOptions.size
+        return props.size || _elFormItemSize.value || ElementUIOptions.value.size
       })
 
       watch(() => props.modelValue, (value) => {

@@ -1,4 +1,4 @@
-import elementOptions from '@/elementOptions'
+import ElementUIOptions from 'packages/ElementUIOptions'
 import { ref, computed, inject, getCurrentInstance, ComponentInternalInstance } from 'vue'
 
 const isEmpty = (obj: anyObject) => {
@@ -10,7 +10,7 @@ const isEmpty = (obj: anyObject) => {
   return true
 }
 
-export const useElement = () => elementOptions
+export const useElement = () => ElementUIOptions
 
 export const useInstance = () => {
   const instance = getCurrentInstance() as ComponentInternalInstance
@@ -32,7 +32,7 @@ export const useState = (props: anyObject) => {
     return (elFormItem || {}).elFormItemSize
   })
   const size = computed(() => {
-    return _radioGroup.radioGroupSize.value || _elFormItemSize.value || elementOptions.size
+    return _radioGroup.radioGroupSize.value || _elFormItemSize.value || ElementUIOptions.value.size
   })
   const isDisabled = computed(() => {
     return isGroup.value
@@ -66,7 +66,7 @@ export const useRadio = (props: anyObject) => {
     ...state,
 
     focus,
-    elementOptions,
+    ElementUIOptions,
 
     isGroup,
     _radioGroup,

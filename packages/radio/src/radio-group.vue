@@ -32,12 +32,12 @@ import { useInject, useInstance, useElement } from './useRadio'
 
     setup(props, { emit }) {
       const { elFormItem } = useInject()
-      const ELEMENT = useElement()
+      const ElementUIOptions = useElement()
       const { vnode, type } = useInstance()
       const _elFormItemSize = computed(() => elFormItem.elFormItemSize)
       const _elTag = computed(() => 'div')
 
-      const radioGroupSize = computed(() => props.size || _elFormItemSize.value || ELEMENT.size)
+      const radioGroupSize = computed(() => props.size || _elFormItemSize.value || ElementUIOptions.value.size)
       
       const handleChange = (value: any) => {
         emit('change', value)

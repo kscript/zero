@@ -18,6 +18,7 @@ export type ElementUIProp = {
 };
 
 export const ElementUIOptions = ref({
-  size: "",
+  size: "large",
   zIndex: 2000,
 });
+export default ElementUIOptions

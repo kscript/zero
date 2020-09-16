@@ -46,7 +46,7 @@
       name: String
     },
     setup(props, { emit, slots }) {
-      const { focus, size, isGroup, isDisabled, tabIndex, _radioGroup, elementOptions } = useRadio(props)
+      const { focus, size, isGroup, isDisabled, tabIndex, _radioGroup, ElementUIOptions } = useRadio(props)
       const realModelValue = computed({
         get() {
           return _radioGroup.realModelValue.value
