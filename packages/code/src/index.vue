@@ -46,7 +46,7 @@ import ElCollapse from 'packages/collapse/src/index.vue'
 import ElCollapseItem from 'packages/collapse/src/item.vue'
 import { modelValueType, modelValueArray } from '../../collapse/src/type'
 const win: anyObject = window
-const highlightProxy = win.highlightProxy || ((html?: string, type?: string) => {
+const highlightProxy = win.highlightProxy = win.highlightProxy || ((html?: string, type?: string) => {
   const Prism = win.Prism
   if (html && type) {
     return Prism?.highlight(html, Prism.languages[type], type) || (html.replace(/\</g, '&lt;'))
