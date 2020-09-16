@@ -18,14 +18,19 @@
 </template>
 <script lang="ts">
   import { defineComponent, reactive, getCurrentInstance, ComponentInternalInstance, provide, inject, onUpdated, nextTick, onMounted, toRefs, computed, watch, ref, PropType, ComponentPublicInstance, Prop } from 'vue'
+  import ElScrollBar from 'packages/scrollbar/src/index.vue'
   // @ts-ignore
   import Popper from '@/utils/vue-popper'
   import mitt, { Emitter } from 'mitt'
-
   export default defineComponent({
 
-    mixins: [Popper],
     name: 'ElAutocompleteSuggestions',
+    
+    components: {
+      ElScrollBar
+    },
+
+    mixins: [Popper],
 
     emits: ['input', 'created'],
 

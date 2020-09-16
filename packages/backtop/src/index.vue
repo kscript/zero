@@ -17,6 +17,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, reactive, computed, getCurrentInstance, Ref, onMounted, onBeforeUnmount, ComponentInternalInstance } from 'vue'
+import ElIcon from 'packages/icon/src/index.vue'
 // @ts-ignore
 import {throttle} from 'throttle-debounce';
 
@@ -28,6 +29,9 @@ const easeInOutCubic = (value: number) => value < 0.5
 export default defineComponent({
   name: 'ElBacktop',
 
+  components: {
+    ElIcon
+  },
   props: {
     visibilityHeight: {
       type: Number,
@@ -91,10 +95,10 @@ export default defineComponent({
     onMounted(() => {
       init()
       throttledScrollHandler.value = throttle(300, onScroll)
-      container.value.addEventListener('scroll', throttledScrollHandler.value)
+      container.value?.addEventListener('scroll', throttledScrollHandler.value)
     })
     onBeforeUnmount(() => {
-      container.value.removeEventListener('scroll', throttledScrollHandler.value);
+      container.value?.removeEventListener('scroll', throttledScrollHandler.value);
     })
     return {
       container,

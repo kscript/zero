@@ -40,6 +40,10 @@ import {
   onMounted, onUpdated,
   VNode, PropType
 } from 'vue'
+import ElLink from 'packages/link/src/index.vue'
+import ElIcon from 'packages/icon/src/index.vue'
+import ElCollapse from 'packages/collapse/src/index.vue'
+import ElCollapseItem from 'packages/collapse/src/item.vue'
 import 'prismjs'
 import 'prismjs/themes/prism-tomorrow.css'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.min'
@@ -49,6 +53,12 @@ import { modelValueType, modelValueArray } from '../../collapse/src/type'
 
 export default defineComponent({
   name: 'ElCode',
+  components: {
+    ElLink,
+    ElIcon,
+    ElCollapse,
+    ElCollapseItem
+  },
   props: {
     mode: {
       type: String,

@@ -60,6 +60,8 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs, provide, computed, Prop, PropType, ComputedRef, getCurrentInstance, ComponentInternalInstance } from 'vue'
+import ElButton from 'packages/button/src/index.vue'
+import ElButtonGroup from 'packages/button/src/button-group.vue'
 // @ts-ignore
 import { t } from '@/locale'
 // @ts-ignore
@@ -76,6 +78,8 @@ export default defineComponent({
   name: 'ElCalendar',
 
   components: {
+    ElButton,
+    ElButtonGroup,
     DateTable
   },
 

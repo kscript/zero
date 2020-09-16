@@ -61,6 +61,8 @@
 
 <script lang="ts">
   import { defineComponent, reactive, computed, getCurrentInstance, ComponentInternalInstance, watch, nextTick, VNode, ComponentPublicInstance, onBeforeUnmount, onMounted, Directive, ObjectDirective, provide, ref, toRefs } from 'vue'
+  import ElInput from 'packages/input/src/index.vue'
+  import ElAutocompleteSuggestions from 'packages/autocomplete/src/autocomplete-suggestions.vue'
   // @ts-ignore
   import { debounce } from 'throttle-debounce'
   import Clickoutside from '@/utils/clickoutside'
@@ -71,6 +73,11 @@
 
   export default defineComponent({
     name: 'ElAutocomplete',
+
+    components: {
+      ElInput,
+      ElAutocompleteSuggestions
+    },
 
     mixins: [ Migrating ],
 

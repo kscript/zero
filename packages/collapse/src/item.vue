@@ -49,6 +49,7 @@
     defineComponent, computed, watch, reactive, provide, inject, getCurrentInstance, 
     PropType, Ref
   } from 'vue'
+  import ElCollapseTransition from 'packages/collapse-transition/src/index.vue'
   // @ts-ignore
   import { generateId } from '@/utils/util'
   import { modelValueType, collapseProvide, modelValueArray } from './type'
@@ -57,6 +58,10 @@
     name: 'ElCollapseItem',
 
     componentName: 'ElCollapseItem',
+
+    components: {
+      ElCollapseTransition
+    },
 
     props: {
       title: String,
