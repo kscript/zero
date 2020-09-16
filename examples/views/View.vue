@@ -130,7 +130,7 @@ export default defineComponent({
       }
     })
     // @ts-ignore
-    const highlight = () => Prism.highlightAll()
+    const highlight = () => window?.highlightProxy?.()
     onMounted(highlight)
     onUpdated(highlight)
     return () =>
@@ -149,7 +149,27 @@ export default defineComponent({
 })
 </script>
 <style lang="scss">
+@keyframes bgSize {
+  0% {
+    opacity: 0;
+    background-size: 0%;
+    transform: rotateX(180deg);
+  }
+  50% {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+  100% {
+    background-size: 50%;
+  }
+}
 .demo-container {
+  iframe {
+    background: url('../assets/codepen.svg') center no-repeat #eee;
+    background-size: 60%;
+    border: 1px solid #fff;
+    animation: bgSize 1s;
+  }
   .el-card__body {
     padding: 0px;
     .el-code.is-open {

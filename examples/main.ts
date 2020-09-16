@@ -2,6 +2,11 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+
+import 'prismjs'
+import 'prismjs/themes/prism-tomorrow.css'
+import 'prismjs/plugins/line-numbers/prism-line-numbers.min'
+
 // @ts-ignore
 import zeroUI from '@zero-ui/vue'
 import 'github-markdown-css'

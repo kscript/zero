@@ -44,13 +44,15 @@ import ElLink from 'packages/link/src/index.vue'
 import ElIcon from 'packages/icon/src/index.vue'
 import ElCollapse from 'packages/collapse/src/index.vue'
 import ElCollapseItem from 'packages/collapse/src/item.vue'
-import 'prismjs'
-import 'prismjs/themes/prism-tomorrow.css'
-import 'prismjs/plugins/line-numbers/prism-line-numbers.min'
 import { modelValueType, modelValueArray } from '../../collapse/src/type'
-// @ts-ignore
-// Prism.languages.html.br = /\n/
-
+const win: anyObject = window
+const highlightProxy = win.highlightProxy || ((html?: string, type?: string) => {
+  const Prism = win.Prism
+  if (html && type) {
+    return Prism?.highlight(html, Prism.languages[type], type) || (html.replace(/\</g, '&lt;'))
+  }
+  Prism?.highlightAll()
+})
 export default defineComponent({
   name: 'ElCode',
   components: {
@@ -120,8 +122,7 @@ export default defineComponent({
       docsView?.collapseNameChange?.(value, close)
     })
     watch(() => show.value, (value) => {
-      // @ts-ignore
-      value && Prism.highlightAll()
+      value && highlightProxy()
     })
     onMounted(() => {
       const slot = slots.default ? slots.default() : []
@@ -144,12 +145,10 @@ export default defineComponent({
             .join('\n')
         }
       }
-      // @ts-ignore
-      code.value = Prism.highlight(html, Prism.languages[props.type], props.type)
+      code.value = highlightProxy(html, props.type)
     })
     onUpdated(() => {
-      // @ts-ignore
-      Prism.highlightAll()
+      highlightProxy()
     })
     return {
       code,
