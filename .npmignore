@@ -1,3 +1,4 @@
+common/
 templates/
 packages/
 examples/
@@ -9,6 +10,9 @@ Guide.md
 vue.config.js
 babel.config.js
 prettier.config.js
+tsconfig.json
+tslint.json
+.browserslistrc
 .travis.yml
 *.map
 *.lock
