@@ -2,7 +2,11 @@ const path = require('path')
 const resolve = (dir) => {
   return path.join(__dirname, dir)
 }
+const entrys = {
+  'build:demand': './build/demand.config.js'
+}
 const mode = process.env.npm_lifecycle_event === 'build:umd' ? 'build:umd' : process.env.NODE_ENV
+
 const loadScss = () => {
   return '@import "common/scss/variables.scss";'
 }
@@ -12,7 +16,13 @@ const publicPath = () => {
   }
   return mode === 'development' ? '/' : '/zero/'
 }
-module.exports = {
+const loadConfig = (baseConfig) => {
+  const entry = entrys[process.env.npm_lifecycle_event]
+  const output = entry ? require(entry) : null
+  return typeof output === 'function' ? output(baseConfig) : output || baseConfig
+}
+
+module.exports = loadConfig({
   publicPath: publicPath(),
   productionSourceMap: false,
   pages: {
@@ -30,6 +40,9 @@ module.exports = {
         additionalData: loadScss()
       }
     }
+  },
+  externals: {
+    vue: "Vue"
   },
   chainWebpack: config => {
     config.resolve.alias
@@ -64,4 +77,4 @@ module.exports = {
       })
     
   }
-}
+})

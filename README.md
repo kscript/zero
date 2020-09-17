@@ -13,9 +13,9 @@ npm i -D @zero-ui/vue
 ``` javascript
 import { createApp } from 'vue'
 import App from './App.vue'
-import zeroUI from '@zero-ui/vue'
+import ZeroUI from '@zero-ui/vue'
 import '@zero-ui/vue/lib/zero.css'
-createApp(App).use(zeroUI).mount('#app')
+createApp(App).use(ZeroUI).mount('#app')
 ```
 
 ## 在线demo

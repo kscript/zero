@@ -10,6 +10,7 @@
     "build": "vue-cli-service build && node ./examples/build",
     "lint": "vue-cli-service lint",
     "build:umd": "vue-cli-service build --target lib --name zero --dest lib packages/index.ts",
+    "build:demand": "vue-cli-service build",
     "prepublishOnly": "npm run build:umd"
   },
   "main": "lib/zero.umd.min.js",
@@ -34,7 +35,8 @@
     "typescript": "~3.9.3",
     "vue": "^3.0.0-rc.7",
     "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0"
+    "vuex": "^4.0.0-0",
+    "webpack": "^4.44.1"
   },
   "bugs": {
     "url": "https://github.com/kscript/zero/issues"
