@@ -58,6 +58,7 @@
 
 <script lang="ts">
 import { on, off } from '@/utils/dom'
+// @ts-ignore
 import { rafThrottle, isFirefox } from '@/utils/util'
 import { ComponentInternalInstance, computed, defineComponent, getCurrentInstance, nextTick, onMounted, reactive, toRefs, watch } from 'vue'
 import { ScrollBehavior } from 'vue-router'
