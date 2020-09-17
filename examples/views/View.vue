@@ -37,6 +37,7 @@ import ElDrawer from './ElDrawer'
 import ElRadio from './ElRadio'
 import ElForm from './ElForm'
 import ElSwitch from './ElSwitch'
+import ElImage from './ElImage'
 import { DemoEntry, Markdown } from './type'
 
 const demos = [
@@ -63,7 +64,8 @@ const demos = [
   ElDrawer,
   ElRadio,
   ElForm,
-  ElSwitch
+  ElSwitch,
+  ElImage
 ]
 const markdowns: anyObject<Markdown> = {}
 const components: anyObject<ComponentOptions> = {}
@@ -650,6 +652,94 @@ export default defineComponent({
 
   .fr {
     float: right;
+  }
+}
+
+.el-image-md {
+  @keyframes dot {
+    0% {
+      width: 0;
+      margin-right: 1em;
+    }
+
+    to {
+      width: 1em;
+      margin-right: 0;
+    }
+  }
+
+  .demo-image .block,
+  .demo-image__error .block,
+  .demo-image__placeholder .block {
+    padding: 30px 0;
+    text-align: center;
+    border-right: 1px solid #eff2f6;
+    display: inline-block;
+    width: 20%;
+    box-sizing: border-box;
+    vertical-align: top;
+  }
+
+  .demo-image .block:last-child,
+  .demo-image__error .block:last-child,
+  .demo-image__placeholder .block:last-child {
+    border-right: none;
+  }
+
+  .demo-image .demonstration,
+  .demo-image__error .demonstration,
+  .demo-image__placeholder .demonstration {
+    display: block;
+    color: #8492a6;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .demo-image__error .block,
+  .demo-image__placeholder .block {
+    width: 49%;
+  }
+
+  .demo-image__error .el-image,
+  .demo-image__placeholder .el-image {
+    width: 300px;
+    height: 200px;
+  }
+
+  .demo-image__error .image-slot,
+  .demo-image__placeholder .image-slot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: #f5f7fa;
+    color: #909399;
+    font-size: 14px;
+  }
+
+  .demo-image__placeholder .dot {
+    animation: dot 2s steps(3, start) infinite;
+    overflow: hidden;
+  }
+
+  .demo-image__error .image-slot {
+    font-size: 30px;
+  }
+
+  .demo-image__lazy {
+    height: 400px;
+    overflow-y: auto;
+  }
+
+  .demo-image__lazy .el-image {
+    display: block;
+    min-height: 200px;
+    margin-bottom: 10px;
+  }
+
+  .demo-image__lazy .el-image:last-child {
+    margin-bottom: 0;
   }
 }
 </style>

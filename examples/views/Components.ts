@@ -80,6 +80,10 @@ export const list = [
         title: 'Input 输入框'
     },
     {
+        name: 'ElImage',
+        title: 'Image 图片'
+    },
+    {
         name: 'ElLink',
         title: 'Link 文字链接'
     },
