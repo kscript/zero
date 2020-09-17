@@ -40,6 +40,7 @@ createApp(App).use(zeroUI).mount('#app')
 - [x] Form 表单  
 - [x] Icon 图标  
 - [x] Input 输入框  
+- [x] Image 图片  
 - [x] Link 链接  
 - [x] Markdown*  
 - [x] Radio 单选框  
