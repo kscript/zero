@@ -7,7 +7,8 @@
             zero-ui
           </span>
         </el-link>
-        <el-link class="link-repository" icon="iconfont icon-github" href="https://github.com/kscript/zero" :underline="false" target="_blank"></el-link>
+        <el-link class="link-icon" icon="iconfont icon-github" href="https://github.com/kscript/zero" :underline="false" target="_blank"></el-link>
+        <el-link class="link-icon" icon="iconfont icon-qq" href="https://qm.qq.com/cgi-bin/qm/qr?k=dny0rBikAgLvvYwzKT8IOBzq70KvwEMs&jump_from=webapi" :underline="false" target="_blank"></el-link>
       </div>
     </el-header>
     <el-main>
@@ -72,12 +73,13 @@ $height: 80px;
     font-size: 32px;
     line-height: $height;
   }
-  .link-repository {
+  .link-icon {
     float: right;
   }
-  ::v-deep(.icon-github) {
+  ::v-deep(.iconfont) {
     font-size: 28px;
     line-height: $height;
+    margin-left: 12px;
   }
 }
 .el-main {

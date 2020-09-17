@@ -44,3 +44,9 @@ module.exports = {
 由于时间精力有限, 目前组件文档底部的相关属性表格, 直接复制于element-ui, 
 <span style="color:red;">未经验证, 仅供参考</span>. 如在使用过程中, 遇到与文档不符之处, <a href="https://github.com/kscript/zero/issues" target="_blank" style="text-decoration: none;">请到GitHub上反馈</a>.
 </p>
+
+## 交流群
+前端技术交流群(QQ)  
+群号: [218699135](https://qm.qq.com/cgi-bin/qm/qr?k=dny0rBikAgLvvYwzKT8IOBzq70KvwEMs&jump_from=webapi)  
+二维码:  
+![](https://qun.qq.com/qrcode/index?data=https%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Fk%3Ddny0rBikAgLvvYwzKT8IOBzq70KvwEMs%26jump_from%3Dwebapi%26qr%3D1)  

@@ -55,6 +55,12 @@ createApp(App).use(zeroUI).mount('#app')
 ## 贡献指南
 如果你也想要为重构vue3版本的element-ui出一份力, 可以先浏览参考这份[贡献指南 Guide](./Guide.md), 方便快速上手
 
+## 交流群
+前端技术交流群(QQ)  
+群号: [218699135](https://qm.qq.com/cgi-bin/qm/qr?k=dny0rBikAgLvvYwzKT8IOBzq70KvwEMs&jump_from=webapi)  
+二维码:  
+![](https://qun.qq.com/qrcode/index?data=https%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Fk%3Ddny0rBikAgLvvYwzKT8IOBzq70KvwEMs%26jump_from%3Dwebapi%26qr%3D1)  
+
 ## 参考 
 - [element](https://github.com/ElemeFE/element)  
 - [ele-next](https://github.com/a631807682/ele-next)
