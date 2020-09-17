@@ -1,6 +1,7 @@
 // import Vue from 'vue';
 import { isString, isObject } from '@src/utils/types'
 const Vue = {}
+const isServer = false
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 
 export function noop() {};
@@ -115,15 +116,15 @@ export const coerceTruthyValueToArray = function(val) {
 };
 
 export const isIE = function() {
-  return !Vue.prototype.$isServer && !isNaN(Number(document.documentMode));
+  return !isServer && !isNaN(Number(document.documentMode));
 };
 
 export const isEdge = function() {
-  return !Vue.prototype.$isServer && navigator.userAgent.indexOf('Edge') > -1;
+  return !isServer && navigator.userAgent.indexOf('Edge') > -1;
 };
 
 export const isFirefox = function() {
-  return !Vue.prototype.$isServer && !!window.navigator.userAgent.match(/firefox/i);
+  return !isServer && !!window.navigator.userAgent.match(/firefox/i);
 };
 
 export const autoprefixer = function(style) {

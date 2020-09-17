@@ -37,6 +37,7 @@ import formItem from './form-item'
 import header from './header'
 import icon from './icon'
 import input from './input'
+import image from './image'
 import link from './link'
 import main from './main'
 import markdown from './markdown'
@@ -86,6 +87,7 @@ export const FormItem = formItem
 export const Header = header
 export const Icon = icon
 export const Input = input
+export const Image = image
 export const Link = link
 export const Main = main
 export const Markdown = markdown
@@ -135,6 +137,7 @@ export const components = [
   Header,
   Icon,
   Input,
+  Image,
   Link,
   Main,
   Markdown,
@@ -202,6 +205,7 @@ export const ZeroUI = {
   Header,
   Icon,
   Input,
+  Image,
   Link,
   Main,
   Markdown,

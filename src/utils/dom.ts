@@ -167,7 +167,7 @@ export function setStyle(element: HTMLElementX, styleName: anyObject | string, v
   }
 }
 
-export const isScroll = (el: HTMLElementX, vertical: boolean) => {
+export const isScroll = (el: HTMLElementX, vertical?: boolean) => {
   if (isServer) return
 
   const determinedDirection = vertical !== null || vertical !== undefined
@@ -180,7 +180,7 @@ export const isScroll = (el: HTMLElementX, vertical: boolean) => {
   return overflow.match(/(scroll|auto)/)
 }
 
-export const getScrollContainer = (el: HTMLElementX, vertical: boolean) => {
+export const getScrollContainer = (el: HTMLElementX, vertical?: boolean) => {
   if (isServer) return
 
   let parent = el
