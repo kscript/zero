@@ -1,6 +1,6 @@
 <template>
   <component
-    :is="_elTag"
+    :is="elTag"
     class="el-radio-group"
     role="radiogroup"
     @keydown="handleKeydown"
@@ -34,10 +34,10 @@ import { useInject, useInstance, useElement } from './useRadio'
       const { elFormItem } = useInject()
       const ElementUIOptions = useElement()
       const { vnode, type } = useInstance()
-      const _elFormItemSize = computed(() => elFormItem.elFormItemSize)
-      const _elTag = computed(() => 'div')
+      const elFormItemSize = computed(() => elFormItem.elFormItemSize)
+      const elTag = computed(() => 'div')
 
-      const radioGroupSize = computed(() => props.size || _elFormItemSize.value || ElementUIOptions.value.size)
+      const radioGroupSize = computed(() => props.size || elFormItemSize.value || ElementUIOptions.value.size)
       
       const handleChange = (value: any) => {
         emit('change', value)
@@ -101,7 +101,7 @@ import { useInject, useInstance, useElement } from './useRadio'
       })
 
       return {
-        _elTag,
+        elTag,
         handleKeydown
       }
     }

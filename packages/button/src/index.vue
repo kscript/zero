@@ -60,11 +60,11 @@
       const elForm: elForm | void = inject('elForm', {})
       const elFormItem: elFormItem | void = inject('elFormItem', {})
       const slot = cxt.slots.default ? cxt.slots.default() : ''
-      const _elFormItemSize = computed(() => {
+      const elFormItemSize = computed(() => {
         return (elFormItem instanceof Object ? elFormItem : {}).elFormItemSize
       })
       const buttonSize = computed(() => {
-        return props.size || _elFormItemSize.value || ElementUIOptions.value.size
+        return props.size || elFormItemSize.value || ElementUIOptions.value.size
       })
       const buttonDisabled = computed(() => {
         return props.disabled || (elForm instanceof Object ? elForm : {}).disabled
@@ -73,7 +73,7 @@
         slot,
         elForm,
         elFormItem,
-        _elFormItemSize,
+        elFormItemSize,
         buttonSize,
         buttonDisabled
       }

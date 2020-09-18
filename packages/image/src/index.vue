@@ -164,19 +164,19 @@ export default defineComponent({
     }
     const addLazyLoadListener = () => {
       if ($isServer) return
-      let _scrollContainer = null
+      let scrollContainerTemp = null
       const el = instance.vnode.el as HTMLElement
 
       if (isHtmlElement(props.scrollContainer)) {
-        _scrollContainer = props.scrollContainer
+        scrollContainerTemp = props.scrollContainer
       } else if (typeof props.scrollContainer === 'string') {
-        _scrollContainer = document.querySelector(props.scrollContainer)
+        scrollContainerTemp = document.querySelector(props.scrollContainer)
       } else {
-        _scrollContainer = getScrollContainer(el)
+        scrollContainerTemp = getScrollContainer(el)
       }
 
-      if (_scrollContainer) {
-        scrollContainer = _scrollContainer as HTMLElement
+      if (scrollContainerTemp) {
+        scrollContainer = scrollContainerTemp as HTMLElement
         lazyLoadHandler = throttle(200, handleLazyLoad)
         on(scrollContainer, 'scroll', lazyLoadHandler)
         handleLazyLoad()

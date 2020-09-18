@@ -21,41 +21,41 @@ export const useInstance = () => {
 export const useInject = () => {
   const elForm = inject('elForm', {}) as anyObject
   const elFormItem = inject('elFormItem', {}) as anyObject
-  const _radioGroup = inject('RadioGroup', {}) as anyObject
-  return { elForm, elFormItem, _radioGroup }
+  const radioGroup = inject('RadioGroup', {}) as anyObject
+  return { elForm, elFormItem, radioGroup }
 }
 
 export const useState = (props: anyObject) => {
-  const { elForm, elFormItem, _radioGroup } = useInject()
-  const isGroup = computed(() => !isEmpty(_radioGroup))
-  const _elFormItemSize = computed(() => {
+  const { elForm, elFormItem, radioGroup } = useInject()
+  const isGroup = computed(() => !isEmpty(radioGroup))
+  const elFormItemSize = computed(() => {
     return (elFormItem || {}).elFormItemSize
   })
   const size = computed(() => {
-    return _radioGroup.radioGroupSize.value || _elFormItemSize.value || ElementUIOptions.value.size
+    return radioGroup.radioGroupSize.value || elFormItemSize.value || ElementUIOptions.value.size
   })
   const isDisabled = computed(() => {
     return isGroup.value
-      ? _radioGroup.disabled || props.disabled || elForm.disabled
+      ? radioGroup.disabled || props.disabled || elForm.disabled
       : props.disabled || elForm.disabled
   })
   const tabIndex = computed(() => {
-    return (isDisabled.value || (_radioGroup.value && props.modelValue !== props.label)) ? -1 : 0;
+    return (isDisabled.value || (radioGroup.value && props.modelValue !== props.label)) ? -1 : 0;
   })
-  return { _radioGroup, isGroup, _elFormItemSize, size, isDisabled, tabIndex }
+  return { radioGroup, isGroup, elFormItemSize, size, isDisabled, tabIndex }
 }
 
 export const useRadio = (props: anyObject) => {
   const { emit, refs } = useInstance()
-  const { isGroup, _radioGroup, ...state } = useState(props)
+  const { isGroup, radioGroup, ...state } = useState(props)
   const focus = ref(false)
   const realModelValue = computed({
     get() {
-      return isGroup.value ? _radioGroup.realModelValue.value : props.modelValue
+      return isGroup.value ? radioGroup.realModelValue.value : props.modelValue
     },
     set(val) {
       if (isGroup.value) {
-        _radioGroup.emit?.('update:modelValue', val)
+        radioGroup.emit?.('update:modelValue', val)
       } else {
         emit('update:modelValue', val)
       }
@@ -69,7 +69,7 @@ export const useRadio = (props: anyObject) => {
     ElementUIOptions,
 
     isGroup,
-    _radioGroup,
+    radioGroup,
 
     realModelValue
   }

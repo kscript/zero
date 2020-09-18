@@ -60,23 +60,23 @@
     },
 
     setup(props, { emit, slots }) {
-      const { focus, isGroup, _elFormItemSize, isDisabled, tabIndex, realModelValue, _radioGroup, ElementUIOptions } = useRadio(props)
+      const { focus, isGroup, elFormItemSize, isDisabled, tabIndex, realModelValue, radioGroup, ElementUIOptions } = useRadio(props)
       const radioSize = computed(() => {
-        const temRadioSize = props.size || _elFormItemSize.value || ElementUIOptions.value.size
+        const temRadioSize = props.size || elFormItemSize.value || ElementUIOptions.value.size
         return isGroup.value
-          ? _radioGroup.radioGroupSize.value || temRadioSize
+          ? radioGroup.radioGroupSize.value || temRadioSize
           : temRadioSize
       })
       const handleChange = () => {
         nextTick(() => {
           emit('change', realModelValue.value)
-          isGroup.value && _radioGroup.handleChange?.(realModelValue.value)
+          isGroup.value && radioGroup.handleChange?.(realModelValue.value)
         })
       }
 
       return {
         slots,
-        focus, isGroup, _elFormItemSize, isDisabled, tabIndex, realModelValue,
+        focus, isGroup, elFormItemSize, isDisabled, tabIndex, realModelValue,
         radioSize,
         handleChange
       }

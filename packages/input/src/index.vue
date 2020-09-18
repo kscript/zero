@@ -212,7 +212,7 @@
       const emitter: Emitter = mitt()
       const elForm = inject('elForm', null) as elFormInject | null
       const elFormItem = inject('elFormItem', null)  as elFormItemInject | null
-      const _elFormItemSize = computed(() => {
+      const elFormItemSize = computed(() => {
         return (elFormItem || {}).elFormItemSize
       })
       const validateState = computed(() => {
@@ -233,7 +233,7 @@
         return merge({}, state.textareaCalcStyle, { resize: props.resize })
       })
       const inputSize = computed(() => {
-        return props.size || _elFormItemSize.value || ElementUIOptions.value.size
+        return props.size || elFormItemSize.value || ElementUIOptions.value.size
       })
       const inputDisabled = computed(() => {
         return props.disabled || (elForm || {}).disabled
@@ -454,7 +454,7 @@
       return {
         ...toRefs(state),
 
-        _elFormItemSize,
+        elFormItemSize,
         validateState,
         needStatusIcon,
         validateIcon,

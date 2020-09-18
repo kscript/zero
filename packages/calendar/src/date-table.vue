@@ -118,8 +118,8 @@ export default defineComponent({
       } else if (type === 'next') {
         prefix = nextMonthDatePrefix.value
       }
-      let _day = `00${day}`.slice(-2)
-      return `${prefix}-${_day}`
+      let dayTemp = `00${day}`.slice(-2)
+      return `${prefix}-${dayTemp}`
     }
     const getCellClass = ({ text, type}: Cell) => {
       const classes = [type]

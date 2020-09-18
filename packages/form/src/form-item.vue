@@ -165,11 +165,11 @@ export default defineComponent({
       }
       return isRequired
     })
-    const _formSize = computed(() => {
+    const formSize = computed(() => {
       return size
     })
     const elFormItemSize = computed(() => {
-      return props.size || _formSize.value
+      return props.size || formSize.value
     })
     const sizeClass = computed(() => {
       return elFormItemSize.value || ElementUIOptions.value.size

@@ -46,25 +46,25 @@
       name: String
     },
     setup(props, { emit, slots }) {
-      const { focus, size, isGroup, isDisabled, tabIndex, _radioGroup, ElementUIOptions } = useRadio(props)
+      const { focus, size, isGroup, isDisabled, tabIndex, radioGroup, ElementUIOptions } = useRadio(props)
       const realModelValue = computed({
         get() {
-          return _radioGroup.realModelValue.value
+          return radioGroup.realModelValue.value
         },
         set(value) {
-          _radioGroup.emit('update:modelValue', value)
+          radioGroup.emit('update:modelValue', value)
         }
       })
       const activeStyle = computed(() => {
         return {
-          backgroundColor: _radioGroup.fill || '',
-          borderColor: _radioGroup.fill || '',
-          color: _radioGroup.textColor || '',
-          'box-shadow': '-1px 0 0 0 ' + _radioGroup.fill
+          backgroundColor: radioGroup.fill || '',
+          borderColor: radioGroup.fill || '',
+          color: radioGroup.textColor || '',
+          'box-shadow': '-1px 0 0 0 ' + radioGroup.fill
         }
       })
       const handleChange = () => {
-        _radioGroup.trigger?.('handleChange', realModelValue.value)
+        radioGroup.trigger?.('handleChange', realModelValue.value)
       }
       return {
         slots,

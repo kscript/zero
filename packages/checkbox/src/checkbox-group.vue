@@ -23,11 +23,11 @@
 
     setup(props, { emit }) {
       const elFormItem = inject('elFormItem', {}) as ElFormItem
-      const _elFormItemSize = computed(() => {
+      const elFormItemSize = computed(() => {
         return (elFormItem || {}).elFormItemSize
       })
       const checkboxGroupSize = computed(() => {
-        return props.size || _elFormItemSize.value || ElementUIOptions.value.size
+        return props.size || elFormItemSize.value || ElementUIOptions.value.size
       })
 
       watch(() => props.modelValue, (value) => {
