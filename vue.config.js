@@ -41,9 +41,6 @@ module.exports = loadConfig({
       }
     }
   },
-  externals: {
-    vue: "Vue"
-  },
   chainWebpack: config => {
     config.resolve.alias
       .set('@@', resolve('examples'))

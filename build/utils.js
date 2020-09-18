@@ -1,6 +1,5 @@
 const fs = require('fs')
 const path = require('path')
-const fileLoader = require('ks-file-loader').default
 const resolve = (...dir) => {
   return path.join(process.cwd(), ...dir)
 }

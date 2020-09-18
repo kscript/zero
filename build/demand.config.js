@@ -1,6 +1,6 @@
 const { resolve, getComponentEntries } = require("./utils")
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const webpack = require('webpack');
-
 module.exports = (baseConfig = {}) => {
   const { configureWebpack, chainWebpack, css } = baseConfig
   const packages = 'packages'
@@ -26,17 +26,19 @@ module.exports = (baseConfig = {}) => {
         splitChunks: {
           cacheGroups: {
             common: {
-              // test : /\.(j|t)s(x|)$/,
               name: "common",
+              minChunks: 5,
               chunks: "initial",
-              minChunks: 3,
-              filename: '[name].bundle.js'
+              filename: '[name].bundle.js',
+              priority: 5
             }
           }
         }
-      }
+      },
+      plugins:[
+        new BundleAnalyzerPlugin()
+      ]
     },
-    //  样式输出
     css: Object.assign({}, css, {
       sourceMap: true,
       extract: {
