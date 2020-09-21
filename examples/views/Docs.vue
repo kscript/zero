@@ -54,13 +54,14 @@ export default defineComponent({
     const components = ref(list)
     const activeIndex = ref(-1)
     const activeName = ref(route.params.id)
+
     const prev = computed(() => {
       const index = activeIndex.value - 1
       return index < 0 ? {} : components.value[index]
     })
     const next = computed(() => {
       const index = activeIndex.value + 1
-      return index < 0 ? {} : components.value[index]
+      return index < 0 || index >= components.value.length ? {} : components.value[index]
     })
 
     watchEffect(() => {
@@ -68,7 +69,6 @@ export default defineComponent({
       activeIndex.value = components.value.findIndex(item => item.name === route.params.id)
     })
 
-    console.log(prev, next, activeIndex)
     return {
       activeName,
       components,
