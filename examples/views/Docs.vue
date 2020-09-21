@@ -6,7 +6,7 @@
           <ul class="componet-list">
             <li v-for="vo in components" :key="vo.name">
               <router-link :to="{ path: '/docs/' + vo.name }">
-                <el-link :type="vo.name === activeName ? 'primary' : 'default'" @click="clickHandler(vo.name)">
+                <el-link :type="vo.name === activeName ? 'primary' : 'default'">
                   {{vo.title}}
                 </el-link>
               </router-link>
@@ -54,9 +54,6 @@ export default defineComponent({
     const components = ref(list)
     const activeIndex = ref(-1)
     const activeName = ref(route.params.id)
-    const clickHandler = (name: string) => {
-      activeName.value = name
-    }
     const prev = computed(() => {
       const index = activeIndex.value - 1
       return index < 0 ? {} : components.value[index]
@@ -67,13 +64,13 @@ export default defineComponent({
     })
 
     watchEffect(() => {
+      activeName.value = route.params.id
       activeIndex.value = components.value.findIndex(item => item.name === route.params.id)
     })
 
     console.log(prev, next, activeIndex)
     return {
       activeName,
-      clickHandler,
       components,
       prev,
       next
