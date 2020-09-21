@@ -1,8 +1,14 @@
 // @ts-ignore
 import { kebabCase } from '@/utils/util'
-/// <reference path="../../packages/global.d.ts" />
-
-const getMigratingConfig: () => anyObject = () => {
+interface MigratingOption {
+  props: {
+    [prop: string]: any
+  }
+  events: {
+    [prop: string]: any
+  }
+}
+const getMigratingConfig: () => MigratingOption = () => {
   return {
     props: {},
     events: {}

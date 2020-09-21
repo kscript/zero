@@ -39,7 +39,6 @@
 <script lang="ts">
 // @ts-ignore
 import Focus from '@/mixins/focus'
-// @ts-ignore
 import Migrating from '@/mixins/migrating'
 import { ComponentInternalInstance, computed, defineComponent, getCurrentInstance, inject, nextTick, onMounted, PropType, ref } from 'vue'
 

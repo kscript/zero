@@ -125,7 +125,6 @@
     ComponentInternalInstance,
     toRefs
   } from 'vue'
-  // @ts-ignore
   import Migrating from '@/mixins/migrating'
   // @ts-ignore
   import merge from '@/utils/merge'
