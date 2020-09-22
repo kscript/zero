@@ -99,4 +99,8 @@ export const list = [
         name: 'ElTag',
         title: 'Tag 标签'
     },
+    {
+        name: 'InfiniteScroll',
+        title: 'InfiniteScroll 无限滚动'
+    },
 ]

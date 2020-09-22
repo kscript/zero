@@ -38,6 +38,7 @@ import ElRadio from './ElRadio'
 import ElForm from './ElForm'
 import ElSwitch from './ElSwitch'
 import ElImage from './ElImage'
+import InfiniteScroll from './InfiniteScroll'
 import { DemoEntry, Markdown } from './type'
 
 const demos = [
@@ -65,7 +66,8 @@ const demos = [
   ElRadio,
   ElForm,
   ElSwitch,
-  ElImage
+  ElImage,
+  InfiniteScroll
 ]
 const markdowns: anyObject<Markdown> = {}
 const components: anyObject<ComponentOptions> = {}
@@ -740,6 +742,55 @@ export default defineComponent({
 
   .demo-image__lazy .el-image:last-child {
     margin-bottom: 0;
+  }
+}
+.infinite-scroll-md {
+  .infinite-list {
+    height: 300px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    .infinite-list-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      background: #e8f3fe;
+      margin: 10px;
+      color: #7dbcfc;
+    }
+    .infinite-list-item + .list-item {
+      margin-top: 10px;
+    }
+  }
+  .infinite-list-wrapper {
+    height: 300px;
+    text-align: center;
+    .list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .list-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      background: #fff6f6;
+      color: #ff8484;
+    }
+
+    .list-item + .list-item {
+      margin-top: 10px;
+    }
+  }
+  p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
   }
 }
 </style>
