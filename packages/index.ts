@@ -38,6 +38,7 @@ import header from './header'
 import icon from './icon'
 import input from './input'
 import image from './image'
+import infiniteScroll from './infinite-scroll'
 import link from './link'
 import main from './main'
 import markdown from './markdown'
@@ -88,6 +89,7 @@ export const Header = header
 export const Icon = icon
 export const Input = input
 export const Image = image
+export const InfiniteScroll = infiniteScroll
 export const Link = link
 export const Main = main
 export const Markdown = markdown
@@ -103,6 +105,9 @@ export const Switch = $switch
 export const Tag = tag
 export const Table = table
 export const TableColumn = tableColumn
+export const directives = [
+  InfiniteScroll
+]
 export const components = [
   Alert,
   Aside,
@@ -157,6 +162,7 @@ export const components = [
 export const install = function (app: App, opts = {}) {
   // 判断是否安装
   if (install.installed) return
+  directives.map(item => app.directive(item.name as string, item.directive))
   // 遍历注册全局组件
   components.map(component => app.component(component.name as string, component))
 
