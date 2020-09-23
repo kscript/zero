@@ -175,7 +175,7 @@ install.installed = false
 
 const win: anyObject = window || {}
 
-export const version = '1.0.5'
+export const version = '1.0.6'
 export const ZeroUI = {
   install,
   Alert,
