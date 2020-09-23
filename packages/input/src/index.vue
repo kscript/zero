@@ -371,8 +371,8 @@
         // hack for https://github.com/ElemeFE/element/issues/8548
         // should remove the following line when we don't support IE
         if (value === nativeInputValue.value) return
-        const isNumber = (attrs.modelModifiers as anyObject)?.number
-        const finalValue = value ? isNumber ? isNaN(parseFloat(value)) ? '' : parseFloat(value) : '' : ''
+        const isNumber = !!(attrs.modelModifiers as anyObject)?.number
+        const finalValue = isNumber ? isNaN(parseFloat(value)) ? '' : parseFloat(value) : value
         emit('update:modelValue', finalValue)
         emit('input', finalValue)
         // ensure native input value is controlled
