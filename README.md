@@ -28,12 +28,12 @@ createApp(App).use(ZeroUI).mount('#app')
 - [x] Badge 标记  
 - [x] Breadcrumb 面包屑  
 - [x] Button 按钮  
-- [x] Card 卡片  
 - [x] Calendar 日历  
+- [x] Card 卡片  
 - [x] Carousel 走马灯  
+- [x] Checkbox 多选框  
 - [x] Code* 代码块  
 - [x] Collapse 折叠面板  
-- [x] Checkbox 多选框  
 - [x] Dialog 对话框  
 - [x] Divider 分割线  
 - [x] Drawer 抽屉  
@@ -41,12 +41,13 @@ createApp(App).use(ZeroUI).mount('#app')
 - [x] Icon 图标  
 - [x] Input 输入框  
 - [x] Image 图片  
+- [x] InfiniteScroll 无限滚动  
 - [x] Link 链接  
 - [x] Markdown*  
 - [x] Radio 单选框  
-- [x] Tag 标签  
 - [x] Scrollbar 滚动条  
 - [x] Switch 开关  
+- [x] Tag 标签  
 - [x] Container 布局容器 (Container/Header/Aside/Main/Footer)
 - [x] Layout 布局 (Row/Col)
 
