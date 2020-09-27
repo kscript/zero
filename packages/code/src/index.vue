@@ -17,6 +17,12 @@
           <el-link type="primary" :underline="false">
             <el-icon class="animate" :name="show ? 'caret-top' : 'caret-bottom'"></el-icon>
             <span class="animate text">{{show ? '隐藏' : '显示'}}代码</span>
+            <template v-if="link">
+              <a class="animate text right" :href="link" v-if="typeof link === 'string'" target="_blank">
+                在线运行
+              </a>
+              <span class="animate text right" v-else @click.stop="clickLink">在线运行</span>
+            </template>
           </el-link>
         </template>
       </el-collapse-item>
@@ -90,12 +96,16 @@ export default defineComponent({
       type: String,
       default: ''
     },
+    link: {
+      type: [String, ],
+      default: ''
+    },
     collapseName: {
       type: [Array, String, Number] as PropType<modelValueType>,
       default: () => [] as modelValueArray
     }
   },
-  setup(props, { slots }) {
+  setup(props, { slots, emit }) {
     const code = ref('')
     const show = ref(false)
     const collapseNameActive = ref(props.collapseName)
@@ -117,6 +127,9 @@ export default defineComponent({
     const close = () => {
       collapseNameActive.value = ''
       show.value = false
+    }
+    const clickLink = () => {
+      emit('clickLink')
     }
     watch(() => collapseNameActive.value, (value) => {
       docsView?.collapseNameChange?.(value, close)
@@ -154,6 +167,7 @@ export default defineComponent({
       code,
       show,
       slots,
+      clickLink,
       collapseNameActive
     }
   }
@@ -188,6 +202,9 @@ export default defineComponent({
     }
     .el-link {
       display: block;
+      a {
+        text-decoration: none;
+      }
       .animate {
         transition: .3s;
         transform: translateX(10px);
@@ -200,6 +217,9 @@ export default defineComponent({
         opacity: 0;
         font-size: 14px;
         display: inline-block;
+      }
+      .right {
+        right: 0;
       }
     }
     &:hover {

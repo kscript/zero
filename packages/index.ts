@@ -42,6 +42,7 @@ import infiniteScroll from './infinite-scroll'
 import link from './link'
 import main from './main'
 import markdown from './markdown'
+import pagination from './pagination'
 import row from './row'
 import radio from './radio'
 import radioButton from './radio-button'
@@ -95,6 +96,7 @@ export const Main = main
 export const Markdown = markdown
 export const Option = option
 export const OptionGroup = optionGroup
+export const Pagination = pagination
 export const Radio = radio
 export const RadioButton = radioButton
 export const RadioGroup = radioGroup
@@ -148,6 +150,7 @@ export const components = [
   Markdown,
   Option,
   OptionGroup,
+  Pagination,
   Radio,
   RadioButton,
   RadioGroup,
@@ -176,6 +179,7 @@ install.installed = false
 const win: anyObject = window || {}
 
 export const version = '1.0.6'
+
 export const ZeroUI = {
   install,
   Alert,
@@ -217,6 +221,7 @@ export const ZeroUI = {
   Markdown,
   Option,
   OptionGroup,
+  Pagination,
   Radio,
   RadioButton,
   RadioGroup,
@@ -228,6 +233,7 @@ export const ZeroUI = {
   Table,
   TableColumn
 }
+
 export default ZeroUI
 
 win.ZeroUI = ZeroUI

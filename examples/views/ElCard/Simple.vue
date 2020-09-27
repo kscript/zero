@@ -8,9 +8,11 @@
       </div>
     </template>
     <el-code collapse :trim="-1" :first="1">
-      {{`<div v-for="o in 4" :key="o" class="text item">
-        \{\{'列表内容 ' + o \}\}
-      </div>`}}
+      {{`<el-card class="box-card">
+        <div v-for="o in 4" :key="o" class="text item">
+          \{\{'列表内容 ' + o \}\}
+        </div>
+      </el-card>`}}
     </el-code>
   </el-card>
 </template>

@@ -86,7 +86,7 @@ export default defineComponent({
 }
 
 .el-scrollbar.full-screen-height {
-  height: calc(100vh - 80px);
+  height: calc(100vh - 100px);
   position: fixed;
   width: 240px;
 }

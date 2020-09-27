@@ -18,7 +18,7 @@
         type="error">
       </el-alert>
     </template>
-    <el-code collapse :trim="-1" :first="1">
+    <el-code collapse :trim="-1" :first="1" link="//codepen.io/kscript/pen/qBZyYLb">
       {{`<el-alert
         title="成功提示的文案"
         type="success">
