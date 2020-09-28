@@ -45,7 +45,9 @@ createApp(App).use(ZeroUI).mount('#app')
 - [x] Link 链接  
 - [x] Markdown*  
 - [x] Pagination 分页  
+- [x] Progress 进度条  
 - [x] Radio 单选框  
+- [x] Rate 评分  
 - [x] Scrollbar 滚动条  
 - [x] Switch 开关  
 - [x] Tag 标签  
