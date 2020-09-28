@@ -51,6 +51,7 @@ createApp(App).use(ZeroUI).mount('#app')
 - [x] Scrollbar 滚动条  
 - [x] Switch 开关  
 - [x] Tag 标签  
+- [x] Timeline 时间线  
 - [x] Container 布局容器 (Container/Header/Aside/Main/Footer)
 - [x] Layout 布局 (Row/Col)
 
