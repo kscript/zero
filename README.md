@@ -44,6 +44,7 @@ createApp(App).use(ZeroUI).mount('#app')
 - [x] InfiniteScroll 无限滚动  
 - [x] Link 链接  
 - [x] Markdown*  
+- [x] Pagination 分页  
 - [x] Radio 单选框  
 - [x] Scrollbar 滚动条  
 - [x] Switch 开关  
