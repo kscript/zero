@@ -58,6 +58,8 @@ import $switch from './switch'
 import tag from './tag'
 import table from './table'
 import tableColumn from './table-column'
+import timeline from './timeline'
+import timelineItem from './timeline-item'
 
 export const Alert = alert
 export const Aside = aside
@@ -113,6 +115,8 @@ export const Switch = $switch
 export const Tag = tag
 export const Table = table
 export const TableColumn = tableColumn
+export const Timeline = timeline
+export const TimelineItem = timelineItem
 export const directives = [
   InfiniteScroll
 ]
@@ -169,7 +173,9 @@ export const components = [
   Switch,
   Tag,
   Table,
-  TableColumn
+  TableColumn,
+  Timeline,
+  TimelineItem
 ]
 export const install = function (app: App, opts = {}) {
   // 判断是否安装
@@ -243,7 +249,9 @@ export const ZeroUI = {
   Switch,
   Tag,
   Table,
-  TableColumn
+  TableColumn,
+  Timeline,
+  TimelineItem
 }
 
 export default ZeroUI
