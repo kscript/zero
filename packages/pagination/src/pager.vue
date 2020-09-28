@@ -40,7 +40,7 @@
 </template>
 
 <script type="ts">
-import { computed, defineComponent, reactive, toRef, watch } from 'vue'
+import { computed, defineComponent, reactive, toRefs, watch } from 'vue'
 export default defineComponent({
   name: 'ElPager',
 
@@ -141,7 +141,6 @@ export default defineComponent({
           newPage = pageCount
         }
       }
-
       if (newPage !== currentPage) {
         emit('change', newPage)
       }
@@ -175,3 +174,7 @@ export default defineComponent({
 
 })
 </script>
+
+<style lang="scss">
+@import 'theme/pagination.scss';
+</style>

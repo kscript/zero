@@ -154,6 +154,10 @@
         type: [String, Number] as PropType<String|Number>,
         default: ''
       },
+      value: {
+        type: [String, Number] as PropType<String|Number>,
+        default: ''
+      },
       size: String,
       resize: String,
       form: String,
@@ -238,7 +242,8 @@
         return props.disabled || (elForm || {}).disabled
       })
       const nativeInputValue = computed(() => {
-        return props.modelValue === null || props.modelValue === void 0 ? '' : props.modelValue
+        const value = props.modelValue === null || props.modelValue === void 0 ? '' : props.modelValue
+        return value === '' && props.value ? props.value : value
       })
       const showClear = computed(() => {
         return props.clearable &&
