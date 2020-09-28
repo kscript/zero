@@ -39,37 +39,39 @@ import ElForm from './ElForm'
 import ElSwitch from './ElSwitch'
 import ElImage from './ElImage'
 import ElPagination from './ElPagination'
+import ElProgress from './ElProgress'
 import InfiniteScroll from './InfiniteScroll'
 import { DemoEntry, Markdown } from './type'
 
 const demos = [
   Installation,
-  ElTag,
-  ElInput,
+  Container,
   ElAvatar,
   ElAlert,
-  Layout,
-  ElIcon,
   ElBadge,
+  ElBacktop,
+  ElBreadcrumb,
   ElButton,
   ElCard,
   ElCollapse,
-  Container,
-  ElBacktop,
-  ElBreadcrumb,
-  ElLink,
   ElCalendar,
   ElCarousel,
   ElCheckbox,
   ElDialog,
   ElDivider,
   ElDrawer,
-  ElRadio,
   ElForm,
-  ElSwitch,
+  ElIcon,
   ElImage,
+  ElInput,
+  ElLink,
   ElPagination,
-  InfiniteScroll
+  ElProgress,
+  ElRadio,
+  ElSwitch,
+  ElTag,
+  InfiniteScroll,
+  Layout,
 ]
 const markdowns: anyObject<Markdown> = {}
 const components: anyObject<ComponentOptions> = {}
@@ -793,6 +795,15 @@ export default defineComponent({
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
+  }
+}
+.el-progress-md {
+  .el-progress--line {
+    width: 350px;
+    margin-bottom: 15px;
+  }
+  .el-progress--circle {
+    margin-right: 15px;
   }
 }
 </style>

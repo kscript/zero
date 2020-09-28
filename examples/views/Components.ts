@@ -96,6 +96,10 @@ export const list = [
         title: 'Pagination 分页'
     },
     {
+        name: 'ElProgress',
+        title: 'Progress 进度条'
+    },
+    {
         name: 'ElSwitch',
         title: 'Switch 开关'
     },
