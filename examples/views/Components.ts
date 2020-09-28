@@ -112,6 +112,10 @@ export const list = [
         title: 'Tag 标签'
     },
     {
+        name: 'ElTimeline',
+        title: 'Timeline 时间线'
+    },
+    {
         name: 'InfiniteScroll',
         title: 'InfiniteScroll 无限滚动'
     },

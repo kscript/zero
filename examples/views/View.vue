@@ -41,6 +41,7 @@ import ElSwitch from './ElSwitch'
 import ElImage from './ElImage'
 import ElPagination from './ElPagination'
 import ElProgress from './ElProgress'
+import ElTimeline from './ElTimeline'
 import InfiniteScroll from './InfiniteScroll'
 import { DemoEntry, Markdown } from './type'
 
@@ -72,6 +73,7 @@ const demos = [
   ElRate,
   ElSwitch,
   ElTag,
+  ElTimeline,
   InfiniteScroll,
   Layout,
 ]
@@ -180,7 +182,7 @@ export default defineComponent({
     border: 1px solid #fff;
     animation: bgSize 1s;
   }
-  .el-card__body {
+  .markdown-body>p>.el-card>.el-card__body {
     padding: 0px;
     .el-code.is-open {
       padding-top: 0px;
@@ -825,6 +827,11 @@ export default defineComponent({
     color: #8492a6;
     font-size: 14px;
     margin-bottom: 20px
+  }
+}
+.el-timeline-md {
+  .el-timeline {
+    margin-top: 20px;
   }
 }
 </style>
