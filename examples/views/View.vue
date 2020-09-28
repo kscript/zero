@@ -35,6 +35,7 @@ import ElDialog from './ElDialog'
 import ElDivider from './ElDivider'
 import ElDrawer from './ElDrawer'
 import ElRadio from './ElRadio'
+import ElRate from './ElRate'
 import ElForm from './ElForm'
 import ElSwitch from './ElSwitch'
 import ElImage from './ElImage'
@@ -68,6 +69,7 @@ const demos = [
   ElPagination,
   ElProgress,
   ElRadio,
+  ElRate,
   ElSwitch,
   ElTag,
   InfiniteScroll,
@@ -804,6 +806,25 @@ export default defineComponent({
   }
   .el-progress--circle {
     margin-right: 15px;
+  }
+}
+.el-rate-md {
+  .block {
+    padding: 30px 0;
+    text-align: center;
+    border-right: 1px solid #eff2f6;
+    display: inline-block;
+    width: 49%;
+    box-sizing: border-box;
+    &:last-child {
+      border-right: none;
+    }
+  }
+  .demonstration {
+    display: block;
+    color: #8492a6;
+    font-size: 14px;
+    margin-bottom: 20px
   }
 }
 </style>

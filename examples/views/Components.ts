@@ -100,6 +100,10 @@ export const list = [
         title: 'Progress 进度条'
     },
     {
+        name: 'ElRate',
+        title: 'Rate 评分'
+    },
+    {
         name: 'ElSwitch',
         title: 'Switch 开关'
     },
