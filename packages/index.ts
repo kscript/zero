@@ -42,15 +42,18 @@ import infiniteScroll from './infinite-scroll'
 import link from './link'
 import main from './main'
 import markdown from './markdown'
+import option from './option'
+import optionGroup from './option-group'
 import pagination from './pagination'
+import progress from './progress'
 import row from './row'
 import radio from './radio'
 import radioButton from './radio-button'
 import radioGroup from './radio-group'
-import option from './option'
-import optionGroup from './option-group'
+import rate from './rate'
 import scrollbar from './scrollbar'
 import select from './select'
+import spinner from './spinner'
 import $switch from './switch'
 import tag from './tag'
 import table from './table'
@@ -97,12 +100,15 @@ export const Markdown = markdown
 export const Option = option
 export const OptionGroup = optionGroup
 export const Pagination = pagination
+export const Progress = progress
 export const Radio = radio
 export const RadioButton = radioButton
 export const RadioGroup = radioGroup
+export const Rate = rate
 export const Row = row
 export const Scrollbar = scrollbar
 export const Select = select
+export const Spinner = spinner
 export const Switch = $switch
 export const Tag = tag
 export const Table = table
@@ -151,12 +157,15 @@ export const components = [
   Option,
   OptionGroup,
   Pagination,
+  Progress,
   Radio,
   RadioButton,
   RadioGroup,
+  Rate,
   Row,
   Scrollbar,
   Select,
+  Spinner,
   Switch,
   Tag,
   Table,
@@ -222,12 +231,15 @@ export const ZeroUI = {
   Option,
   OptionGroup,
   Pagination,
+  Progress,
   Radio,
   RadioButton,
   RadioGroup,
+  Rate,
   Row,
   Scrollbar,
   Select,
+  Spinner,
   Switch,
   Tag,
   Table,
