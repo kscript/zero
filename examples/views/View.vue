@@ -38,6 +38,7 @@ import ElRadio from './ElRadio'
 import ElForm from './ElForm'
 import ElSwitch from './ElSwitch'
 import ElImage from './ElImage'
+import ElPagination from './ElPagination'
 import InfiniteScroll from './InfiniteScroll'
 import { DemoEntry, Markdown } from './type'
 
@@ -67,6 +68,7 @@ const demos = [
   ElForm,
   ElSwitch,
   ElImage,
+  ElPagination,
   InfiniteScroll
 ]
 const markdowns: anyObject<Markdown> = {}

@@ -92,6 +92,10 @@ export const list = [
         title: 'Radio 单选框'
     },
     {
+        name: 'ElPagination',
+        title: 'Pagination 分页'
+    },
+    {
         name: 'ElSwitch',
         title: 'Switch 开关'
     },
