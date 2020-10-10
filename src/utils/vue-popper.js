@@ -1,7 +1,6 @@
 import {
   PopupManager
 } from '@/utils/popup'
-import 'theme/popper.scss'
 const isServer = false
 const PopperJS = isServer ? function() {} : require('./popper');
 const stop = e => e.stopPropagation();
@@ -15,6 +14,7 @@ const stop = e => e.stopPropagation();
  * @param {Boolean} [visible-arrow=false] Visibility of the arrow, no style.
  */
 export default {
+  emits: ['input', 'created'],
   props: {
     transformOrigin: {
       type: [Boolean, String],
@@ -85,15 +85,13 @@ export default {
       }
 
       const options = this.popperOptions;
-      const popper = this.popperElm = this.popperElm || this.popper || this.$refs.popper;
-      let reference = this.referenceElm = this.referenceElm || this.reference || this.$refs.reference;
-
+      const popper = this.popperElm = this.popperElm || this.popper || this.$refs.popper || this.$el;
+      let reference = this.referenceElm = this.referenceElm || this.reference || this.$refs.reference || this.$parent.$el;
       if (!reference &&
         this.$slots.reference &&
         this.$slots.reference[0]) {
         reference = this.referenceElm = this.$slots.reference[0].elm;
       }
-
       if (!popper || !reference) return;
       if (this.visibleArrow) this.appendArrow(popper);
       if (this.appendToBody) document.body.appendChild(this.popperElm);

@@ -30,6 +30,9 @@ import collapseTransition from './collapse-transition'
 import dialog from './dialog'
 import divider from './divider'
 import drawer from './drawer'
+import dropdown from './dropdown'
+import dropdownItem from './dropdown-item'
+import dropdownMenu from './dropdown-menu'
 import { ElementUIOptions } from './ElementUIOptions'
 import footer from './footer'
 import form from './form'
@@ -88,6 +91,9 @@ export const CarouselItem = carouselItem
 export const Dialog = dialog
 export const Divider = divider
 export const Drawer = drawer
+export const Dropdown = dropdown
+export const DropdownItem = dropdownItem
+export const DropdownMenu = dropdownMenu
 export const Footer = footer
 export const Form = form
 export const FormItem = formItem
@@ -148,6 +154,9 @@ export const components = [
   Dialog,
   Divider,
   Drawer,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
   Footer,
   Form,
   FormItem,
@@ -175,7 +184,7 @@ export const components = [
   Table,
   TableColumn,
   Timeline,
-  TimelineItem
+  TimelineItem,
 ]
 export const install = function (app: App, opts = {}) {
   // 判断是否安装
@@ -224,6 +233,9 @@ export const ZeroUI = {
   Dialog,
   Divider,
   Drawer,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
   Footer,
   Form,
   FormItem,
