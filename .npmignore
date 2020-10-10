@@ -3,6 +3,7 @@ templates/
 packages/
 examples/
 public/
+build/
 dist/
 src/
 

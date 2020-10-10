@@ -40,6 +40,9 @@
     "templates/**/*.ts",
     "templates/**/*.tsx",
     "templates/**/*.vue",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
   ],
