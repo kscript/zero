@@ -68,6 +68,10 @@ export const list = [
         title: 'Drawer 抽屉'
     },
     {
+        name: 'ElDropdown',
+        title: 'Dropdown 下拉菜单'
+    },
+    {
         name: 'ElForm',
         title: 'Form 表单'
     },

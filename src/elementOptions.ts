@@ -1,4 +1,5 @@
 const options = {
-    size: 'large'
+    size: 'large',
+    zIndex: 2000
 }
 export default options

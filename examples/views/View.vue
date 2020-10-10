@@ -34,6 +34,7 @@ import ElCheckbox from './ElCheckbox'
 import ElDialog from './ElDialog'
 import ElDivider from './ElDivider'
 import ElDrawer from './ElDrawer'
+import ElDropdown from './ElDropdown'
 import ElRadio from './ElRadio'
 import ElRate from './ElRate'
 import ElForm from './ElForm'
@@ -62,6 +63,7 @@ const demos = [
   ElDialog,
   ElDivider,
   ElDrawer,
+  ElDropdown,
   ElForm,
   ElIcon,
   ElImage,
