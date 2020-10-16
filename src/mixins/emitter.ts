@@ -1,5 +1,5 @@
 import mitt from 'mitt'
-import { ComponentOptions } from 'vue'
+import { ComponentOptions, getCurrentInstance, ComponentInternalInstance } from 'vue'
 
 export const emitter = mitt()
 export function dispatch (
@@ -7,18 +7,19 @@ export function dispatch (
   eventName: string,
   params: Array<any>
 ) {
-  let parent = this.parent || this.root
+  const instance = getCurrentInstance() as ComponentInternalInstance
+  let parent = instance.parent || instance.root as ComponentInternalInstance
   let name = (parent.type as ComponentOptions).name
 
   while (parent && (!name || name !== componentName)) {
-    parent = parent.parent
+    parent = parent.parent as ComponentInternalInstance
 
     if (parent) {
       name = (parent.type as ComponentOptions).name
     }
   }
   if (parent) {
-    parent.emit.apply(parent, [eventName].concat(params))
+    parent.emit(eventName, params)
     emitter.emit(eventName, params)
   }
 }

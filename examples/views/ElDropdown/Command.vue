@@ -40,7 +40,7 @@
             }
           }
         })
-        </script>`}}
+      </script>`}}
       <template #desc><slot></slot></template>
     </el-code>
   </el-card>
