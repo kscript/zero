@@ -80,58 +80,63 @@ export default defineComponent({
         window.removeEventListener('resize', update)
       }
     })
-    return () => {
-      const gutter = scrollbarWidth()
-      let style = props.wrapStyle
-      if (gutter) {
-        const gutterWith = `-${gutter}px`
-        const gutterStyle = `padding-bottom: ${gutter}px; margin-bottom: ${gutterWith}; margin-right: ${gutterWith};`
-
-        if (Array.isArray(props.wrapStyle)) {
-          style = toObject(props.wrapStyle) as anyObject
-          style.marginRight = style.marginBottom = gutterWith
-        } else if (typeof props.wrapStyle === 'string') {
-          style += gutterStyle
-        } else {
-          style = gutterStyle
-        }
-      }
-      const view = h(props.tag, {
-        ref: 'resize',
-        class: ['el-scrollbar__view', props.viewClass],
-        style: props.viewStyle,
-      }, cxt.slots.default?.() || [])
-
-      let nodes
-
-      if (!props.native) {
-        const wrap = h('div', {
-          ref: 'wrap',
-          style,
-          class: [props.wrapClass, 'el-scrollbar__wrap', gutter ? '' : 'el-scrollbar__wrap--hidden-default'],
-          onScroll: handleScroll,
-        }, [view])
-        nodes = ([
-          wrap,
-          h(Bar, {
-            move: state.moveX,
-            size: state.sizeWidth
-          }),
-          h(Bar, {
-            vertical: '',
-            move: state.moveY,
-            size: state.sizeHeight
-          })
-        ])
-      } else {
-        nodes = [h('div', {
-          ref: 'wrap',
-          style,
-          class: [props.wrapClass, 'el-scrollbar__wrap']
-        }, [view])]
-      }
-      return h('div', { class: 'el-scrollbar' }, nodes)
+    return {
+      ...toRefs(state),
+      update,
+      handleScroll
     }
+  },
+  render() {
+    const gutter = scrollbarWidth()
+    let style = this.wrapStyle
+    if (gutter) {
+      const gutterWith = `-${gutter}px`
+      const gutterStyle = `padding-bottom: ${gutter}px; margin-bottom: ${gutterWith}; margin-right: ${gutterWith};`
+
+      if (Array.isArray(this.wrapStyle)) {
+        style = toObject(this.wrapStyle) as anyObject
+        style.marginRight = style.marginBottom = gutterWith
+      } else if (typeof this.wrapStyle === 'string') {
+        style += gutterStyle
+      } else {
+        style = gutterStyle
+      }
+    }
+    const view = h(this.tag, {
+      ref: 'resize',
+      class: ['el-scrollbar__view', this.viewClass],
+      style: this.viewStyle,
+    }, this.$slots.default?.() || [])
+
+    let nodes
+
+    if (!this.native) {
+      const wrap = h('div', {
+        ref: 'wrap',
+        style,
+        class: [this.wrapClass, 'el-scrollbar__wrap', gutter ? '' : 'el-scrollbar__wrap--hidden-default'],
+        onScroll: this.handleScroll,
+      }, [view])
+      nodes = ([
+        wrap,
+        h(Bar, {
+          move: this.moveX,
+          size: this.sizeWidth
+        }),
+        h(Bar, {
+          vertical: '',
+          move: this.moveY,
+          size: this.sizeHeight
+        })
+      ])
+    } else {
+      nodes = [h('div', {
+        ref: 'wrap',
+        style,
+        class: [this.wrapClass, 'el-scrollbar__wrap']
+      }, [view])]
+    }
+    return h('div', { class: 'el-scrollbar' }, nodes)
   }
 })
 </script>
