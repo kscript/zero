@@ -73,10 +73,10 @@ export default defineComponent({
       minWidth.value = width + 'px'
     })
     onMounted(() => {
+      const { instance: selectInstance } = inject('elSelect', {} as anyObject)
       popperElm.value = instance.vnode.el as HTMLElement
       const parent = instance.parent as ComponentInternalInstance
-      referenceElm.value = (parent?.refs
-        .reference as ComponentInternalInstance)?.vnode.el as HTMLElement || parent?.vnode.el
+      referenceElm.value = selectInstance.vnode.el
       emitter.on('destroyPopper', proxy.destroyPopper)
       emitter.on('updatePopper', () => {
         if (selectState.visible) proxy.updatePopper()
@@ -85,8 +85,14 @@ export default defineComponent({
     return {
       multiple,
       minWidth,
-      popperClass
+      popperClass,
+      popperElm,
+      referenceElm
     }
   }
 })
 </script>
+
+<style lang="scss">
+@import 'theme/select-dropdown.scss';
+</style>

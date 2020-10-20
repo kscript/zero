@@ -213,8 +213,8 @@
         slots
       })
       const emitter: Emitter = mitt()
-      const elForm = inject('elForm') as elFormInject
-      const elFormItem = inject('elFormItem') as elFormItemInject
+      const elForm = inject('elForm', {}) as elFormInject
+      const elFormItem = inject('elFormItem', {}) as elFormItemInject
       const elFormItemSize = computed(() => {
         return (elFormItem || {}).elFormItemSize
       })

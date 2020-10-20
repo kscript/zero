@@ -132,7 +132,7 @@ export const useSelect = (props: anyObject) => {
     }
     state.previousQuery = val;
     nextTick(() => {
-      if (state.visible) elDropdown.emitter?.emit('updatePopper');
+      if (state.visible) emitter.emit('updatePopper');
     });
     hoverIndex.value = -1;
     if (props.multiple && props.filterable) {
@@ -318,7 +318,7 @@ export const useSelect = (props: anyObject) => {
     if (props.collapseTags && !props.filterable) return;
     nextTick(() => {
       if (!instance.refs.reference) return;
-      let inputChildNodes = (instance.refs.reference as VNode).el?.childNodes;
+      let inputChildNodes = (instance.refs.reference as anyObject).$el?.childNodes;
       let input = [].filter.call(inputChildNodes, (item: HTMLElement) => item.tagName === 'INPUT')[0] as HTMLInputElement;
       const tags = instance.refs.tags as HTMLElement;
       const sizeInMap = state.initialInputHeight || 40;
@@ -331,7 +331,7 @@ export const useSelect = (props: anyObject) => {
           ) + 'px';
       }
       if (state.visible && emptyText.value !== false) {
-        elDropdown.emitter?.emit('updatePopper');
+        emitter.emit('updatePopper');
       }
     });
   }
@@ -625,7 +625,7 @@ export const useSelect = (props: anyObject) => {
         }
       }
     } else {
-      elDropdown.emitter?.emit('updatePopper');
+      emitter.emit('updatePopper');
       if (props.filterable) {
         state.query = props.remote ? '' : state.selectedLabel;
         handleQueryChange(state.query);
@@ -651,7 +651,7 @@ export const useSelect = (props: anyObject) => {
 
     // if (this.$isServer) return;
     nextTick(() => {
-      elDropdown.emitter?.emit('updatePopper');
+      emitter.emit('updatePopper');
     });
     if (props.multiple) {
       resetInputHeight();
@@ -717,7 +717,7 @@ export const useSelect = (props: anyObject) => {
   provide('elSelect', Object.assign({
     emitter,
     onOptionDestroy
-  }, {state, props}))
+  }, {state, props, instance}))
   return {
     ...toRefs(state),
     hoverIndex,
@@ -729,6 +729,8 @@ export const useSelect = (props: anyObject) => {
     emptyText,
     showNewOption,
     collapseTagSize,
+    showClose,
+    iconClass,
 
     handleFocus,
     handleBlur,
@@ -745,6 +747,8 @@ export const useSelect = (props: anyObject) => {
     getValueKey,
     resetInputState,
     deletePrevTag,
-    handleComposition
+    handleComposition,
+    resetInputHeight,
+    managePlaceholder
   }
 }

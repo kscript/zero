@@ -29,17 +29,17 @@
         </el-tag>
       </span>
       <transition-group @after-leave="resetInputHeight" v-if="!collapseTags">
-        <el-tag
-          v-for="item in selected"
-          :key="getValueKey(item)"
-          :closable="!selectDisabled"
-          :size="collapseTagSize"
-          :hit="item.hitState"
-          type="info"
-          @close="deleteTag($event, item)"
-          disable-transitions>
-          <span class="el-select__tags-text">{{ item.currentLabel }}</span>
-        </el-tag>
+        <span v-for="item in selected" :key="getValueKey(item)">
+          <el-tag
+            :closable="!selectDisabled"
+            :size="collapseTagSize"
+            :hit="item.hitState"
+            type="info"
+            @close="deleteTag($event, item)"
+            disable-transitions>
+            <span class="el-select__tags-text">{{ item.currentLabel }}</span>
+          </el-tag>
+        </span>
       </transition-group>
 
       <input
@@ -92,10 +92,10 @@
       @paste.native="debouncedOnInputChange"
       @mouseenter.native="inputHovering = true"
       @mouseleave.native="inputHovering = false">
-      <template slot="prefix" v-if="$slots.prefix">
+      <template #prefix v-if="$slots.prefix">
         <slot name="prefix"></slot>
       </template>
-      <template slot="suffix">
+      <template #suffix>
         <i v-show="!showClose" :class="['el-select__caret', 'el-input__icon', 'el-icon-' + iconClass]"></i>
         <i v-if="showClose" class="el-select__caret el-input__icon el-icon-circle-close" @click="handleClearClick"></i>
       </template>
@@ -229,5 +229,6 @@ export default defineComponent({
     }
   })
 </script>
-
-
+<style lang="scss">
+@import 'theme/select.scss';
+</style>

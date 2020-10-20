@@ -93,6 +93,7 @@ export default {
         reference = this.referenceElm = this.$slots.reference[0].elm;
       }
       if (!popper || !reference) return;
+
       if (this.visibleArrow) this.appendArrow(popper);
       if (this.appendToBody) document.body.appendChild(this.popperElm);
       if (this.popperJS && this.popperJS.destroy) {
@@ -102,6 +103,8 @@ export default {
       options.placement = this.currentPlacement;
       options.offset = this.offset;
       options.arrowOffset = this.arrowOffset;
+
+      
       this.popperJS = new PopperJS(reference, popper, options);
       this.popperJS.onCreate(_ => {
         this.$emit('created', this);
