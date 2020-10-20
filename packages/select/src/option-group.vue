@@ -9,52 +9,47 @@
   </ul>
 </template>
 
-<script type="text/babel">
-  import Emitter from '@/mixins/emitter';
+<script lang="ts">
+import { defineComponent, inject, onMounted, ref, watch } from 'vue'
 
-  export default {
-    mixins: [Emitter],
+export default defineComponent({
+  name: 'ElOptionGroup',
 
-    name: 'ElOptionGroup',
+  componentName: 'ElOptionGroup',
 
-    componentName: 'ElOptionGroup',
-
-    props: {
-      label: String,
-      disabled: {
-        type: Boolean,
-        default: false
-      }
-    },
-
-    data() {
-      return {
-        visible: true
-      };
-    },
-
-    watch: {
-      disabled(val) {
-        this.broadcast('ElOption', 'handleGroupDisabled', val);
-      }
-    },
-
-    methods: {
-      queryChange() {
-        this.visible = this.$children &&
-          Array.isArray(this.$children) &&
-          this.$children.some(option => option.visible === true);
-      }
-    },
-
-    created() {
-      // this.$on('queryChange', this.queryChange);
-    },
-
-    mounted() {
-      if (this.disabled) {
-        this.broadcast('ElOption', 'handleGroupDisabled', this.disabled);
-      }
+  props: {
+    label: String,
+    disabled: {
+      type: Boolean,
+      default: false
     }
-  };
+  },
+
+  setup(props) {
+    const visible = ref(true)
+    const children = ref([] as anyObject[])
+    const { emitter } = inject('elSelect', {} as anyObject)
+    watch(
+      () => props.disabled,
+      val => {
+        emitter.emit('handleGroupDisabled', val)
+      }
+    )
+    const queryChange = () => {
+      visible.value =
+        children.value &&
+        Array.isArray(children.value) &&
+        children.value.some(option => option.visible === true)
+    }
+    emitter.on('queryChange', queryChange)
+    onMounted(() => {
+      if (props.disabled) {
+        emitter.emit('handleGroupDisabled', props.disabled)
+      }
+    })
+    return {
+      visible
+    }
+  }
+})
 </script>

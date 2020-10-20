@@ -40,7 +40,6 @@
 <script lang="ts">
   // @ts-ignore
   import Popup from '@/utils/popup'
-  import { broadcast } from '@/utils/broadcast'
   import Migrating from '@/mixins/migrating'
   import { ComponentInternalInstance, computed, defineComponent, getCurrentInstance, inject, nextTick, onMounted, onUnmounted, provide, ref, watch } from 'vue'
 
@@ -119,6 +118,7 @@
     },
 
     setup(props, { emit, slots }) {
+      const elDropdown = inject('elDropdown', {} as anyObject)
       const closed = ref(false)
       const key = ref(0)
       const instance = getCurrentInstance() as ComponentInternalInstance 
@@ -182,7 +182,7 @@
         }
       }
       const updatePopper = () => {
-        broadcast.emit('ElDropdownMenu:updatePopper')
+        elDropdown.emitter?.emit('updatePopper')
       }
       const afterEnter = () => {
         emit('opened')

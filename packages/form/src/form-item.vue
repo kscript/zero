@@ -55,7 +55,6 @@ import { noop, getPropByPath } from '@/utils/util'
 import LabelWrap from './label-wrap.vue'
 import ElementUIOptions from 'packages/ElementUIOptions'
 import { ComponentInternalInstance, computed, defineComponent, getCurrentInstance, inject, nextTick, onBeforeUnmount, onMounted, provide, reactive, ref, toRefs, watch } from 'vue'
-import { broadcast } from '@/utils/broadcast'
 import mitt from 'mitt'
 export default defineComponent({
   name: 'ElFormItem',
@@ -246,7 +245,6 @@ export default defineComponent({
       nextTick(() => {
         state.validateDisabled = false
       })
-      broadcast.emit('ElTimeSelect:fieldReset', initialValue.value)
     }
     const getRules = () => {
       let formRules = (elForm as anyObject).rules

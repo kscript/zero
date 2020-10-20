@@ -8,7 +8,6 @@
   </transition>
 </template>
 <script lang="ts">
-import { broadcast } from '@/utils/broadcast'
 // @ts-ignore
 import Popper from '@/utils/vue-popper'
 import { ComponentInternalInstance, defineComponent, getCurrentInstance, inject, onMounted, ref, watch } from 'vue'
@@ -38,7 +37,7 @@ export default defineComponent({
     const size = dropdownSize
     const proxy = (instance as anyObject).proxy
     const showPopper = ref(false)
-    broadcast.on('ElDropdownMenu:updatePopper', () => {
+    emitter.on('updatePopper', () => {
       if (proxy.showPopper.value) {
         proxy.updatePopper(instance.vnode.el as HTMLElement)
       }
