@@ -213,8 +213,8 @@
         slots
       })
       const emitter: Emitter = mitt()
-      const elForm = inject('elForm', null) as elFormInject | null
-      const elFormItem = inject('elFormItem', null)  as elFormItemInject | null
+      const elForm = inject('elForm') as elFormInject
+      const elFormItem = inject('elFormItem') as elFormItemInject
       const elFormItemSize = computed(() => {
         return (elFormItem || {}).elFormItemSize
       })
@@ -286,7 +286,7 @@
       watch(() => props.modelValue, (val) => {
         nextTick(resizeTextarea)
         if (props.validateEvent) {
-          emitter.emit('el.form.change', [val])
+          elFormItem.emitter?.emit('el.form.change', [val])
         }
       })
       watch(() => nativeInputValue.value, () => {
@@ -321,7 +321,7 @@
         state.focused = false
         emit('blur', event)
         if (props.validateEvent) {
-          emitter.emit('el.form.blur', [props.modelValue])
+          elFormItem.emitter?.emit('el.form.blur', [props.modelValue])
         }
       }
       const select = () => {

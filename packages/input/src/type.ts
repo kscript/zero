@@ -1,3 +1,5 @@
+import { Emitter } from 'mitt';
+
 export interface Icons {
     validating: string;
     success: string;
@@ -9,6 +11,7 @@ export interface elFormInject {
     disabled: boolean;
 }
 export interface elFormItemInject {
+    emitter: Emitter;
     elFormItemSize: string;
     validateState: ValidateState;
 }
