@@ -56,6 +56,7 @@ import LabelWrap from './label-wrap.vue'
 import ElementUIOptions from 'packages/ElementUIOptions'
 import { ComponentInternalInstance, computed, defineComponent, getCurrentInstance, inject, nextTick, onBeforeUnmount, onMounted, provide, reactive, ref, toRefs, watch } from 'vue'
 import { broadcast } from '@/utils/broadcast'
+import mitt from 'mitt'
 export default defineComponent({
   name: 'ElFormItem',
 
@@ -87,7 +88,8 @@ export default defineComponent({
     LabelWrap
   },
   setup(props, { slots }) {
-    const { emitter, size, autoLabelWidth, props: elForm } = inject('elForm', {} as anyObject)
+    const { emitter: formEmitter, size, autoLabelWidth, props: elForm } = inject('elForm', {} as anyObject)
+    const emitter = mitt()
     const instance = getCurrentInstance() as ComponentInternalInstance
     const state = reactive({
       validateState: '',
@@ -207,11 +209,11 @@ export default defineComponent({
           state.validateState = !errors ? 'success' : 'error'
           state.validateMessage = errors ? errors[0].message : ''
           callback(state.validateMessage, invalidFields)
-          emitter.emit(
+          formEmitter.emit(
             'validate',
-            props.prop,
+            [props.prop,
             !errors,
-            state.validateMessage || null
+            state.validateMessage || null]
           )
         }
       )
@@ -311,8 +313,8 @@ export default defineComponent({
     })
     const initialValue = ref(fieldValue.value)
     provide('elFormItem', {
-      elFormItemSize: elFormItemSize.value,
       emitter,
+      elFormItemSize: elFormItemSize.value,
       updateComputedLabelWidth
     })
     onMounted(() => {
