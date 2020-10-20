@@ -10,7 +10,6 @@
   </form>
 </template>
 <script lang="ts">
-import { broadcast } from '@/utils/broadcast'
 // @ts-ignore
 import objectAssign from '@/utils/merge'
 import mitt from 'mitt'

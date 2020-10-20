@@ -182,7 +182,7 @@
         }
       }
       const updatePopper = () => {
-        broadcast.emit('updatePopper')
+        broadcast.emit('ElDropdownMenu:updatePopper')
       }
       const afterEnter = () => {
         emit('opened')

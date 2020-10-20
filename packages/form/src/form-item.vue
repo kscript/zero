@@ -244,7 +244,7 @@ export default defineComponent({
       nextTick(() => {
         state.validateDisabled = false
       })
-      broadcast.emit('fieldReset', initialValue.value)
+      broadcast.emit('ElTimeSelect:fieldReset', initialValue.value)
     }
     const getRules = () => {
       let formRules = (elForm as anyObject).rules

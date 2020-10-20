@@ -38,7 +38,7 @@ export default defineComponent({
     const size = dropdownSize
     const proxy = (instance as anyObject).proxy
     const showPopper = ref(false)
-    broadcast.on('updatePopper', () => {
+    broadcast.on('ElDropdownMenu:updatePopper', () => {
       if (proxy.showPopper.value) {
         proxy.updatePopper(instance.vnode.el as HTMLElement)
       }
