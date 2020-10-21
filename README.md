@@ -48,6 +48,7 @@ createApp(App).use(ZeroUI).mount('#app')
 - [x] Progress 进度条  
 - [x] Radio 单选框  
 - [x] Rate 评分  
+- [x] Select 选择器  
 - [x] Scrollbar 滚动条  
 - [x] Switch 开关  
 - [x] Tag 标签  
