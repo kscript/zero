@@ -57,6 +57,8 @@ import rate from './rate'
 import scrollbar from './scrollbar'
 import select from './select'
 import spinner from './spinner'
+import step from './step'
+import steps from './steps'
 import $switch from './switch'
 import tag from './tag'
 import table from './table'
@@ -117,6 +119,8 @@ export const Row = row
 export const Scrollbar = scrollbar
 export const Select = select
 export const Spinner = spinner
+export const Step = step
+export const Steps = steps
 export const Switch = $switch
 export const Tag = tag
 export const Table = table
@@ -178,6 +182,8 @@ export const components = [
   Row,
   Scrollbar,
   Select,
+  Step,
+  Steps,
   Spinner,
   Switch,
   Tag,
@@ -257,6 +263,8 @@ export const ZeroUI = {
   Row,
   Scrollbar,
   Select,
+  Step,
+  Steps,
   Spinner,
   Switch,
   Tag,
