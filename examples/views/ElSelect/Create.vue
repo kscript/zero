@@ -30,7 +30,31 @@
           :label="item.label"
           :value="item.value">
         </el-option>
-      </el-select>`}}
+      </el-select>
+      
+      <script lang="ts">
+      import { defineComponent, reactive, toRefs } from 'vue'
+      export default defineComponent({
+        setup() {
+          const state = reactive({
+            options: [{
+              value: 'HTML',
+              label: 'HTML'
+            }, {
+              value: 'CSS',
+              label: 'CSS'
+            }, {
+              value: 'JavaScript',
+              label: 'JavaScript'
+            }],
+            value: []
+          })
+          return {
+            ...toRefs(state)
+          }
+        }
+      })
+      </script>`}}
       <template #desc><slot></slot></template>
     </el-code>
   </el-card>
@@ -42,21 +66,21 @@ export default defineComponent({
   name: 'Create',
   setup() {
     const state = reactive({
-        options: [{
-          value: 'HTML',
-          label: 'HTML'
-        }, {
-          value: 'CSS',
-          label: 'CSS'
-        }, {
-          value: 'JavaScript',
-          label: 'JavaScript'
-        }],
-        value: []
-      })
-      return {
-        ...toRefs(state)
-      }
+      options: [{
+        value: 'HTML',
+        label: 'HTML'
+      }, {
+        value: 'CSS',
+        label: 'CSS'
+      }, {
+        value: 'JavaScript',
+        label: 'JavaScript'
+      }],
+      value: []
+    })
+    return {
+      ...toRefs(state)
+    }
   }
 })
 </script>

@@ -28,7 +28,45 @@
             :value="item.value">
           </el-option>
         </el-option-group>
-      </el-select>`}}
+      </el-select>
+      <script lang="ts">
+      import { defineComponent, reactive, toRefs } from 'vue'
+      export default defineComponent({
+        setup() {
+          const state = reactive({
+            options: [{
+              label: '热门城市',
+              options: [{
+                value: 'Shanghai',
+                label: '上海'
+              }, {
+                value: 'Beijing',
+                label: '北京'
+              }]
+            }, {
+              label: '城市名',
+              options: [{
+                value: 'Chengdu',
+                label: '成都'
+              }, {
+                value: 'Shenzhen',
+                label: '深圳'
+              }, {
+                value: 'Guangzhou',
+                label: '广州'
+              }, {
+                value: 'Dalian',
+                label: '大连'
+              }]
+            }],
+            value: ''
+          })
+          return {
+            ...toRefs(state)
+          }
+        }
+      })
+      </script>`}}
       <template #desc><slot></slot></template>
     </el-code>
   </el-card>
@@ -40,36 +78,36 @@ export default defineComponent({
   name: 'Group',
   setup() {
     const state = reactive({
+      options: [{
+        label: '热门城市',
         options: [{
-          label: '热门城市',
-          options: [{
-            value: 'Shanghai',
-            label: '上海'
-          }, {
-            value: 'Beijing',
-            label: '北京'
-          }]
+          value: 'Shanghai',
+          label: '上海'
         }, {
-          label: '城市名',
-          options: [{
-            value: 'Chengdu',
-            label: '成都'
-          }, {
-            value: 'Shenzhen',
-            label: '深圳'
-          }, {
-            value: 'Guangzhou',
-            label: '广州'
-          }, {
-            value: 'Dalian',
-            label: '大连'
-          }]
-        }],
-        value: ''
-      })
-      return {
-        ...toRefs(state)
-      }
+          value: 'Beijing',
+          label: '北京'
+        }]
+      }, {
+        label: '城市名',
+        options: [{
+          value: 'Chengdu',
+          label: '成都'
+        }, {
+          value: 'Shenzhen',
+          label: '深圳'
+        }, {
+          value: 'Guangzhou',
+          label: '广州'
+        }, {
+          value: 'Dalian',
+          label: '大连'
+        }]
+      }],
+      value: ''
+    })
+    return {
+      ...toRefs(state)
+    }
   }
 })
 </script>
