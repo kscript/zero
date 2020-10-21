@@ -123,7 +123,7 @@
     onUpdated,
     getCurrentInstance,
     ComponentInternalInstance,
-    toRefs
+    toRefs, ref
   } from 'vue'
   import Migrating from '@/mixins/migrating'
   // @ts-ignore
@@ -212,6 +212,7 @@
         attrs,
         slots
       })
+      const inputValue = ref(props.modelValue)
       const emitter: Emitter = mitt()
       const elForm = inject('elForm', {}) as elFormInject
       const elFormItem = inject('elFormItem', {}) as elFormItemInject
@@ -282,7 +283,11 @@
         return isWordLimitVisible &&
           (textLength > upperLimit)
       })
-
+      const finalValue = computed(() => {
+        const isNumber = !!(attrs.modelModifiers as anyObject)?.number
+        const value = parseFloat(String(inputValue.value))
+        return isNumber ? isNaN(value) ? '' : value : inputValue.value
+      })
       watch(() => props.modelValue, (val) => {
         nextTick(resizeTextarea)
         if (props.validateEvent) {
@@ -367,6 +372,10 @@
           handleInput(event)
         }
       }
+      watch(() => finalValue.value, (value: String | Number) => {
+        emit('update:modelValue', value)
+        emit('input', value)
+      })
       const handleInput = (event: Event) => {
         // should not emit input during composition
         // see: https://github.com/ElemeFE/element/issues/10516
@@ -376,16 +385,13 @@
         // hack for https://github.com/ElemeFE/element/issues/8548
         // should remove the following line when we don't support IE
         if (value === nativeInputValue.value) return
-        const isNumber = !!(attrs.modelModifiers as anyObject)?.number
-        const finalValue = isNumber ? isNaN(parseFloat(value)) ? '' : parseFloat(value) : value
-        emit('update:modelValue', finalValue)
-        emit('input', finalValue)
+        inputValue.value = value
         // ensure native input value is controlled
         // see: https://github.com/ElemeFE/element/issues/12850
         nextTick(setNativeInputValue)
       }
       const handleChange = (event: Event) => {
-        emit('change', (event.target as HTMLInputElement)?.value)
+        emit('change', finalValue.value)
       }
       const calcIconOffset = (place: 'suffix' | 'prefix') => {
         const $el = instance.vnode.el
@@ -420,6 +426,7 @@
           setNativeInputValue()
           emit('input', '')
           emit('change', '')
+          console.log('clear')
           emit('update:modelValue', '')
           emit('clear')
         })
@@ -492,7 +499,6 @@
         handlePasswordVisible,
         getInput,
         getSuffixVisible
-
       }
     },
 
