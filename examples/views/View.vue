@@ -43,6 +43,7 @@ import ElImage from './ElImage'
 import ElPagination from './ElPagination'
 import ElProgress from './ElProgress'
 import ElSelect from './ElSelect'
+import ElSteps from './ElSteps'
 import ElTimeline from './ElTimeline'
 import InfiniteScroll from './InfiniteScroll'
 import { DemoEntry, Markdown } from './type'
@@ -75,6 +76,7 @@ const demos = [
   ElRadio,
   ElRate,
   ElSelect,
+  ElSteps,
   ElSwitch,
   ElTag,
   ElTimeline,

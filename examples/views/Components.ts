@@ -80,6 +80,10 @@ export const list = [
         title: 'Select 选择器'
     },
     {
+        name: 'ElSteps',
+        title: 'Steps 步骤条'
+    },
+    {
         name: 'ElIcon',
         title: 'Icon 图标'
     },
