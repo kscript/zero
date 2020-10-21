@@ -90,8 +90,8 @@ $height: 80px;
 }
 .el-scrollbar{
   height: 100%;
-  ::v-deep(.main-scroll-view) {
-    padding-top: 30px;
-  }
+  // ::v-deep(.main-scroll-view) {
+  //   padding-top: 30px;
+  // }
 }
 </style>

@@ -76,6 +76,10 @@ export const list = [
         title: 'Form 表单'
     },
     {
+        name: 'ElSelect',
+        title: 'Select 选择器'
+    },
+    {
         name: 'ElIcon',
         title: 'Icon 图标'
     },

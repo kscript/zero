@@ -42,6 +42,7 @@ import ElSwitch from './ElSwitch'
 import ElImage from './ElImage'
 import ElPagination from './ElPagination'
 import ElProgress from './ElProgress'
+import ElSelect from './ElSelect'
 import ElTimeline from './ElTimeline'
 import InfiniteScroll from './InfiniteScroll'
 import { DemoEntry, Markdown } from './type'
@@ -73,6 +74,7 @@ const demos = [
   ElProgress,
   ElRadio,
   ElRate,
+  ElSelect,
   ElSwitch,
   ElTag,
   ElTimeline,
@@ -834,6 +836,11 @@ export default defineComponent({
 .el-timeline-md {
   .el-timeline {
     margin-top: 20px;
+  }
+}
+.el-select-md {
+  .el-select__input{
+    margin-left: 15px;
   }
 }
 </style>

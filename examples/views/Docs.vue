@@ -80,13 +80,14 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+
 .el-container {
   width: 1140px;
   margin: 0 auto;
 }
 
 .el-scrollbar.full-screen-height {
-  height: calc(100vh - 100px);
+  height: calc(100vh - 80px);
   position: fixed;
   width: 240px;
 }
