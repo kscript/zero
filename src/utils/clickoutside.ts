@@ -61,7 +61,7 @@ const clickoutside: ObjectDirective = {
     let len = nodeList.length
 
     for (let i = 0; i < len; i++) {
-      if (nodeList[i][ctx].id === el[ctx].id) {
+      if (nodeList[i][ctx]?.id === el[ctx]?.id) {
         nodeList.splice(i, 1)
         break
       }
