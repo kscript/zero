@@ -41,7 +41,7 @@ export default defineComponent({
         Array.isArray(children.value) &&
         children.value.some(option => option.visible === true)
     }
-    emitter.on('queryChange', queryChange)
+    emitter.on('optionGroup:queryChange', queryChange)
     onMounted(() => {
       if (props.disabled) {
         emitter.emit('handleGroupDisabled', props.disabled)

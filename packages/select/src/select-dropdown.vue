@@ -74,9 +74,9 @@ export default defineComponent({
     })
     onMounted(() => {
       const { instance: selectInstance } = inject('elSelect', {} as anyObject)
-      popperElm.value = instance.vnode.el as HTMLElement
-      const parent = instance.parent as ComponentInternalInstance
-      referenceElm.value = selectInstance.vnode.el
+
+      const parent = referenceElm.value = selectInstance.vnode.el
+      parent.popperElm = instance.vnode.el
       emitter.on('destroyPopper', proxy.destroyPopper)
       emitter.on('updatePopper', () => {
         if (selectState.visible) proxy.updatePopper()

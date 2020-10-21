@@ -96,7 +96,7 @@ export default defineComponent({
       ...props,
       currentLabel
     })
-    
+
     const isEqual = (a: any, b: any) => {
       if (!isObject.value) {
         return a === b
@@ -151,8 +151,7 @@ export default defineComponent({
     watch(
       () => currentLabel.value,
       () => {
-        if (!props.created && !selectProps.remote)
-          emitter.emit('setSelected')
+        if (!props.created && !selectProps.remote) emitter.emit('setSelected')
       }
     )
     watch(
@@ -160,10 +159,7 @@ export default defineComponent({
       (val: anyObject, oldVal: anyObject) => {
         const { remote, valueKey } = select
         if (!props.created && !remote) {
-          if (
-            valueKey &&
-            val instanceof Object &&
-            oldVal instanceof Object) {
+          if (valueKey && val instanceof Object && oldVal instanceof Object) {
             // @ts-ignore
             if (val[valueKey] === oldVal[valueKey]) {
               return
@@ -174,24 +170,14 @@ export default defineComponent({
       }
     )
 
-    
     selectState.options.push(optionInstance)
     selectState.cachedOptions.push(optionInstance)
     selectState.optionsCount++
     selectState.filteredOptionsCount++
-    // this.$on('queryChange', this.queryChange);
-    // this.$on('handleGroupDisabled', this.handleGroupDisabled);
+    emitter.on('queryChange', queryChange)
+    emitter.on('handleGroupDisabled', handleGroupDisabled)
     onUnmounted(() => {
-      const { selected, multiple } = select
-      let selectedOptions = multiple ? selected : [selected]
-      let index = selectState.cachedOptions.indexOf(instance)
-      let selectedIndex = selectedOptions.indexOf(instance)
-
-      // if option is not selected, remove it from cache
-      if (index > -1 && selectedIndex < 0) {
-        selectState.cachedOptions.splice(index, 1)
-      }
-      select.onOptionDestroy(selectState.options.indexOf(instance))
+      select.optionDestroy(optionInstance)
     })
     return {
       ...toRefs(state),

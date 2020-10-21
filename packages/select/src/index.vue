@@ -45,9 +45,13 @@
       <input
         type="text"
         class="el-select__input"
+        ref="input"
+        v-model="query"
+        v-if="filterable"
         :class="[selectSize ? `is-${ selectSize }` : '']"
         :disabled="selectDisabled"
         :autocomplete="autoComplete || autocomplete"
+        :style="{ 'flex-grow': '1', width: inputLength / (inputWidth - 32) + '%', 'max-width': inputWidth - 42 + 'px' }"
         @focus="handleFocus"
         @blur="softFocus = false"
         @keyup="managePlaceholder"
@@ -61,11 +65,7 @@
         @compositionstart="handleComposition"
         @compositionupdate="handleComposition"
         @compositionend="handleComposition"
-        v-model="query"
-        @input="debouncedQueryChange"
-        v-if="filterable"
-        :style="{ 'flex-grow': '1', width: inputLength / (inputWidth - 32) + '%', 'max-width': inputWidth - 42 + 'px' }"
-        ref="input">
+        @input="debouncedQueryChange">
     </div>
     <el-input
       ref="reference"
@@ -83,16 +83,16 @@
       :tabindex="(multiple && filterable) ? '-1' : null"
       @focus="handleFocus"
       @blur="handleBlur"
-      @keyup.native="debouncedOnInputChange"
+      @keyup="debouncedOnInputChange"
       @keydown.native.down.stop.prevent="navigateOptions('next')"
       @keydown.native.up.stop.prevent="navigateOptions('prev')"
       @keydown.native.enter.prevent="selectOption"
       @keydown.native.esc.stop.prevent="visible = false"
       @keydown.native.tab="visible = false"
-      @paste.native="debouncedOnInputChange"
+      @paste="debouncedOnInputChange"
       @mouseenter.native="inputHovering = true"
       @mouseleave.native="inputHovering = false">
-      <template #prefix v-if="$slots.prefix">
+      <template #prefix v-if="slots.prefix">
         <slot name="prefix"></slot>
       </template>
       <template #suffix>
@@ -107,7 +107,8 @@
       <el-select-menu
         ref="popper"
         :append-to-body="popperAppendToBody"
-        v-show="visible && emptyText !== false">
+        v-show="visible && emptyText !== false"
+        :a="visible">
         <el-scrollbar
           tag="ul"
           wrap-class="el-select-dropdown__wrap"
@@ -123,7 +124,7 @@
           <slot></slot>
         </el-scrollbar>
         <template v-if="emptyText && (!allowCreate || loading || (allowCreate && options.length === 0 ))">
-          <slot name="empty" v-if="$slots.empty"></slot>
+          <slot name="empty" v-if="slots.empty"></slot>
           <p class="el-select-dropdown__empty" v-else>
             {{ emptyText }}
           </p>
@@ -223,7 +224,7 @@ export default defineComponent({
         default: true
       }
     },
-    emits: ['update:modelValue', 'change', 'visible-change', 'focus', 'blur'],
+    emits: ['update:modelValue', 'change', 'visible-change', 'remove-tag', 'focus', 'blur'],
     setup(props) {
       return useSelect(props)
     }
