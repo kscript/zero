@@ -91,8 +91,7 @@ export default defineComponent({
     let style = this.wrapStyle
     if (gutter) {
       const gutterWith = `-${gutter}px`
-      const gutterStyle = `padding-bottom: ${gutter}px; margin-bottom: ${gutterWith}; margin-right: ${gutterWith};`
-
+      const gutterStyle = `padding-bottom: ${gutter}px; padding-right: ${gutter}px; margin-bottom: ${gutterWith}; margin-right: ${gutterWith};`
       if (Array.isArray(this.wrapStyle)) {
         style = toObject(this.wrapStyle) as anyObject
         style.marginRight = style.marginBottom = gutterWith
