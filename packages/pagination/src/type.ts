@@ -28,11 +28,11 @@ export interface PaginationReturn {
 
 export interface PaginationState {
   internalCurrentPage: Ref<number>
-  internalPageSize: number
-  lastEmittedPage: number
-  userChangePageSize: boolean
+  internalPageSize: Ref<number>
+  lastEmittedPage: Ref<number>
+  userChangePageSize: Ref<boolean>
 }
 
-export interface Pagination extends PaginationState, PaginationReturn, PaginationProps  {
+export interface Pagination extends PaginationState, PaginationReturn, PaginationProps {
   emit: (name: string, value: any) => void
 }

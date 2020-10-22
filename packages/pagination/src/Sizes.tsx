@@ -1,5 +1,5 @@
 
-import { defineComponent, inject, PropType, watch } from 'vue'
+import { defineComponent, inject, PropType, watch, ref } from 'vue'
 import ElSelect from 'packages/select'
 import ElOption from 'packages/option'
 // @ts-ignore
@@ -16,13 +16,14 @@ export default defineComponent({
     ElOption
   },
   setup(props) {
-    const parent = inject('ElPagination') as Pagination
+    const { pageSize, popperClass, disabled, internalPageSize, userChangePageSize, emit: emitter } = inject('ElPagination') as Pagination
     const handleChange = (val: string) => {
-      if (parseInt(val, 10) !== parent.internalPageSize) {
-        let newVal = (parent.internalPageSize = parseInt(val, 10))
-        parent.userChangePageSize = true
-        parent.emit('update:pageSize', newVal)
-        parent.emit('size-change', newVal)
+      if (parseInt(val, 10) !== internalPageSize.value) {
+        let newVal = parseInt(val, 10)
+        internalPageSize.value = newVal
+        userChangePageSize.value = true
+        emitter('update:pageSize', newVal)
+        emitter('size-change', newVal)
       }
     }
     watch(
@@ -30,9 +31,9 @@ export default defineComponent({
       (newVal, oldVal) => {
         if (valueEquals(newVal, oldVal)) return
         if (Array.isArray(newVal)) {
-          parent.internalPageSize =
-            (newVal.indexOf(String(parent.pageSize)) > -1
-              ? parent.pageSize
+          internalPageSize.value =
+            (newVal.indexOf(String(pageSize)) > -1
+              ? pageSize
               : props.pageSizes?.[0]) as number
         }
       },
@@ -40,25 +41,22 @@ export default defineComponent({
         immediate: true
       }
     )
-    return () => {
-      return (
-        <span class="el-pagination__sizes">
-          <el-select
-            value={parent.internalPageSize}
-            popperClass={parent.popperClass || ''}
-            size="mini"
-            onInput={handleChange}
-            disabled={parent.disabled}
-          >
-            {props.pageSizes?.map((item: string) => (
-              <el-option
-                value={item}
-                label={item + t('el.pagination.pagesize')}
-              ></el-option>
-            ))}
-          </el-select>
-        </span>
-      )
-    }
+    return () =>
+      <span class="el-pagination__sizes">
+        <el-select
+          size="mini"
+          value={internalPageSize.value}
+          disabled={disabled}
+          popperClass={popperClass || ''}
+          onChange={handleChange}
+        >
+          {props.pageSizes?.map((item: string) => (
+            <el-option
+              value={item}
+              label={item + t('el.pagination.pagesize')}
+            ></el-option>
+          ))}
+        </el-select>
+      </span>
   }
 })

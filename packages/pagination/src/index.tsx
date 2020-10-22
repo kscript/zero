@@ -191,7 +191,7 @@ export default defineComponent({
       prev,
       next
     }
-    provide('ElPagination', Object.assign({}, returnValue, props))
+    provide('ElPagination', Object.assign({}, returnValue, props, { emit }))
     return returnValue
   },
 
