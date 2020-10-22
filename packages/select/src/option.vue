@@ -58,7 +58,7 @@ export default defineComponent({
     })
     const instance = getCurrentInstance() as ComponentInternalInstance
     const select = inject('elSelect', {} as anyObject)
-    const { props: selectProps, state: selectState, emitter } = select
+    const { props: selectProps, state: selectState, emitter, realValue } = select
     const isObject = computed(
       () =>
         Object.prototype.toString.call(props.value).toLowerCase() ===
@@ -74,9 +74,9 @@ export default defineComponent({
 
     const itemSelected = computed(() => {
       if (!selectProps.multiple) {
-        return isEqual(props.value, selectProps.modelValue)
+        return isEqual(props.value, realValue.value)
       } else {
-        return contains(selectProps.modelValue, props.value)
+        return contains(realValue.value, props.value)
       }
     })
 
@@ -84,7 +84,7 @@ export default defineComponent({
       if (selectProps.multiple) {
         return (
           !itemSelected.value &&
-          (selectProps.modelValue || []).length >= selectProps.multipleLimit &&
+          (realValue.value || []).length >= selectProps.multipleLimit &&
           selectProps.multipleLimit > 0
         )
       } else {

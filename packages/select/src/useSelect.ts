@@ -70,13 +70,15 @@ export const useSelect = (props: anyObject) => {
       (!isIE() && !isEdge() && !state.visible)
     )
   })
-
+  const realValue = computed(() => {
+    return props.modelValue || props.value
+  })
   const showClose = computed(() => {
     let hasValue = props.multiple
-      ? Array.isArray(props.modelValue) && props.modelValue.length > 0
-      : props.modelValue !== undefined &&
-        props.modelValue !== null &&
-        props.modelValue !== ''
+      ? Array.isArray(realValue.value) && realValue.value.length > 0
+      : realValue.value !== undefined &&
+        realValue.value !== null &&
+        realValue.value !== ''
     let criteria =
       props.clearable &&
       !selectDisabled.value &&
@@ -217,7 +219,7 @@ export const useSelect = (props: anyObject) => {
   }
 
   const emitChange = (val: unknown) => {
-    if (!valueEquals(props.modelValue, val)) {
+    if (!valueEquals(realValue.value, val)) {
       emit('change', val)
     }
   }
@@ -257,7 +259,7 @@ export const useSelect = (props: anyObject) => {
 
   const setSelected = () => {
     if (!props.multiple) {
-      let option = getOption(props.modelValue)
+      let option = getOption(realValue.value)
       if (option.isMounted) {
         state.createdLabel = option.currentLabel
         state.createdSelected = true
@@ -270,8 +272,8 @@ export const useSelect = (props: anyObject) => {
       return
     }
     let result: anyObject[] = []
-    if (Array.isArray(props.modelValue)) {
-      props.modelValue.forEach(value => {
+    if (Array.isArray(realValue.value)) {
+      realValue.value.forEach(value => {
         result.push(getOption(value))
       })
     }
@@ -342,7 +344,7 @@ export const useSelect = (props: anyObject) => {
       (event.target as HTMLInputElement).value.length <= 0 &&
       !toggleLastOptionHitState()
     ) {
-      const value = (props.modelValue as string[]).slice()
+      const value = (realValue.value as string[]).slice()
       value.pop()
       emit('update:modelValue', value)
       emitChange(value)
@@ -418,7 +420,7 @@ export const useSelect = (props: anyObject) => {
     const optionProps = option.props
 
     if (props.multiple) {
-      const value = (props.modelValue as any[]).slice()
+      const value = (realValue.value as any[]).slice()
       const optionIndex = getValueIndex(value, optionProps.value)
       if (optionIndex > -1) {
         value.splice(optionIndex, 1)
@@ -516,7 +518,7 @@ export const useSelect = (props: anyObject) => {
     if (Array.isArray(state.selected)) {
       let index = state.selected.indexOf(tag)
       if (index > -1 && !selectDisabled.value) {
-        const value = (props.modelValue as any[]).slice()
+        const value = (realValue.value as any[]).slice()
         value.splice(index, 1)
         emit('update:modelValue', value)
         emitChange(value)
@@ -662,7 +664,7 @@ export const useSelect = (props: anyObject) => {
   )
 
   watch(
-    () => props.modelValue,
+    () => realValue.value,
     (val: any, oldVal) => {
       if (props.multiple) {
         resetInputHeight()
@@ -785,10 +787,10 @@ export const useSelect = (props: anyObject) => {
   )
 
   state.cachedPlaceHolder = state.currentPlaceholder = props.placeholder || ''
-  if (props.multiple && !Array.isArray(props.modelValue)) {
+  if (props.multiple && !Array.isArray(realValue.value)) {
     emit('update:modelValue', [])
   }
-  if (!props.multiple && Array.isArray(props.modelValue)) {
+  if (!props.multiple && Array.isArray(realValue.value)) {
     emit('update:modelValue', '')
   }
 
@@ -807,8 +809,8 @@ export const useSelect = (props: anyObject) => {
     const reference = instance.refs.reference as VNode
     if (
       props.multiple &&
-      Array.isArray(props.modelValue) &&
-      props.modelValue.length > 0
+      Array.isArray(realValue.value) &&
+      realValue.value.length > 0
     ) {
       state.currentPlaceholder = ''
     }
@@ -853,6 +855,7 @@ export const useSelect = (props: anyObject) => {
     Object.assign(
       {
         emitter,
+        realValue,
         optionDestroy
       },
       { state, props, instance }

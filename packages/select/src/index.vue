@@ -171,9 +171,8 @@ export default defineComponent({
     props: {
       name: String,
       id: String,
-      modelValue: {
-        required: true
-      },
+      value: {},
+      modelValue: {},
       autocomplete: {
         type: String,
         default: 'off'
