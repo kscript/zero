@@ -94,7 +94,6 @@ const PopupManager: PopupManager = Object.defineProperty({
     setTimeout(() => {
       removeClass(modalDom, 'v-modal-enter');
     }, 200);
-
     if (dom && dom.parentNode && dom.parentNode.nodeType !== 11) {
       dom.parentNode.appendChild(modalDom);
     } else {
