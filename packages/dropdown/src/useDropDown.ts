@@ -190,6 +190,7 @@ export const useDropDown = (props: IElDropdownProps) => {
     initAria()
   }
   const setPopperElm = (el: HTMLElement | null) => {
+    (instance.vnode.el as HTMLElementX).popperElm = el
     popperElm.value = el
   }
 
