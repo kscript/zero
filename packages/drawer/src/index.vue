@@ -47,15 +47,13 @@
 </template>
 
 <script lang="ts">
-// @ts-ignore
-import Popup from '@/utils/popup'
+import usePopup from '@/utils/popup'
 // @ts-ignore
 import Utils from '@/utils/aria-utils'
 import { ComponentInternalInstance, computed, defineComponent, getCurrentInstance, nextTick, onMounted, onUnmounted, Prop, ref, watch } from 'vue'
 
 export default defineComponent({
   name: 'ElDrawer',
-  mixins: [Popup],
   emits: ['open', 'opened', 'close', 'closed', 'update:visible'],
   props: {
     appendToBody: {
@@ -125,6 +123,7 @@ export default defineComponent({
       return props.direction === 'rtl' || props.direction === 'ltr'
     })
     const instance = getCurrentInstance() as ComponentInternalInstance
+    const popup = usePopup(props)
     watch(() => props.visible, (val) => {
       const el = instance.vnode.el as HTMLElement
       if (val) {

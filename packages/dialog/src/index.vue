@@ -39,14 +39,15 @@
 
 <script lang="ts">
   // @ts-ignore
-  import Popup from '@/utils/popup'
+  import usePopup from '@/utils/popup'
   import Migrating from '@/mixins/migrating'
   import { ComponentInternalInstance, computed, defineComponent, getCurrentInstance, inject, nextTick, onMounted, onUnmounted, provide, ref, watch } from 'vue'
+  import { broadcast } from '@/utils/broadcast'
 
   export default defineComponent({
     name: 'ElDialog',
 
-    mixins: [Popup, Migrating],
+    mixins: [Migrating],
 
     emits: ['open', 'opened', 'close', 'closed', 'update:visible', 'update:modelValue'],
     props: {
@@ -119,32 +120,11 @@
 
     setup(props, { emit, slots }) {
       const elDropdown = inject('elDropdown', {} as anyObject)
-      const closed = ref(false)
       const key = ref(0)
+      const closed = ref(false)
+      const rendered = ref(false)
       const instance = getCurrentInstance() as ComponentInternalInstance 
-
-      watch(() => props.visible, (val) => {
-        const el = instance.vnode.el as HTMLElement
-        if (val) {
-          closed.value = false
-          emit('open')
-          el?.addEventListener('scroll', updatePopper)
-          nextTick(() => {
-            (instance.refs.dialog as HTMLElement).scrollTop = 0
-          });
-          if (props.appendToBody) {
-            document.body.appendChild(el)
-          }
-        } else {
-          el?.removeEventListener('scroll', updatePopper)
-          if (!closed.value) emit('close')
-          if (props.destroyOnClose) {
-            nextTick(() => {
-              key.value++
-            })
-          }
-        }
-      })
+      const popup = usePopup(props)
       const style = computed(() => {
         let style = {} as anyObject
         if (!props.fullscreen) {
@@ -190,7 +170,29 @@
       const afterLeave = () => {
         emit('closed')
       }
-      const rendered = ref(false)
+      watch(() => props.visible, (val) => {
+        const el = instance.vnode.el as HTMLElement
+        if (val) {
+          rendered.value = true
+          closed.value = false
+          emit('open')
+          el?.addEventListener('scroll', updatePopper)
+          nextTick(() => {
+            (instance.refs.dialog as HTMLElement).scrollTop = 0
+          });
+          if (props.appendToBody) {
+            document.body.appendChild(el)
+          }
+        } else {
+          el?.removeEventListener('scroll', updatePopper)
+          if (!closed.value) emit('close')
+          if (props.destroyOnClose) {
+            nextTick(() => {
+              key.value++
+            })
+          }
+        }
+      })
       onMounted(() => {
         if (props.visible) {
           rendered.value = true
