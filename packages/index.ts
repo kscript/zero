@@ -65,6 +65,7 @@ import table from './table'
 import tableColumn from './table-column'
 import timeline from './timeline'
 import timelineItem from './timeline-item'
+import transfer from './transfer'
 
 export const Alert = alert
 export const Aside = aside
@@ -127,6 +128,7 @@ export const Table = table
 export const TableColumn = tableColumn
 export const Timeline = timeline
 export const TimelineItem = timelineItem
+export const Transfer = transfer
 export const directives = [
   InfiniteScroll
 ]
@@ -191,6 +193,7 @@ export const components = [
   TableColumn,
   Timeline,
   TimelineItem,
+  Transfer,
 ]
 export const install = function (app: App, opts = {}) {
   // 判断是否安装
@@ -271,7 +274,8 @@ export const ZeroUI = {
   Table,
   TableColumn,
   Timeline,
-  TimelineItem
+  TimelineItem,
+  Transfer
 }
 
 export default ZeroUI
