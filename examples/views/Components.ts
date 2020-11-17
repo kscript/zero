@@ -128,6 +128,10 @@ export const list = [
         title: 'Timeline 时间线'
     },
     {
+        name: 'ElTransfer',
+        title: 'Transfer 穿梭框'
+    },
+    {
         name: 'InfiniteScroll',
         title: 'InfiniteScroll 无限滚动'
     },

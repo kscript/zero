@@ -46,6 +46,7 @@ import ElSelect from './ElSelect'
 import ElSteps from './ElSteps'
 import ElTimeline from './ElTimeline'
 import InfiniteScroll from './InfiniteScroll'
+import Transfer from './ElTransfer'
 import { DemoEntry, Markdown } from './type'
 
 const demos = [
@@ -82,6 +83,7 @@ const demos = [
   ElTimeline,
   InfiniteScroll,
   Layout,
+  Transfer,
 ]
 const markdowns: anyObject<Markdown> = {}
 const components: anyObject<ComponentOptions> = {}
