@@ -117,7 +117,8 @@ export default defineComponent({
     format: Object as Prop<anyObject>,
     filterMethod: Function,
     defaultChecked: Array as Prop<string[]>,
-    props: Object
+    props: Object,
+    hasSlot: Boolean
   },
 
   setup(props, { slots, emit }) {
@@ -188,7 +189,7 @@ export default defineComponent({
     })
 
     const hasFooter = computed(() => {
-      return !!slots.default
+      return !!props.hasSlot
     })
     const updateAllChecked = () => {
       const checkableDataKeys = checkableData.value.map(

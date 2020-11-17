@@ -7,6 +7,7 @@
       :title="titles[0] || t('el.transfer.titles.0')"
       :default-checked="leftDefaultChecked"
       :placeholder="filterPlaceholder || t('el.transfer.filterPlaceholder')"
+      :hasSlot="!!slots['left-footer']"
       @checked-change="onSourceCheckedChange"
     >
       <slot name="left-footer"></slot>
@@ -39,6 +40,7 @@
       :default-checked="rightDefaultChecked"
       :placeholder="filterPlaceholder || t('el.transfer.filterPlaceholder')"
       @checked-change="onTargetCheckedChange"
+      :hasSlot="!!slots['right-footer']"
     >
       <slot name="right-footer"></slot>
     </transfer-panel>
@@ -137,7 +139,7 @@ export default defineComponent({
     }
   },
 
-  setup(props, { emit }) {
+  setup(props, { emit, slots }) {
     const leftChecked = ref([] as string[])
     const rightChecked = ref([] as string[])
     const instance = getCurrentInstance()!
@@ -240,6 +242,7 @@ export default defineComponent({
       }
     }
     return {
+      slots,
       leftChecked,
       rightChecked,
       
