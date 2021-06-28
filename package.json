@@ -27,7 +27,7 @@
     "github-markdown-css": "^4.0.0",
     "markdown-it": "^11.0.0",
     "mitt": "^2.1.0",
-    "prismjs": "^1.21.0",
+    "prismjs": "^1.24.0",
     "resize-observer-polyfill": "^1.5.1",
     "sass": "^1.26.10",
     "sass-loader": "^9.0.3",
