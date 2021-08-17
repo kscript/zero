@@ -317,7 +317,7 @@ export default defineComponent({
     })
     onMounted(() => {
       if (props.prop) {
-        emitter.emit('el.form.addField', instance)
+        formEmitter.emit('el.form.addField', instance)
 
         if (Array.isArray(fieldValue.value)) {
           initialValue.value = ([] as any[]).concat(fieldValue.value)
@@ -326,7 +326,7 @@ export default defineComponent({
       }
     })
     onBeforeUnmount(() => {
-      emitter.emit('el.form.removeField', instance)
+      formEmitter.emit('el.form.removeField', instance)
     })
     // @ts-ignore
     window.getPropByPath = getPropByPath
